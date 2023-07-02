@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import "../Styles/bookinfo.css";
 import Books from "../Data/data";
+
 function Bookinfo() {
   const { id } = useParams();
  console.log(id);

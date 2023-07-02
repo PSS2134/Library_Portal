@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/Signup.css";
+
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 //We will be using React-toastify for pop up notofication, it is more styled and attractive version of alert()
