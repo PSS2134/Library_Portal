@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 50px;
+  background-color: #0be8e7;
+}
+.head {
+  margin: 0 auto;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  text-align: center;
+  color: green;
+  background-color: wheat;
+}

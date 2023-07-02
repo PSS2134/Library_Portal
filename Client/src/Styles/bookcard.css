@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.bookimg {
+  width: 100%;
+  border-radius: 12px;
+  height: 214px;
+  object-fit: cover;
+}
+#container {
+  max-width: 300px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.card {
+  background-color: #f3eb7a;
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid red;
+}
+.tag {
+  padding: 2px 8px;
+  border: 1px solid rgb(169, 185, 31);
+  border-radius: 50px;
+  font-size: 14px;
+  color: rgb(22 8 184);
+}
+.bookname {
+  font-size: 24px;
+  margin-top: 14px;
+  color: rgb(155, 101, 34);
+}
+
+p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgb(36, 138, 222);
+  line-height: 1.5;
+}
+.readmore {
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  color: #0077ff;
+  background-color: #e0efff;
+  margin: 0 auto;
+  display: block;
+}
