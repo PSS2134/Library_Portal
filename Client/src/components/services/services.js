@@ -1,4 +1,4 @@
-import '../../Styles/services.css';
+import './services.css';
 import React from 'react'
 
 function Services() {
