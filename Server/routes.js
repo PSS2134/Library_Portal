@@ -1,5 +1,6 @@
 const express = require("express");
 const User = require("./models/userModel");
+const Book = require("./models/bookModel");
 const router = express.Router();
 
 router.post("/api/signup", async (req, res) => {
@@ -49,5 +50,31 @@ router.get("/api/login", async (req, res) => {
   const user = await User.findOne({ email: email });
   return res.json({ name: user.name });
 });
+
+router.post("/api/add", async (req, res) => {
+  try{
+  const book=req.body;
+  const email=req.query.email;
+  // console.log(book);
+const checkUser=await Book.findOne({ email: email});
+if(checkUser) {
+        checkUser.book.push(book);
+        await checkUser.save();
+        console.log("old user book added")
+
+}
+else{
+  const bookdata= new Book({email:email,book});
+  await bookdata.save();
+  console.log("new added");
+  res.json('new Added');  
+  }
+}
+  catch(err){
+    console.log(err);
+  }
+})
+
+
 
 module.exports = router;
