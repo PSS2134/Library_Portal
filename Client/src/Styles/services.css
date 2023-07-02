@@ -1,0 +1,36 @@
+.serve{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.service{
+    width: 300px;
+    height: 400px;
+    border: 3px solid #dd6b20;
+    margin-left: 5.7%;
+    margin-bottom: 5%;
+    border-radius: 10%;
+}
+
+.heading{
+    text-align: left;
+    margin-left: 5%;
+    color: #525FE1
+}
+
+.service-image{
+    margin-top: 10%;
+    margin-left: 20%;
+    border-radius: 20%;
+    height: 160px;
+    width: 180px;
+}
+
+li{
+    font-weight: 400;
+    margin: 2%;
+}
+
+.service-heading{
+    color: #525FE1;
+}
