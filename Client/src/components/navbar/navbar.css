@@ -1,0 +1,52 @@
+.navbar{
+    /* background-color: #dd6b20; */
+    height: 50px;
+    display: flex;
+    width: 90%;
+    /* justify-content: space-between; */
+    padding: 10px;
+  }
+
+  .btn{
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    color: #dd6b20;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  .book{
+    background-color: white;
+    color: #dd6b20;
+    height: 45px;
+    width: 50px;
+  }
+  .name{
+    margin-top: -1%;
+  }
+
+  .name h1{
+    color: #dd6b20;
+  }
+
+  .user-icon{
+    height: 40px;
+    width: 40px;
+    margin-top: -15%;
+  }
+
+  .bar{
+    width: 50%;
+    display: flex;
+    margin-top: 1%;
+    margin-left: 8%;
+    justify-content: space-between;
+  }
+
+  .log-user{
+    display: flex;
+    margin-left: 30%;
+    /* margin-left: 3%; */
+  }
+  

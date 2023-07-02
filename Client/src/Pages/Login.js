@@ -4,7 +4,7 @@ import "../Styles/Login.css";
 //We will be using React-toastify for pop up notofication, it is more styled and attractive version of alert()
 //Install the library and read from npmjs.org
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
 
 function SignIn() {
   const navigate = useNavigate();

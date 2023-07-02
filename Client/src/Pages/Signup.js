@@ -76,7 +76,7 @@ function Signup() {
 
   // console.log(dataname);
   return (
-    <div
+    <div className="signup-outer"
       style={{
         display: "flex",
         alignContent: "center",

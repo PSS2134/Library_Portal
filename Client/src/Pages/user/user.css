@@ -1,0 +1,63 @@
+.user-profile {
+    /* display: flex; */
+    margin-top: 80px;
+    margin-bottom: 20px;
+  }
+  
+  .box{
+    background-color: rgb(42, 87, 87);
+    margin-left:30%;
+    margin-right: 30%;
+    border: 2px solid olive green;
+    border-radius: 20px;
+    /* width: 50%; */
+    height: 100%;
+    padding-left: 40px;
+    display: flex;
+    text-align: center;
+}
+
+.profile-pic{
+    /* margin-left: 33%; */
+    margin-top:4%;
+    margin-bottom: 4%;
+    border-radius: 50%;
+}
+
+/* .line{
+    margin-left:0%;
+} */
+
+.desc{
+    color:rgb(167, 162, 190);
+    margin-top: 8%;
+    margin-left: 8%;
+}
+  
+  .user-books {
+    /* width: 100%; */
+    margin: 30px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #bcb7b7;
+    color: #dd6b20 ;
+  }
+
+  .Issued-books{
+    color: #525FE1;
+  }
+
+

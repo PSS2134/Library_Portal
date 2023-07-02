@@ -1,0 +1,28 @@
+.full{
+    /* display: flex; */
+    margin-top: 20px;
+ }
+ 
+ 
+ .cont{
+    font-weight:600;
+    text-align: justify;
+    margin-left: 5%;
+    padding:0.1px;
+    display: flex;
+ }
+ 
+ .image{
+   margin-left: 5%;
+   margin-right: 5%;
+   margin-top: 2%;
+   border-radius: 10%;
+ }
+
+ .About{
+   text-align: left;
+   margin-left: 5%;
+   color: #525FE1
+ }
+ 
+ 
