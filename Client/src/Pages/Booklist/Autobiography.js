@@ -1,6 +1,6 @@
 import React from "react";
-import Bookcard from "./Bookcard";
-import "../Styles/booklist.css";
+import Bookcard from "../../components/bookcard/Bookcard";
+import "../../Styles/booklist.css";
 function Booklist() {
   // function to break array of books into groups of given size
   function makegroup(array, size) {

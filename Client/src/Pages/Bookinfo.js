@@ -1,41 +1,58 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import "../Styles/bookinfo.css";
+import Books from "../Data/data";
 function Bookinfo() {
+  const { id } = useParams();
+ console.log(id);
+const filteredArray=Books.filter((book)=>{
+        if(book.id==id)
+        {
+        return book;
+        }
+  })
+// console.log(filteredArray[0]);
+const book=filteredArray[0];
+  const {name, genre, summary, author,url}=book
+  const email=JSON.parse(localStorage.getItem('user')).email;
+
+const postData=async()=>{
+ const res= await fetch(`http://localhost:5000/api/add?email=${email}`,{
+  method:"POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(book),
+ })
+ const data=await res.json();
+
+}
+
+
   return (
     <div className="bookinfo">
       <div className="left">
         <img
           className="bookimage"
-          src="https://img.freepik.com/free-vector/abstract-elegant-winter-book-cover_23-2148798745.jpg?w=2000"
+          src={url}
           alt="book"
         />
       </div>
       <div className="right">
         <div className="center">
           <div className="titlecon">
-            <h1 className="title">The Merchant Of Venice</h1>
+            <h1 className="title">{name}</h1>
           </div>
           <div className="info">
             <h2>Language : English</h2>
             <h2>Pages : 230</h2>
-            <h2>Author : Abhishek Gupta</h2>
-            <h2>Genre : Nature</h2>
+            <h2>Author : {author}</h2>
+            <h2>Genre : {genre}</h2>
             <h4>
-              Context : Lorem, ipsum dolor sit amet consectetur adipisicing
-              elit. Est labore quaerat nesciunt qui nisi numquam, atque deserunt
-              quod expedita, commodi incidunt dolores. Voluptates cum adipisci
-              sequi consequuntur fugit iusto vel, ab, quaerat rerum asperiores
-              iste maiores perspiciatis dolor ratione atque libero reprehenderit
-              tenetur, voluptatem pariatur necessitatibus fugiat labore! Nulla
-              deleniti accusamus culpa asperiores, enim doloremque excepturi? At
-              ipsa autem eius, culpa ducimus beatae quasi aliquid officia sequi
-              quae quod maxime, quis distinctio, non earum et saepe odio
-              provident! Debitis voluptates, suscipit ullam rerum aliquid
-              possimus, vero ad, perferendis ab voluptate doloribus consequuntur
-              neque nemo officiis laborum amet reiciendis pariatur error.
+              Summary: {summary}
             </h4>
             <div className="button">
-              <button className="cart">Add To Cart</button>
+              <button onClick={postData} className="cart">Add To Cart</button>
             </div>
           </div>
         </div>
