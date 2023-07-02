@@ -1,6 +1,50 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Fiction from "../Images/fiction.jpg";
+import "../Styles/Library.css";
+
+const libArray=[
+  {
+  title:"Fiction",
+  des:`Fiction books create imaginary worlds and characters, exploring
+        various themes and narratives. They can range from contemporary
+        fiction to historical epics, encompassing genres like literary
+      fiction, dystopian novels, and coming-of-age stories. Fiction
+      allows readers to escape reality and immerse themselves in
+          captivating tales of imagination and human experiences.`,
+          url:Fiction,
+  },
+  {
+    title:"Fiction",
+    des:`Fiction books create imaginary worlds and characters, exploring
+          various themes and narratives. They can range from contemporary
+          fiction to historical epics, encompassing genres like literary
+        fiction, dystopian novels, and coming-of-age stories. Fiction
+        allows readers to escape reality and immerse themselves in
+            captivating tales of imagination and human experiences.`,
+            url:Fiction,
+    },
+    {
+      title:"Fiction",
+      des:`Fiction books create imaginary worlds and characters, exploring
+            various themes and narratives. They can range from contemporary
+            fiction to historical epics, encompassing genres like literary
+          fiction, dystopian novels, and coming-of-age stories. Fiction
+          allows readers to escape reality and immerse themselves in
+              captivating tales of imagination and human experiences.`,
+              url:Fiction,
+      },
+      {
+        title:"Fiction",
+        des:`Fiction books create imaginary worlds and characters, exploring
+              various themes and narratives. They can range from contemporary
+              fiction to historical epics, encompassing genres like literary
+            fiction, dystopian novels, and coming-of-age stories. Fiction
+            allows readers to escape reality and immerse themselves in
+                captivating tales of imagination and human experiences.`,
+        url:Fiction,
+        }
+]
 
 function Library() {
   const [name, setName] = useState("");
@@ -15,152 +59,59 @@ function Library() {
   }, []);
 
   return (
-    <div>
-      <div className="py-10">
-        <h1 className="px-3 py-3 m-2 font-normal font-mon text-5xl space-x-2">
-          Hello! <span className="text-indigo-600">{name}</span>,{" "}
+    <>
+     <div className="library-body">
+        <h1 className=" library-heading">
+          Hello! <span className="text-indigo-600 library-name">{name}</span>,{" "}
         </h1>
-        <h1 className="px-3 py-3 m-2 text-slate-700 text-3xl space-x-2 ">
-          Welcome to <span className="font-bold text-orange-500">Library</span>,
+        <h1 className="px-3 py-3 m-2 text-slate-700 text-3xl space-x-2 library-subheading">
+          Welcome to <span className="font-bold text-orange-500 library-Lib">Library</span>,
           Have a look!
         </h1>
       </div>
-      <div className="px-4 py-6 m-2 flex justify-center hover:shadow-lg hover:shadow-cyan-800 bg- hover:rounded-lg">
-        <div className="px-2">
+   {libArray.map((data)=>{
+
+       return(      
+    <div>
+     
+      <div className="px-4 py-6 m-2 flex justify-center hover:shadow-lg hover:shadow-cyan-800 bg- hover:rounded-lg library-card">
+        <div className="px-2 libary-img-div">
           <img
-            className="h-[100%] w-[55vw] rounded-2xl shadow-lg shadow-slate-700 cursor-pointer 
+            className=" library-img h-[100%] w-[55vw] rounded-2xl shadow-lg shadow-slate-700 cursor-pointer 
         hover:opacity-95"
-            src={Fiction}
+            src={data.url}
           />
         </div>
-        <div className="px-5">
+        <div className=" px-5" style={{"padding":"0 1.25rem"}}>
           <div>
-            <h1 className="text-cyan-600 font-mon text-4xl space-x-2 font-semibold">
-              Fiction
+            <h1 className="text-cyan-600 font-mon text-4xl space-x-2 font-semibold" style={{"color":" rgb(124 58 237)","fontSize":"2.25rem","lineHeight":"2.5rem","fontFamily":"Poppins","margin": "0 0 0 0.5rem", "fontWeight":"600"}}>
+              {data.title}
             </h1>
-            <p className="text-xl h-full mt-6 space-x-2">
-              Fiction books create imaginary worlds and characters, exploring
-              various themes and narratives. They can range from contemporary
-              fiction to historical epics, encompassing genres like literary
-              fiction, dystopian novels, and coming-of-age stories. Fiction
-              allows readers to escape reality and immerse themselves in
-              captivating tales of imagination and human experiences.
+            <p className="text-xl h-full mt-6 space-x-2" style={{"fontSize":"1.25rem","lineHeight":"1.75rem","height":"100%","margin":"1.5rem 0 0 0.5rem","fontFamily":"Poppins"}}>
+             {data.des}
             </p>
           </div>
           <div>
             <button
               className="block m-[2px] mt-7 auto bg-cyan-500 p-2 w-[8vw] rounded-2xl text-white 
          font-semibold text-lg shadow-lg shadow-slate-700 hover:bg-cyan-600 cursor-pointer
-         active:shadow-none"
+         active:shadow-none library-btn"
             >
               Dive In!
             </button>
           </div>
         </div>
       </div>
-      <div className="h-1 w-[10%] block my-10 mx-auto  border-b-8 border-dotted border-indigo-700 "></div>
-      <div className="px-3 py-3 m-2 flex justify-center">
-        <div className="px-2">
-          <img
-            className="h-[100%] w-[55vw] rounded-2xl shadow-lg shadow-slate-700 cursor-pointer 
-        hover:opacity-95"
-            src={Fiction}
-          />
-        </div>
-        <div className="px-5">
-          <div>
-            <h1 className="text-cyan-600 font-mon text-4xl space-x-2 font-semibold">
-              Fiction
-            </h1>
-            <p className="text-xl h-full mt-6 space-x-2">
-              Fiction books create imaginary worlds and characters, exploring
-              various themes and narratives. They can range from contemporary
-              fiction to historical epics, encompassing genres like literary
-              fiction, dystopian novels, and coming-of-age stories. Fiction
-              allows readers to escape reality and immerse themselves in
-              captivating tales of imagination and human experiences.
-            </p>
-          </div>
-          <div>
-            <button
-              className="block m-[2px] mt-7 auto bg-cyan-500 p-2 w-[8vw] rounded-2xl text-white 
-         font-semibold text-lg shadow-lg shadow-slate-700 hover:bg-cyan-600 cursor-pointer
-         active:shadow-none"
-            >
-              Dive In!
-            </button>
-          </div>
-        </div>
+      <div className="h-1 w-[10%] block my-10 mx-auto  border-b-8 border-dotted border-indigo-700 " style={{
+        "height":"1.25rem","width":"8%","margin":"2.5rem auto","borderBottom":"1rem dotted rgb(55 48 163)"
+      }}></div>
+      //
+      
+          
+        
       </div>
-      <div className="h-1 w-[10%] block my-10 mx-auto  border-b-8 border-dotted border-indigo-700 "></div>
-      <div className="px-3 py-3 m-2 flex justify-center">
-        <div className="px-2">
-          <img
-            className="h-[100%] w-[55vw] rounded-2xl shadow-lg shadow-slate-700 cursor-pointer 
-        hover:opacity-95"
-            src={Fiction}
-          />
-        </div>
-        <div className="px-5">
-          <div>
-            <h1 className="text-cyan-600 font-mon text-4xl space-x-2 font-semibold">
-              Fiction
-            </h1>
-            <p className="text-xl h-full mt-6 space-x-2">
-              Fiction books create imaginary worlds and characters, exploring
-              various themes and narratives. They can range from contemporary
-              fiction to historical epics, encompassing genres like literary
-              fiction, dystopian novels, and coming-of-age stories. Fiction
-              allows readers to escape reality and immerse themselves in
-              captivating tales of imagination and human experiences.
-            </p>
-          </div>
-          <div>
-            <button
-              className="block m-[2px] mt-7 auto bg-cyan-500 p-2 w-[8vw] rounded-2xl text-white 
-         font-semibold text-lg shadow-lg shadow-slate-700 hover:bg-cyan-600 cursor-pointer
-         active:shadow-none"
-            >
-              Dive In!
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="h-1 w-[10%] block my-10 mx-auto  border-b-8 border-dotted border-indigo-700 "></div>
-      <div className="px-3 py-3 m-2 flex justify-center">
-        <div className="px-2">
-          <img
-            className="h-[100%] w-[55vw] rounded-2xl shadow-lg shadow-slate-700 cursor-pointer 
-        hover:opacity-95"
-            src={Fiction}
-          />
-        </div>
-        <div className="px-5">
-          <div>
-            <h1 className="text-cyan-600 font-mon text-4xl space-x-2 font-semibold">
-              Fiction
-            </h1>
-            <p className="text-xl h-full mt-6 space-x-2">
-              Fiction books create imaginary worlds and characters, exploring
-              various themes and narratives. They can range from contemporary
-              fiction to historical epics, encompassing genres like literary
-              fiction, dystopian novels, and coming-of-age stories. Fiction
-              allows readers to escape reality and immerse themselves in
-              captivating tales of imagination and human experiences.
-            </p>
-          </div>
-          <div>
-            <button
-              className="block m-[2px] mt-7 auto bg-cyan-500 p-2 w-[8vw] rounded-2xl text-white 
-         font-semibold text-lg shadow-lg shadow-slate-700 hover:bg-cyan-600 cursor-pointer
-         active:shadow-none"
-            >
-              Dive In!
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+   )})} 
+    </>
   );
 }
 
