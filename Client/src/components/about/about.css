@@ -1,27 +1,27 @@
-.full{
-    /* display: flex; */
-    margin-top: 20px;
+.fullabout{
+    margin-top: 10px;
  }
  
- 
- .cont{
-    font-weight:600;
+ .cont-about{
+    font-weight:800;
     text-align: justify;
     margin-left: 5%;
-    padding:0.1px;
     display: flex;
  }
  
- .image{
+ .image-about{
    margin-left: 5%;
    margin-right: 5%;
-   margin-top: 2%;
    border-radius: 10%;
+ }
+ .image-about:hover{
+  transform: scale(1.2);
  }
 
  .About{
    text-align: left;
    margin-left: 5%;
+   margin-bottom: 0.5%;
    color: #525FE1
  }
  

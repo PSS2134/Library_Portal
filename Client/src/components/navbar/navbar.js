@@ -1,42 +1,25 @@
 import React from 'react'
 import './navbar.css';
-import { GiBookshelf } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 import { BiUserCircle } from 'react-icons/bi';
 
 function Navbar() {
     return (
       <nav className="navbar">
-          <div className="books">
-            <GiBookshelf className='book'/>
-          </div>
-          <div className="name">
-            <h1>LIBRARY MANAGEMENT</h1>
-            
-          </div>
-          <div className='bar'>
-            <div className="home">
-                <Link to={'/'}><button className="btn">Home</button></Link>
-            </div>
-            <div className="about">
-                <button className="btn">About</button>
-            </div>
-            <div className="services">
-                <button className="btn">Services</button>
-            </div>
-            <div className="recommend">
-                <button className="btn">Recommended</button>
-            </div>
-            <div className="log-user">
-              <div className="logout">
-                  <button className="btn">Logout</button>
-              </div>
-              <div className="profile">
-                  <Link to={'/user'}><button className="btn"><BiUserCircle className='user-icon'/></button></Link>
-              </div>
-            </div>
-              
-          </div>  
+        <div className="leftbar">
+        {/* <h1 className='app-name'>LIBRARY_MANAGEMENT</h1>  */}
+            <h1 className='app-name'>LIBRARY_PORTAL</h1>
+        </div>
+        <div className="middlebar">
+            <Link to={'/'}><button className="nav-btn">Home</button></Link>
+            <button className="nav-btn">About</button>
+            <button className="nav-btn">Services</button>
+            <button className="nav-btn">Recommended</button>
+        </div>  
+        <div className="rightbar">
+            <Link to={'/user'}><button className="nav-btn user-btn"><BiUserCircle className='user-icon'/></button></Link>
+            <button className="logout-btn">Logout</button>
+        </div> 
       </nav>
     )
   }

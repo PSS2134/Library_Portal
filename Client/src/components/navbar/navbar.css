@@ -1,52 +1,70 @@
-.navbar{
-    /* background-color: #dd6b20; */
-    height: 50px;
+
+  .navbar{
+    height: 60px;
     display: flex;
-    width: 90%;
-    /* justify-content: space-between; */
-    padding: 10px;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
-  .btn{
+  .nav-btn{
     background-color: white;
     border: none;
-    border-radius: 4px;
     color: #dd6b20;
-    font-size: 22px;
+    font-size: 25px;
     cursor: pointer;
+    padding-left: 15px;
+  }
+  .nav-btn:hover{
+    transform: scale(1.2);
   }
 
-  .book{
+  .app-name{
+    color: #dd6b20;
+  }
+
+  .middlebar{
+    /* margin-left: 10%; */
+    margin-top: 1%;
+  }
+
+  .leftbar{
+    margin-top: 1%;
+  }
+
+  .rightbar{
+    /* margin-left: 19%; */
+    display: flex;
+    margin-top: 0.3%;
+  }
+
+  .user-btn{
+    font-size: 50px;
+    background-color: white;
+    border: none;
+    color: #dd6b20;
+    cursor: pointer;
+    padding-right: 10px;
+  }
+
+  .logout-btn{
     background-color: white;
     color: #dd6b20;
-    height: 45px;
-    width: 50px;
-  }
-  .name{
-    margin-top: -1%;
-  }
-
-  .name h1{
-    color: #dd6b20;
-  }
-
-  .user-icon{
+    border-radius: 43%;
+    margin-top: 5px;
+    border: none;
+    font-size: 25px;
     height: 40px;
-    width: 40px;
-    margin-top: -15%;
+    width: 80px;
   }
 
-  .bar{
-    width: 50%;
-    display: flex;
-    margin-top: 1%;
-    margin-left: 8%;
-    justify-content: space-between;
+  .logout-btn:hover{
+    transform: scale(1.2);
+    background-color: #dd6b20;
+    color: white;
   }
 
-  .log-user{
-    display: flex;
-    margin-left: 30%;
-    /* margin-left: 3%; */
-  }
   
+
+  
+
