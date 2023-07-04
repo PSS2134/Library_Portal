@@ -10,7 +10,6 @@ function Bookinfo() {
       return book;
     }
   });
-  console.log(filteredArray);
   const book = filteredArray[0];
   const { name, genre, summary, author, url } = book;
   const email = JSON.parse(localStorage.getItem("user")).email;
@@ -38,7 +37,6 @@ function Bookinfo() {
           </div>
           <div className="info">
             <h2>Language : English</h2>
-            <h2>Pages : 230</h2>
             <h2>Author : {author}</h2>
             <h2>Genre : {genre}</h2>
             <h4>Summary: {summary}</h4>
