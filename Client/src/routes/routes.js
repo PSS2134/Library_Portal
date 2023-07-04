@@ -10,6 +10,7 @@ import User from "../Pages/user/user";
 import Admin from "../Pages/admin/admin";
 import Bookinfo from "../Pages/Bookinfo";
 import Booklist from "../Pages/Booklist/Booklist";
+import ScrollToTop from "./Scroll";
 
 //data
 // import books from "../Data/data";
@@ -17,6 +18,7 @@ import Booklist from "../Pages/Booklist/Booklist";
 function Routes_new() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route path="/user" element={<User />} />
