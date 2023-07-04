@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:ital,wght@0,700;1,400&family=Satisfy&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -9,10 +10,11 @@
   background-color: #0be8e7;
 }
 .head {
+  font-family: "Satisfy", cursive;
   margin: 0 auto;
   padding-top: 30px;
   padding-bottom: 20px;
   text-align: center;
-  color: green;
-  background-color: wheat;
+  color: rgb(24, 56, 24);
+  background-color: rgb(173, 232, 255);
 }

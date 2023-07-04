@@ -16,7 +16,7 @@ function User() {
             {/* <hr className="line"></hr> */}
 
             <div className="desc">
-            <h5>Name : RR King </h5>
+            <h5>Name : Bsdwala</h5>
             <h5>Room No. : D317 or D32 or E345</h5>
             <h5>Roll No. :  civil wala?</h5>
             <h5>Branch :  purana ya new? </h5>
