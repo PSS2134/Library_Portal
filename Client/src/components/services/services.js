@@ -4,7 +4,7 @@ import React from 'react'
 function Services() {
   return (
     <div>
-        <h1 className='heading'>Services</h1>
+        <h1 className='services-heading'>Services</h1>
         {/* <hr className='line'></hr> */}
         <div className='serve'>
             <div className='service'>

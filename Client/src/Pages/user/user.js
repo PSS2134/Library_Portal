@@ -9,18 +9,20 @@ function User() {
         <Navbar />
         <div className="user-profile">
             <div className="box">
-            <div className="img">
-                <img className='profile-pic' src="https://iitg.ac.in/cepstrum/media/team/IMG_20230214_132847.jpg" alt="" width="200px" height="250px"/>
-            </div>
+                <div className="profile-image">
+                    <img className='profile-pic' src="https://iitg.ac.in/cepstrum/media/team/IMG_20230214_132847.jpg" alt="" width="200px" height="210px"/>
+                </div>
 
-            {/* <hr className="line"></hr> */}
+                {/* <hr className="line"></hr> */}
 
-            <div className="desc">
-            <h5>Name : RR King </h5>
-            <h5>Room No. : D317 or D32 or E345</h5>
-            <h5>Roll No. :  civil wala?</h5>
-            <h5>Branch :  purana ya new? </h5>
-            </div>
+                <div className="user-desc">
+                    <h3 className='student-information'>Name : RR King </h3>
+                    <h3 className='student-information'>Contact : 1234567890 </h3>
+                    <h3 className='student-information'>Email : priyansh@gmail.com </h3>
+                    <h3 className='student-information'>Room No. : D317 or D32 or E345</h3>
+                    <h3 className='student-information'>Roll No. :  civil wala?</h3>
+                    <h3 className='student-information'>Hostel :  Lohit </h3>
+                </div>
             </div>
             <div className="user-books">
                 <h1 className='Issued-books'>Issued Books</h1>
