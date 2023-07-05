@@ -24,9 +24,28 @@ const bookSchema= new mongoose.Schema({
     },
     url:{
         type:String,
+        
+    },
+    issued:{
+        type:Number,
         required: true,
-    }}]
-})
+    },
+    returned:{
+        type:Number,
+        required:true,
+    },
+    date:{
+        type:String,
+        required: true,
+    },
+    time:{
+        type:String,
+        required: true,
+    }
+
+
+}]
+},)
 
 const Book=mongoose.model('Book',bookSchema);
 module.exports = Book;

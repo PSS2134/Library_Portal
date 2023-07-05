@@ -13,10 +13,10 @@
     color: #dd6b20;
     font-size: 25px;
     cursor: pointer;
-    padding-left: 15px;
+    padding-left: 4%;
   }
   .nav-btn:hover{
-    transform: scale(1.2);
+    color: #b24e0c;
   }
 
   .app-name{
@@ -26,6 +26,7 @@
   .middlebar{
     /* margin-left: 10%; */
     margin-top: 1%;
+    width:55%;
   }
 
   .leftbar{
