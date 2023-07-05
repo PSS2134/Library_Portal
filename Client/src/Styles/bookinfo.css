@@ -5,9 +5,9 @@
 .bookimage {
   height: 30%;
   width: 50%;
-  border: 2px solid red;
   position: relative;
   top: 32vh;
+  object-fit: contain;
 }
 .bookinfo {
   display: flex;
@@ -18,17 +18,17 @@
   align-items: flex-start;
   justify-content: center;
   flex: 3;
-  background-color: rgb(178, 236, 124);
+  background-color: rgb(71 255 255);
 }
 .right {
-  background-color: white;
+  background-color: #d9be5d;
   display: flex;
   flex-direction: column;
   flex: 6;
   border-left: 2px solid rgb(244, 115, 115);
   padding-right: 40px;
   padding-left: 50px;
-  padding-top: 20vh;
+  padding-top: 25vh;
 }
 .center {
   display: flex;
