@@ -53,21 +53,42 @@ router.get("/api/login", async (req, res) => {
 
 router.post("/api/add", async (req, res) => {
   try{
+    const date=new Date().toLocaleDateString();
+  const time=new Date().toLocaleTimeString();
   const book=req.body;
   const email=req.query.email;
   // console.log(book);
 const checkUser=await Book.findOne({ email: email});
 if(checkUser) {
-        checkUser.book.push(book);
-        await checkUser.save();
-        console.log("old user book added")
+  let count=0;
+  checkUser.book.map((singleBook)=>{
+       if(singleBook.returned==0)
+       {
+        count++;
+       }
+  });
+  if(count<2)
+  {
+    checkUser.book.push({...book,issued:0,returned:0,date:date,time:time,});
+
+    await checkUser.save();
+    return res.json({message:'Added Successfully',title:book.name});
+  }
+  else{
+    return res.json({message:'greater than 2'});
+  }
+        
+        
 
 }
 else{
-  const bookdata= new Book({email:email,book});
+  const bookUpdated=[{...book,issued:0,returned:0,date:date,time:time}]
+  // console.log(bookUpdated)
+  // book.push({issued:0,returned:0,date:date,time:time})
+  const bookdata= new Book({email:email,book:bookUpdated});
   await bookdata.save();
-  console.log("new added");
-  res.json('new Added');  
+  // console.log({message:'new Added',title:book.name});
+  res.json({message:'new Added',title:book.name});  
   }
 }
   catch(err){
@@ -75,6 +96,23 @@ else{
   }
 })
 
-
-
+router.get('/api/profile',async(req,res)=>{
+  const email=req.query.email;
+  const userData= await User.findOne({email:email});
+  const {book}=await Book.findOne({email:email});
+  // console.log(book);
+  return res.json({userData,book});
+})
+router.get('/api/admin_issue',async(req,res)=>{
+// const userData= await User.find({});
+  const book=await Book.find({});
+  // console.log(book);
+  let arr=[];
+  book.map(async(single)=>{
+       const {name}=await User.findOne({email:single.email});
+       arr.push({...single,name:name});
+       console.log(arr);
+  })
+  return res.json(arr);
+})
 module.exports = router;

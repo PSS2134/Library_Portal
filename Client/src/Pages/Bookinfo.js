@@ -2,6 +2,9 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import "../Styles/bookinfo.css";
 import Books from "../Data/data";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function Bookinfo() {
   const { id } = useParams();
@@ -23,6 +26,16 @@ function Bookinfo() {
       body: JSON.stringify(book),
     });
     const data = await res.json();
+    if(data.message=="greater than 2")
+    {
+         toast.warn("You already have 2 books to be issued");
+    }
+    else if(data.message=='new Added'){
+ toast.success(`Congratulations! on adding your first book`);
+    }
+    else{
+      toast.success(`${data.title} added successfully`);
+    }
   };
 
   return (
