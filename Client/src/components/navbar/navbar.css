@@ -1,6 +1,6 @@
 
   .navbar{
-    height: 60px;
+    /* height: 2%; */
     display: flex;
     justify-content: space-between;
     padding-left: 10px;
@@ -45,24 +45,23 @@
     border: none;
     color: #dd6b20;
     cursor: pointer;
-    padding-right: 10px;
+    padding-right: 15px;
   }
 
   .logout-btn{
     background-color: white;
     color: #dd6b20;
     border-radius: 43%;
-    margin-top: 5px;
     border: none;
     font-size: 25px;
     height: 40px;
     width: 80px;
+    margin-top: 2%;
+    padding-right: 5px;
   }
 
   .logout-btn:hover{
-    transform: scale(1.2);
-    background-color: #dd6b20;
-    color: white;
+    color: red;
   }
 
   

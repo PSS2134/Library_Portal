@@ -125,6 +125,54 @@ const books = [
     summary:
       "A compelling story set in the Deep South during the 1930s, addressing themes of racial injustice and moral courage.",
   },
+  {
+    id: 15,
+    name: "Database System Concepts",
+    author: "Abraham Silberschatz",
+    genre: "Competitive",
+    url: "https://rukminim1.flixcart.com/image/832/832/book/2/2/6/database-systems-concepts-original-imadjr9g2xz6rwxy.jpeg?q=70",
+    summary: "This book covers the fundamental concepts of database systems. It discusses topics such as relational databases, SQL, transaction management, data warehousing, and data mining."
+  },
+  {
+    id: 16,
+    name: "Mechanics of Materials",
+    author: "Ferdinand P. Beer",
+    genre: "Competitive",
+    url: "https://m.media-amazon.com/images/I/51JjjA779qL._SX218_BO1,204,203,200_QL40_ML2_.jpg",
+    summary: "This book provides a comprehensive introduction to the mechanics of materials. It covers topics such as stress, strain, axial loading, torsion, bending, and more, with a focus on the behavior of materials under different conditions."
+  },
+  {
+    id: 17,
+    name: "Fluid Mechanics",
+    author: "F M White",
+    genre: "Competitive",
+    url: "https://easyengineering.net/wp-content/uploads/2017/10/FLUID-MECHANICS-IN-SI-UNITS-BY-FRANK-M.-WHITE.jpg",
+    summary: "This book provides a comprehensive introduction to fluid mechanics. It covers topics such as fluid properties, fluid statics, fluid dynamics, flow in pipes, and boundary layer flows."
+  },
+  {
+    id: 18,
+    name: "Data Structures and Algorithms Made Easy",
+    author: "Narasimha Karumanchi",
+    genre: "Competitive",
+    url: "https://th.bing.com/th/id/R.9d74c9191547a19895b82087f4fc4ac4?rik=x9RTJ8SN%2fxdJCw&riu=http%3a%2f%2fprodimage.images-bn.com%2fpimages%2f9781456549886_p0_v1_s1200x630.jpg&ehk=2Y%2fONWy04L6zFwTpsRM4ShEsJ3x41oaPVttIcVFy5j8%3d&risl=&pid=ImgRaw&r=0",
+    summary: "This book provides a comprehensive guide to data structures and algorithms. It covers various data structures like arrays, linked lists, stacks, queues, trees, graphs, and various algorithmic techniques."
+  },
+  {
+    id: 19,
+    name: "Artificial Intelligence: A Modern Approach",
+    author: "Stuart Russell",
+    genre: "Competitive",
+    url: "https://pictures.abebooks.com/isbn/9780131038059-us.jpg",
+    summary: "This book provides a comprehensive introduction to the field of artificial intelligence. It covers various topics including problem-solving, knowledge representation, planning, learning, natural language processing, and more."
+  },
+  {
+    id: 20,
+    name: "Chemical Engineering Design",
+    author: "Gavin Towler",
+    genre: "Competitive",
+    url: "https://pictures.abebooks.com/isbn/9780750684231-us.jpg",
+    summary: "This book provides a comprehensive introduction to chemical engineering design. It covers topics such as process design, equipment selection, plant layout, economics, and safety considerations.",
+  },
 ];
 
 export default books;

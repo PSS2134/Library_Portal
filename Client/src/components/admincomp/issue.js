@@ -30,7 +30,7 @@ function Issue() {
                     return(
                         <tr>
                         <td>{data.userData.name}</td>
-                        <td>{da}</td>
+                        {/* <td>{da}</td> */}
                         <td>Book 1</td>
                         <td>2023-06-01</td>
                         <td><button>Add</button></td>
