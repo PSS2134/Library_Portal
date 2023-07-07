@@ -1,28 +1,28 @@
+
 .fullabout{
     margin-top: 10px;
  }
  
  .cont-about{
-    font-weight:800;
+    font-weight:600;
     text-align: justify;
     margin-left: 5%;
     display: flex;
+    font-family: "Poppins";
+    margin-top: 2%;
  }
  
  .image-about{
    margin-left: 5%;
    margin-right: 5%;
-   border-radius: 10%;
- }
- .image-about:hover{
-  transform: scale(1.2);
+   border-radius: 7%;
  }
 
  .About{
    text-align: left;
    margin-left: 5%;
    margin-bottom: 0.5%;
-   color: #525FE1
+   color: #0E2954;
  }
  
  

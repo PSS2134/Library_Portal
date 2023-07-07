@@ -5,6 +5,8 @@ import './user.css';
 import HashLoader from "react-spinners/HashLoader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { MdDelete } from 'react-icons/md';
+
 
 function User() {
 
@@ -17,7 +19,7 @@ function User() {
             setData(data);
             setTimeout(()=>{
                 setLoading(false);
-            },2000);
+            },1250);
         })
     },[data])
     console.log(data);
@@ -62,8 +64,8 @@ function User() {
             <div className="user-profile">
                 <div className="box">
                     <div className="profile-image">
-                        <img className='profile-pic' src="https://iitg.ac.in/cepstrum/media/team/IMG_20230214_132847.jpg" alt="" width="200px" height="210px"/>
-                        <div>
+                        <img className='profile-pic' src="https://iitg.ac.in/cepstrum/media/team/IMG_20230214_132847.jpg" alt=""/>
+                    <div>
                         <input
                             type="file"
                             accept="image/*"
@@ -71,7 +73,8 @@ function User() {
                         />
                         <div className="photo-change">
                             <div className="photo-select">
-                                <button className='btn-select'>Select File</button>
+                                {/* <input type='file'></input> */}
+                                <button className='btn-select' >Select File</button>
                             </div>
                             <div className="photo-update">   
                                 <button className='btn-update'>Change</button>
@@ -82,12 +85,12 @@ function User() {
 
                     {/* <hr className="line"></hr> */}
 
-    <div className="user-desc">
+                    <div className="user-desc" style={{'fontSize':'1rem'}}>
                         <h3 className='student-information'>Name : {data.userData.name} </h3>
                         <h3 className='student-information'>Contact : {data.userData.contact} </h3>
                         <h3 className='student-information'>Email : {data.userData.email} </h3>
                         <h3 className='student-information'>Room No. : {data.userData.room}</h3>
-                        <h3 className='student-information'>Roll No. : {1}</h3>
+                        {/* <h3 className='student-information'>Roll No. : {1}</h3> */}
                         <h3 className='student-information'>Course : {data.userData.course}</h3>
                         <h3 className='student-information'>Year : {data.userData.year}</h3>
                         <h3 className='student-information'>Hostel :  Lohit </h3>
@@ -103,8 +106,10 @@ function User() {
                         <th>Book Name</th>
                         <th>Book Genre</th>
                         <th>Issue Date</th>
+                        <th>Issue Time</th>
                         <th>Return Date</th>
                         <th>Remove</th>
+                        <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -121,8 +126,11 @@ function User() {
                         <td>{book.name}</td>
                         <td>{book.genre}</td>
                         <td>{book.issuedate}</td>
+                        <td>{book.issuetime}</td>
                         <td>{book.returndate}</td>
-                        <td><button name={book.id} onClick={handleRemove}>Remove</button></td>
+                        
+                        <td><button name={book.id} onClick={handleRemove} className='delete-btn'><MdDelete className='delete-icon' /></button></td>
+                        <td>Pending</td>
                         </tr>
                             )
                         })

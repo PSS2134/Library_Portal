@@ -13,30 +13,35 @@
 #container {
   max-width: 300px;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 18px;
 }
-.card {
+.book-card {
   background-color: #fffffe;
+  box-shadow: 6px 6px 6px #3c4dae;
   padding: 8px;
   border-radius: 12px;
   border: 1px solid red;
+}
+.book-card:hover {
+  transform: scale(1.05);
 }
 .tag {
   padding: 2px 8px;
   border: 1px solid rgb(169, 185, 31);
   border-radius: 50px;
-  font-size: 14px;
+  font-size: 19px;
+  font-family: "Poppins";
   color: rgb(22 8 184);
 }
 .bookname {
-  font-family:  "Poppins";
+  font-family: "Poppins";
   font-size: 24px;
   margin-top: 14px;
   color: rgb(18 122 255);
 }
 
 .Summary {
-  font-family:   "Poppins";;
+  font-family: "Poppins";
   margin-top: 10px;
   font-size: 14px;
   color: rgb(7, 34, 57);
@@ -49,7 +54,10 @@
   border-radius: 50px;
   color: #0077ff;
   background-color: #e0efff;
-  margin: 0 auto;
+  margin: 10px auto;
   display: block;
   cursor: pointer;
+}
+.readmore:hover {
+  transform: scale(1.1);
 }

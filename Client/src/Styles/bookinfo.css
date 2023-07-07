@@ -3,8 +3,8 @@
   margin: 0;
 }
 .bookimage {
-  height: 30%;
-  width: 50%;
+  height: 40%;
+  width: 60%;
   position: relative;
   top: 32vh;
   object-fit: contain;
@@ -18,31 +18,32 @@
   align-items: flex-start;
   justify-content: center;
   flex: 3;
-  background-color: rgb(71 255 255);
+  background-color: white;
 }
 .right {
-  background-color: #d9be5d;
+  background-color: white;
   display: flex;
   flex-direction: column;
   flex: 6;
-  border-left: 2px solid rgb(244, 115, 115);
   padding-right: 40px;
   padding-left: 50px;
-  padding-top: 25vh;
+  padding-top: 28vh;
 }
 .center {
   display: flex;
   flex-direction: column;
-  background-color: rgb(43 26 26);
+  background-color: rgb(1, 28, 116);
   row-gap: 30px;
 }
 .title {
   color: white;
+  padding: 0 30px;
 }
 .info {
   display: flex;
   flex-direction: column;
   row-gap: 20px;
+  padding: 0 30px;
 }
 .info h2 {
   color: white;

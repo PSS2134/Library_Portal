@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Fiction from "../Images/fiction.jpg";
 import "../Styles/Library.css";
+import Navbar from "../components/navbar/navbar";
+import Footer from "../components/footer/footer";
+import HashLoader from "react-spinners/HashLoader";
 
 const libArray = [
   {
@@ -48,6 +51,7 @@ const libArray = [
 ];
 
 function Library() {
+  const[loading,setLoading]=useState(true);
   const [name, setName] = useState("");
   const email = JSON.parse(localStorage.getItem("user")).email;
   useEffect(() => {
@@ -56,11 +60,29 @@ function Library() {
       .then((data) => {
         console.log(data);
         setName(data.name);
+        setTimeout(()=>{
+          setLoading(false);
+        },1250);
       });
   }, []);
 
   return (
     <>
+    {loading  ?
+        
+        <div className="loading">
+            <HashLoader
+            color={'#F37A24'}
+            loading={loading}
+            size={100}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+            />
+        </div>
+        
+        :
+      <>
+      <Navbar />
       <div className="library-body">
         <h1 className=" library-heading">
           Hello! <span className="text-indigo-600 library-name">{name}</span>,{" "}
@@ -136,7 +158,10 @@ function Library() {
           </div>
         );
       })}
-    </>
+      <Footer />
+      </>
+      }
+      </>
   );
 }
 
