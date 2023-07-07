@@ -7,9 +7,9 @@
     align-items: center;
    
 }
-.card{
+.login-card{
     background-color:#F5F5F5;
-   padding: 40px 100px 60px 50px;
+   padding: 3% !important;
    border-radius: 15px;
    box-shadow: 6px 6px 6px rgb(68, 20, 2);
 }
@@ -23,7 +23,7 @@
     
 }
 .forminput{
-    width: 120%;
+    width: 100%;
     border:none;
     margin: 0 0 10px 0;
     padding: 5px;
@@ -56,7 +56,7 @@ input[type="text"]:focus{
 .formbtn:active{
     box-shadow: none;
 }
-.card h1{
+.login-card h1{
     text-align: center;
     padding: 20px;
     margin-bottom: 20px;

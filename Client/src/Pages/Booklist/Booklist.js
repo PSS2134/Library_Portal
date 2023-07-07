@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { useParams } from "react-router-dom";
 import Bookcard from "../../components/bookcard/Bookcard";
 import "../../Styles/booklist.css";
@@ -6,12 +6,20 @@ import Navbar from "../../components/navbar/navbar";
 import Books from "../../Data/data";
 function Booklist() {
   const { genre } = useParams();
+  const[booksData,setBooksData] =useState([]);
   // this will fetch books acording to particular genre
-  const genregroup = Books.filter((book) => {
+  const genregroup = booksData.filter((book) => {
     if (book.genre === genre) {
       return book;
     }
   });
+
+  useEffect(() =>{
+    fetch("https://mocki.io/v1/e54f5fb5-64df-4584-9fb9-b8d50beb97a3").then(res=>res.json()).then((data)=>{
+      console.log(data);
+      setBooksData(data);
+    })
+  },[])
   // function to break array of books into groups of given size
   function makegroup(array, size) {
     const chunkedArray = [];

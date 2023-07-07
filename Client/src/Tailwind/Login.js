@@ -45,7 +45,7 @@ function SignIn() {
   return (
     <div>
       <div className="body">
-        <div className="card">
+        <div className="login-card">
           <h1>LogIn</h1>
           <form>
             <p className="formlabel">Email</p>
