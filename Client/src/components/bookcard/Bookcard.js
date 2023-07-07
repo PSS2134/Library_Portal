@@ -7,7 +7,7 @@ function Bookcard({ title, id, author, genre, summary, url }) {
 
   return (
     <div id="container">
-      <div className="card">
+      <div className="book-card">
         <img className="bookimg" src={url} alt="bookimg" />
         <span className="tag">{genre}</span>
         <div className="bookname">{title}</div>
