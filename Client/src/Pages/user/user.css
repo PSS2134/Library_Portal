@@ -12,7 +12,7 @@
     height: 100%;
     padding: 2%;
     display: flex;
-    margin-left: 27%;
+    margin-left: 25%;
 }
 
 .profile-pic{
@@ -27,13 +27,24 @@
 } */
 
 .user-desc{
-    color:rgb(167, 162, 190);
+    color:black;
     text-align: left;
     margin-top: 0%;
     margin-left: 7%;
+    font-family: "Poppins";
 }
 
+.profile-image{
+  padding: 1% 3%;
+  background-color: #e4e2e2;
+  border-radius: 5%;
+  box-shadow: 6px 6px 6px black;
+}
 
+.profile-image img{
+  height: 180px;
+  width: 180px;
+}
 
 .student-information{
   padding: 5px;
@@ -100,5 +111,20 @@
     margin-left: 2%;
   }
   
+  .delete-icon{
+    color: red;
+    height: 30px;
+    width: 30px;
+  }
+
+  .delete-btn{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .delete-btn:active{
+    transform: scale(1.2);
+  }
 
 

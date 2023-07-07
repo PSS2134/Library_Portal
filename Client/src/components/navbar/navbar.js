@@ -7,14 +7,22 @@ function Navbar() {
     return (
       <nav className="navbar">
         <div className="leftbar">
-        {/* <h1 className='app-name'>LIBRARY_MANAGEMENT</h1>  */}
-            <h1 className='app-name'>LIBRARY_PORTAL</h1>
+            <div class="dropdown">
+              <Link to={'/library'}><button class="dropbtn">LIBRARY</button></Link>
+              <div class="dropdown-content">
+                <a href="/library/Fiction">Fiction</a>
+                <a href="/library/Competitive">Competitive</a>
+                <a href="/library/Autobiography">Autobiography</a>
+                <a href="/library/Others">Others</a>
+              </div>
+            </div>
         </div>
         <div className="middlebar">
             <Link to={'/'}><button className="nav-btn">Home</button></Link>
             <button className="nav-btn">About</button>
             <button className="nav-btn">Services</button>
             <button className="nav-btn">Recommended</button>
+            
         </div>  
         <div className="rightbar">
             <Link to={'/user'}><button className="nav-btn user-btn"><BiUserCircle className='user-icon'/></button></Link>
