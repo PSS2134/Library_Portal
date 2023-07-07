@@ -7,7 +7,7 @@ const bookSchema= new mongoose.Schema({
     },
     book:[{
         id:{
-        type:Number,
+        type:String,
         required: true,
     },
     name:{
@@ -34,14 +34,19 @@ const bookSchema= new mongoose.Schema({
         type:Number,
         required:true,
     },
-    date:{
+    issuedate:{
         type:String,
         required: true,
     },
-    time:{
+    returndate:{
+        type:String,
+        required: true,
+    },
+    issuetime:{
         type:String,
         required: true,
     }
+ 
 
 
 }]

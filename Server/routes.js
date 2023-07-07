@@ -53,8 +53,19 @@ router.get("/api/login", async (req, res) => {
 
 router.post("/api/add", async (req, res) => {
   try{
-    const date=new Date().toLocaleDateString();
-  const time=new Date().toLocaleTimeString();
+    const date=new Date();
+    const issuedate=date.toLocaleDateString();
+    const issuetime=date.toLocaleTimeString();
+    // const month=date.getMonth();
+    // console.log(month);
+    // let returndate=new Date().setMonth(month+1);
+    // console.log(returndate);
+    let dt = new Date();
+            let no_of_months = 1;
+            dt.setMonth(dt.getMonth() + no_of_months)
+             const returndate= dt.toLocaleDateString();
+  
+    // console.log(returndate);
   const book=req.body;
   const email=req.query.email;
   // console.log(book);
@@ -69,7 +80,7 @@ if(checkUser) {
   });
   if(count<2)
   {
-    checkUser.book.push({...book,issued:0,returned:0,date:date,time:time,});
+    checkUser.book.push({...book,issued:0,returned:0,issuedate:issuedate,issuetime:issuetime,returndate:returndate});
 
     await checkUser.save();
     return res.json({message:'Added Successfully',title:book.name});
@@ -82,7 +93,7 @@ if(checkUser) {
 
 }
 else{
-  const bookUpdated=[{...book,issued:0,returned:0,date:date,time:time}]
+  const bookUpdated=[{...book,issued:0,returned:0,issuedate:issuedate,issuetime:issuetime,returndate:returndate}]
   // console.log(bookUpdated)
   // book.push({issued:0,returned:0,date:date,time:time})
   const bookdata= new Book({email:email,book:bookUpdated});
@@ -99,9 +110,21 @@ else{
 router.get('/api/profile',async(req,res)=>{
   const email=req.query.email;
   const userData= await User.findOne({email:email});
-  const {book}=await Book.findOne({email:email});
+  console.log(userData);
+  const resnew=await Book.findOne({email:email});
+  
+  if(resnew)
+  {
+    const {book}=resnew;
+    return res.json({userData,book});
+  }
+  else{
+    console.log({userData:userData})
+    return res.json({userData:userData});
+    
+  }
   // console.log(book);
-  return res.json({userData,book});
+  
 })
 router.get('/api/admin_issue',async(req,res)=>{
 // const userData= await User.find({});
@@ -114,5 +137,27 @@ router.get('/api/admin_issue',async(req,res)=>{
        console.log(arr);
   })
   return res.json(arr);
+})
+
+router.delete('/api/remove',async(req,res)=>{
+ const {email,id}=req.query;
+console.log(String(id));
+ const Bookdetails=await Book.findOne({email:email});
+ console.log(Bookdetails);
+console.log(Bookdetails.book);
+Bookdetails.book.map((singleBook)=>{
+  if(singleBook.id==String(id)){
+    const index=Bookdetails.book.indexOf(singleBook);
+    if (index > -1) { // only splice array when item is found
+      Bookdetails.book.splice(index, 1); 
+      // 2nd parameter means remove one item only
+    }
+  }
+
+})
+
+await Bookdetails.save();
+console.log("deleted Successfully");
+res.json("deleted")
 })
 module.exports = router;

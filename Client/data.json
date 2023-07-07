@@ -1,9 +1,0 @@
-{
-    "id": "1",
-    "name": "Introduction to Algorithms",
-    "author": "Thomas H. Cormen",
-    "genre": "Competitive",
-    "url": "https://www.interviewbit.com/blog/wp-content/uploads/2022/02/Introduction-to-Algorithms.jpg",
-    "summary": "This book is often said to be the bible for Algorithms. The book has a lot of famous algorithms ranging from a variety of topics like Dynamic Programming, Greedy methods, to various advanced Graph Algorithms and even Multithreaded Algorithms, algorithms related to Number Theory and what not. "
-  }
-  

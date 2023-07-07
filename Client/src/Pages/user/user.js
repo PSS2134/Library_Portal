@@ -3,7 +3,8 @@ import Navbar from '../../components/navbar/navbar'
 import Footer from '../../components/footer/footer'
 import './user.css';
 import HashLoader from "react-spinners/HashLoader";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function User() {
 
@@ -18,8 +19,24 @@ function User() {
                 setLoading(false);
             },2000);
         })
-    },[])
-    // console.log(data.userData.name);
+    },[data])
+    console.log(data);
+
+    const handleRemove=async(e)=>{
+        // console.log(e.target.name);
+        const id=e.target.name;
+      const res=  await fetch(`http://localhost:5000/api/remove?email=${email}&id=${id}`,{
+            method: 'DELETE',
+            headers: {"Content-Type": "application/json"},
+             
+        })
+        const data=await res.json();
+       if(data=="deleted")
+       {
+          toast.success("Deleted Successfully");
+        //   window.location.reload();
+       }
+    }
   return (
     <div className="user-loading">
     
@@ -77,7 +94,7 @@ function User() {
                     </div>
                     
                 </div>
-                <div className="user-books">
+                {data.book?<div className="user-books">
                     <h1 className='Issued-books'>Issued Books</h1>
                     <table>
                     <thead>
@@ -91,23 +108,29 @@ function User() {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.book && data.book.map((book)=>{
-                            const dateReturn=book.date
+                        {data.book.map((book)=>{
+                            {/* const datenew=book.date.toLocaleDateString();
+                            const time=book.date.toLocaleString(); */}
+                            {/* console.log(book.date) */}
+                            {/* let month=book.date.getMonth()
+                            const datereturn=book.date.setMonth(month-1); */}
+
                             return(
                                 <tr>
                         <td>{book.id}</td>
                         <td>{book.name}</td>
                         <td>{book.genre}</td>
-                        <td>{book.date}</td>
-                        <td>{book.date}</td>
-                        <td><button>Remove</button></td>
+                        <td>{book.issuedate}</td>
+                        <td>{book.returndate}</td>
+                        <td><button name={book.id} onClick={handleRemove}>Remove</button></td>
                         </tr>
                             )
                         })
-                        }
+                       }
                     </tbody>
                     </table>
-                </div>
+                </div> :<h1 style={{"textAlign":"center","fontFamily":"Poppins","fontWeight":"500","padding":"1%"
+                ,"color":"orange"}}>You Have no books</h1>}
             </div>
             <Footer />
         </div></>}
