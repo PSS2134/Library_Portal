@@ -21,7 +21,7 @@ function User() {
                 setLoading(false);
             },1250);
         })
-    },[data])
+    },[])
     console.log(data);
 
     const handleRemove=async(e)=>{
@@ -35,9 +35,13 @@ function User() {
         const data=await res.json();
        if(data=="deleted")
        {
-          toast.success("Deleted Successfully");
-        //   window.location.reload();
+        toast.success("Deleted Successfully");
+        window.location.reload();
+       
+       
+        
        }
+       
     }
   return (
     <div className="user-loading">
@@ -129,7 +133,7 @@ function User() {
                         <td>{book.issuetime}</td>
                         <td>{book.returndate}</td>
                         
-                        <td><img style={{"cursor":"pointer"}} onClick={handleRemove} name={book.id} src={Delete}/></td>
+                        <td><img style={{"cursor":"pointer",}} onClick={handleRemove} name={book.id} src={Delete}/></td>
                         <td>Pending</td>
                         </tr>
                             )

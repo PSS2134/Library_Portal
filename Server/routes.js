@@ -109,17 +109,22 @@ else{
 
 router.get('/api/profile',async(req,res)=>{
   const email=req.query.email;
+  // console.log(email);
   const userData= await User.findOne({email:email});
   // console.log(userData);
   const resnew=await Book.findOne({email:email});
+  // console.log(resnew);
   
   if(resnew)
   {
     const {book}=resnew;
+    // console.log("sent data");
     return res.json({userData,book});
+   
   }
   else{
     console.log({userData:userData})
+    console.log("no sent data");
     return res.json({userData:userData});
     
   }
@@ -130,24 +135,28 @@ router.get('/api/profile',async(req,res)=>{
 
 router.delete('/api/remove',async(req,res)=>{
  const {email,id}=req.query;
-console.log(String(id));
+//  console.log(req.query)
+//  console.log(email,id);
+// console.log(String(id));
  const Bookdetails=await Book.findOne({email:email});
  console.log(Bookdetails);
-console.log(Bookdetails.book);
+// console.log(Bookdetails.book);
 Bookdetails.book.map(async(singleBook)=>{
   if(singleBook.id==String(id)){
+    console.log(singleBook);
     const index=Bookdetails.book.indexOf(singleBook);
+    console.log(index);
     if (index > -1) { // only splice array when item is found
       Bookdetails.book.splice(index, 1); 
-      await Bookdetails.save();
-console.log("deleted Successfully");
-res.json("deleted")
+      console.log("deleted Successfully");
       // 2nd parameter means remove one item only
     }
   }
-
+   
 })
-
+await Bookdetails.save();
+ 
+  res.json("deleted")
 
 })
 // router.get('/api/admin_issue',async(req, res_)=>{
