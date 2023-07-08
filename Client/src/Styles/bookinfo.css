@@ -62,4 +62,8 @@
   background-color: rgb(8, 60, 172);
   color: white;
   cursor: pointer;
+  box-shadow: 6px 6px 6px rgb(21, 53, 141);
+}
+.cart:active{
+  box-shadow: none;
 }

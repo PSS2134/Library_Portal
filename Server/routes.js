@@ -110,7 +110,7 @@ else{
 router.get('/api/profile',async(req,res)=>{
   const email=req.query.email;
   const userData= await User.findOne({email:email});
-  console.log(userData);
+  // console.log(userData);
   const resnew=await Book.findOne({email:email});
   
   if(resnew)
@@ -126,18 +126,7 @@ router.get('/api/profile',async(req,res)=>{
   // console.log(book);
   
 })
-router.get('/api/admin_issue',async(req,res)=>{
-// const userData= await User.find({});
-  const book=await Book.find({});
-  // console.log(book);
-  let arr=[];
-  book.map(async(single)=>{
-       const {name}=await User.findOne({email:single.email});
-       arr.push({...single,name:name});
-       console.log(arr);
-  })
-  return res.json(arr);
-})
+
 
 router.delete('/api/remove',async(req,res)=>{
  const {email,id}=req.query;
@@ -145,19 +134,25 @@ console.log(String(id));
  const Bookdetails=await Book.findOne({email:email});
  console.log(Bookdetails);
 console.log(Bookdetails.book);
-Bookdetails.book.map((singleBook)=>{
+Bookdetails.book.map(async(singleBook)=>{
   if(singleBook.id==String(id)){
     const index=Bookdetails.book.indexOf(singleBook);
     if (index > -1) { // only splice array when item is found
       Bookdetails.book.splice(index, 1); 
+      await Bookdetails.save();
+console.log("deleted Successfully");
+res.json("deleted")
       // 2nd parameter means remove one item only
     }
   }
 
 })
 
-await Bookdetails.save();
-console.log("deleted Successfully");
-res.json("deleted")
+
 })
+// router.get('/api/admin_issue',async(req, res_)=>{
+ 
+//   const res
+
+// })
 module.exports = router;

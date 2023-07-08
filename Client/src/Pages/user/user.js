@@ -5,7 +5,7 @@ import './user.css';
 import HashLoader from "react-spinners/HashLoader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { MdDelete } from 'react-icons/md';
+import Delete from "../../Images/delete.svg"
 
 
 function User() {
@@ -25,7 +25,7 @@ function User() {
     console.log(data);
 
     const handleRemove=async(e)=>{
-        // console.log(e.target.name);
+        console.log(e.target);
         const id=e.target.name;
       const res=  await fetch(`http://localhost:5000/api/remove?email=${email}&id=${id}`,{
             method: 'DELETE',
@@ -97,7 +97,7 @@ function User() {
                     </div>
                     
                 </div>
-                {data.book?<div className="user-books">
+                {data.book.length?<div className="user-books">
                     <h1 className='Issued-books'>Issued Books</h1>
                     <table>
                     <thead>
@@ -129,7 +129,7 @@ function User() {
                         <td>{book.issuetime}</td>
                         <td>{book.returndate}</td>
                         
-                        <td><button name={book.id} onClick={handleRemove} className='delete-btn'><MdDelete className='delete-icon' /></button></td>
+                        <td><img style={{"cursor":"pointer"}} onClick={handleRemove} name={book.id} src={Delete}/></td>
                         <td>Pending</td>
                         </tr>
                             )

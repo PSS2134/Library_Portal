@@ -23,7 +23,7 @@ function Issue() {
                         <th>Add</th>
                     </tr>
                 </thead>
-                <tbody>
+                {/* <tbody>
               {data &&  data.book.map((book)=>{
                 if(book.issued==0)
                 {
@@ -31,7 +31,7 @@ function Issue() {
                         <tr>
                         <td>{data.userData.name}</td>
                         {/* <td>{da}</td> */}
-                        <td>Book 1</td>
+                        {/* <td>Book 1</td>
                         <td>2023-06-01</td>
                         <td><button>Add</button></td>
                     </tr>
@@ -40,8 +40,8 @@ function Issue() {
                     
                 })}
                     
-                </tbody>
-            </table>
+                </tbody>*/} 
+            </table> 
     </div>
   )
 }

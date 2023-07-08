@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import Bookcard from "../../components/bookcard/Bookcard";
 import "../../Styles/booklist.css";
 import Navbar from "../../components/navbar/navbar";
-import Books from "../../Data/data";
+import Footer from "../../components/footer/footer";
+
 function Booklist() {
   const { genre } = useParams();
   const[booksData,setBooksData] =useState([]);
@@ -62,6 +63,7 @@ function Booklist() {
           ))}
         </div>
       ))}
+      <Footer/>
     </div>
   );
 }
