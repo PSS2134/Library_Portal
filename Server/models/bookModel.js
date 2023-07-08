@@ -34,11 +34,19 @@ const bookSchema= new mongoose.Schema({
         type:Number,
         required:true,
     },
-    date:{
+    issuedate:{
         type:String,
-        required: true,
+      
     },
-    time:{
+    issuetime:{
+        type:String,
+        
+    },
+    returndate:{
+        type:String,
+        
+    },
+    id:{
         type:String,
         required: true,
     }
