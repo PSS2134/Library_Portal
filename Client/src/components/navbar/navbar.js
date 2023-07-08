@@ -7,9 +7,9 @@ function Navbar() {
     return (
       <nav className="navbar">
         <div className="leftbar">
-            <div class="dropdown">
-              <Link to={'/library'}><button class="dropbtn">LIBRARY</button></Link>
-              <div class="dropdown-content">
+            <div className="dropdown">
+              <Link to={'/library'}><button className="dropbtn">LIBRARY</button></Link>
+              <div className="dropdown-content">
                 <a href="/library/Fiction">Fiction</a>
                 <a href="/library/Competitive">Competitive</a>
                 <a href="/library/Autobiography">Autobiography</a>

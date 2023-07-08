@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Bookcard from "../../components/bookcard/Bookcard";
 import "../../Styles/booklist.css";
@@ -7,7 +7,7 @@ import Footer from "../../components/footer/footer";
 
 function Booklist() {
   const { genre } = useParams();
-  const[booksData,setBooksData] =useState([]);
+  const [booksData, setBooksData] = useState([]);
   // this will fetch books acording to particular genre
   const genregroup = booksData.filter((book) => {
     if (book.genre === genre) {
@@ -15,12 +15,14 @@ function Booklist() {
     }
   });
 
-  useEffect(() =>{
-    fetch("https://mocki.io/v1/e54f5fb5-64df-4584-9fb9-b8d50beb97a3").then(res=>res.json()).then((data)=>{
-      console.log(data);
-      setBooksData(data);
-    })
-  },[])
+  useEffect(() => {
+    fetch("https://mocki.io/v1/e54f5fb5-64df-4584-9fb9-b8d50beb97a3")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setBooksData(data);
+      });
+  }, []);
   let oneliner = "";
   if (genre === "Fiction") {
     oneliner = "Where imagination thrives and reality takes a backseat";
@@ -56,14 +58,19 @@ function Booklist() {
               id={book.id}
               title={book.name.slice(0, 18) + "..."}
               author={book.author}
-              summary={book.summary.slice(0, 100) + "..."}
+              summary={
+                (book.summary
+                  ? book.summary.slice(0, 100)
+                  : "Nothing to show") + "..."
+              }
               genre={book.genre}
               url={book.url}
+              key={book.id}
             />
           ))}
         </div>
       ))}
-      <Footer/>
+      <Footer />
     </div>
   );
 }
