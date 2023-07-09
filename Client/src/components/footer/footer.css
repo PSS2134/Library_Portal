@@ -26,12 +26,13 @@
 }
 
 .sb_footer-links_div{
-    width: 100px;
-    margin: 0rem;
+    /* width: 120px; */
+    margin: 2rem;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     color: white;
+    text-align: center;
 }
 
 .linkedin_div{
@@ -41,16 +42,18 @@
 a{
     color: rgb(175,175,179);
     text-decoration: none;
+    margin-top: 2%;
 }
 
-.sb_footer-links_div h4{
-    font-size: 14px;
+.sb_footer-links_div h2{
+    font-size: 18px;
     line-height: 17px;
     margin-bottom: 1rem;
+    color: yellow;
 }
 
 .sb_footer-links_div p{
-    font-size: 12px;
+    font-size: 16px;
     line-height: 15px;
     margin: 0.3rem 0;
     cursor: pointer;
