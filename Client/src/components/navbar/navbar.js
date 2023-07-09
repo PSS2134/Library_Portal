@@ -2,6 +2,8 @@ import React from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { BiUserCircle } from "react-icons/bi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Navbar(props) {
   const Logout = () => {
@@ -10,6 +12,7 @@ function Navbar(props) {
     const user = JSON.parse(localStorage.getItem("useraudify"));
 
     props.updateUser(user);
+  };
   return (
     <nav className="navbar">
       <div className="leftbar">
@@ -39,7 +42,9 @@ function Navbar(props) {
             <BiUserCircle className="user-icon" />
           </button>
         </Link>
-        <button className="logout-btn" onClick={Logout}>Logout</button>
+        <button className="logout-btn" onClick={Logout}>
+          Logout
+        </button>
       </div>
     </nav>
   );
