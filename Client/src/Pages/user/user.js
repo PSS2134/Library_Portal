@@ -119,6 +119,32 @@ function User() {
       window.location.reload();
     }
   };
+
+  const handleReturn = async (e) => {
+    // console.log(e.target.name);
+      const bookid=e.target.name;
+      const res = await fetch(`/api/return/?email=${email}&id=${bookid}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        
+      });
+      const data = await res.json();
+      if(data=="returned")
+      {
+        toast.success("Returned Successfully");
+        window.location.reload();
+      }
+  }
+// console.log(data.book);
+//   const notreturned=data.book.filter((book)=>{
+//     if(!book.returned)
+//     {
+//         return book;
+//     }
+//   })
+//   console.log(notreturned);
+
+
   return (
     <div className="user-loading">
       <>
@@ -205,20 +231,19 @@ function User() {
                       </thead>
                       <tbody>
                         {data.book.map((book) => {
-                          {
-                            /* const datenew=book.date.toLocaleDateString();
-                            const time=book.date.toLocaleString(); */
+                       
+                          let issued,returned;
+                          if (book.issued && !book.returned) {
+                            issued = true;
+                            returned=false
                           }
-                          {
-                            /* console.log(book.date) */
+                          else if(!book.issued && !book.returned){
+                               issued=false;
+                               returned=false;
                           }
-                          {
-                            /* let month=book.date.getMonth()
-                            const datereturn=book.date.setMonth(month-1); */
-                          }
-                          let approved;
-                          if (book.issued) {
-                            approved = true;
+                          else{
+                            issued=true;
+                            returned=true;
                           }
 
                           return (
@@ -230,7 +255,7 @@ function User() {
                               <td>{book.issuetime}</td>
                               <td>{book.returndate}</td>
 
-                              {approved ? (
+                              {issued && !returned ? (
                                 <>
                                   <td>
                                     <button
@@ -243,6 +268,8 @@ function User() {
                                         border: "none",
                                         borderRadius: "5px",
                                       }}
+                                      onClick={handleReturn}
+                                      name={book.id}
                                     >
                                       Return
                                     </button>
@@ -258,14 +285,14 @@ function User() {
                                 </>
                               ) : (
                                 <>
-                                  <td>
+                                 { !issued && !returned?<td>
                                     <img
                                       style={{ cursor: "pointer" }}
                                       onClick={handleRemove}
                                       name={book.id}
                                       src={Delete}
                                     />
-                                  </td>
+                                  </td>:<td style={{"color":"red","fontWeight":"600"}}>Returning</td>}
                                   <td
                                     style={{ color: "blue", fontWeight: "600" }}
                                   >
