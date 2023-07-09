@@ -23,6 +23,7 @@ function Header() {
             <button className="head-btn">About</button>
             <button className="head-btn">Services</button>
             <button className="head-btn">Recommended</button>
+            <button className="head-btn">Contact</button>
             
         </div>  
         <div className="rightbarr">

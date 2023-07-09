@@ -22,6 +22,7 @@ function Navbar() {
             <button className="nav-btn">Team</button>
             {/* <button className="nav-btn">Services</button>
             <button className="nav-btn">Recommended</button> */}
+            <button className="nav-btn">Contact</button>
             
         </div>  
         <div className="rightbar">

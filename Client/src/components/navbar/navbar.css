@@ -14,8 +14,8 @@
     color: white;
     font-size: 25px;
     cursor: pointer;
-    padding-left: 6%;
-    padding-right: 6%;
+    padding-left: 4%;
+    padding-right: 4%;
   }
   .nav-btn:hover{
     color: yellow;
@@ -28,7 +28,7 @@
   .middlebar{
     margin-left: 9%;
     margin-top: 1.3%;
-    width:25%;
+    width:35%;
   }
 
   .leftbar{
