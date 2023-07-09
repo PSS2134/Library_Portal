@@ -1,6 +1,7 @@
 
 .fullabout{
     margin-top: 10px;
+    
  }
  
  .cont-about{
@@ -16,6 +17,7 @@
    margin-left: 5%;
    margin-right: 5%;
    border-radius: 7%;
+   box-shadow: 6px 6px 6px rgb(149, 140, 140);
  }
 
  .About{

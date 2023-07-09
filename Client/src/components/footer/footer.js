@@ -1,5 +1,6 @@
 import React from "react";
 import './footer.css'
+import { BsLinkedin } from 'react-icons/bs';
 
 const Footer = () => {
     return (
@@ -13,10 +14,25 @@ const Footer = () => {
                         <p>Priyansh</p>
                         <p>Abhishek Gupta</p>
                     </div>
-                    <div className="sb_footer-links_div">
+                    <div className="sb_footer-links_div linkedin_div">
+                        <h4>Connect</h4>
+                        <a href="/linkedin">
+                            <BsLinkedin />
+                        </a>
+                        <a href="/github">
+                            <BsLinkedin />
+                        </a>
+                        <a href="/instagram">
+                            <BsLinkedin />
+                        </a>
+                        <a href="/instagram">
+                            <BsLinkedin />
+                        </a>
+                    </div>
+                    {/* <div className="sb_footer-links_div">
                         <h4>View Website in</h4>
                         <p>English</p>
-                    </div>
+                    </div> */}
                     <div className="sb_footer-links_div">
                         <h4>Need Help?</h4>
                         <a href="/helpcentre">
