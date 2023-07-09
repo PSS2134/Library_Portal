@@ -272,4 +272,42 @@ router.post("/api/books", async (req, res) => {
   if (cnt == 2) return res.json("2");
   else if (cnt == 1) return res.json("1");
 });
+
+router.put("/api/return", async(req,res)=>{
+  const { email, id } = req.query;
+  //  console.log(req.query)
+  //  console.log(email,id);
+  // console.log(String(id));
+  const Bookdetails = await Book.findOne({ email: email });
+  //  console.log(Bookdetails);
+  // console.log(Bookdetails.book);
+  Bookdetails.book.map(async (singleBook) => {
+    if (singleBook.id == String(id)) {
+      // console.log(singleBook);
+      singleBook.returned=1;
+     
+    }
+  });
+  await Bookdetails.save();
+
+  const resadmin = await Admin.findOne({});
+  console.log(resadmin);
+  resadmin.allbooks.map(async (singleBook) => {
+    if (singleBook.bookid == String(id) && singleBook.email==email) {
+      
+
+      singleBook.returned=1;
+   
+     
+    }
+  });
+  await resadmin.save();
+
+  console.log("returned");
+
+  res.json("returned");
+});
+
+
+
 module.exports = router;

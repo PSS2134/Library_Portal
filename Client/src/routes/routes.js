@@ -11,6 +11,7 @@ import Admin from "../Pages/admin/admin";
 import Bookinfo from "../Pages/Bookinfo";
 import Booklist from "../Pages/Booklist/Booklist";
 import ScrollToTop from "./Scroll";
+import Members from "../Pages/team/Team";
 
 //data
 // import books from "../Data/data";
