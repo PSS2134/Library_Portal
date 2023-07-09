@@ -1,5 +1,5 @@
 .section_padding{
-    padding: 2rem 2rem;
+    padding: 1rem 3rem;
 }
 
 .footer{
@@ -22,7 +22,7 @@
     flex-wrap: wrap;
     width: 100%;
     text-align: left;
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
 }
 
 .sb_footer-links_div{
@@ -32,28 +32,29 @@
     justify-content: flex-start;
     flex-direction: column;
     color: white;
-    text-align: center;
+    text-align: left;
 }
 
 .linkedin_div{
-    text-align: center;
+    text-align: left;
 }
 
-a{
-    color: rgb(175,175,179);
+.sb_footer-links_div a{
+    color: rgb(255, 255, 255);
     text-decoration: none;
     margin-top: 2%;
+    font-size: 20px;
 }
 
 .sb_footer-links_div h2{
-    font-size: 18px;
+    font-size: 25px;
     line-height: 17px;
     margin-bottom: 1rem;
     color: yellow;
 }
 
 .sb_footer-links_div p{
-    font-size: 16px;
+    font-size: 20px;
     line-height: 15px;
     margin: 0.3rem 0;
     cursor: pointer;
@@ -72,7 +73,7 @@ a{
 }
 
 .sb_footer-below-links p{
-    font-size: 13px;
+    font-size: 20px;
     line-height: 15px;
     margin-left: 2rem;
     color: white;
@@ -85,7 +86,7 @@ hr{
 }
 
 .sb_footer-copyright p{
-    font-size: 13px;
+    font-size: 15px;
     line-height: 15px;
     color: rgb(255, 255, 255);
     font-weight: 600;

@@ -74,12 +74,17 @@
     color: white;
     /* position: relative; */
     padding-bottom: 2rem;
-    background-color: #0E2954;
+    background-color: rgb(228, 240, 238);
+    /* margin-top: 3%; */
+    width: 100%;
+    /* border: 2px solid  rgb(143, 192, 184); */
+    /* border-radius: 10%; */
 }
 
 .land-container{
-    
-    margin-left: 13%;
+    display: flex;
+    margin-left: 4%;
+    justify-content: space-around;
 }
 
 .paddings{
@@ -96,30 +101,57 @@
     font-size: 3rem;
     /* line-height: 4rem; */
     /* margin-left: 23%; */
-    color: yellow;
+    color: yellowgreen;
 }
 
 .flex-btn{
     display: flex;
     margin-top: 1%;
-}
+    margin-left: 3%;
+    gap: 20px;
+ }
+ /*
 .flex-btn h3{
-    color: aliceblue;
-}
+    color: #0E2954;
+    margin-top: 1%;
+} */
 
 .wel-btn{
     background-color: #0E2954;
     border:2px solid lawngreen;
-    padding: 6px 6px;
-    margin-left: 20%;
+    padding: 10px 14px;
+    /* margin-left: 30%; */
+    /* margin-top: -40%; */
     color: lawngreen;
-    font-weight: 600;
-    border-radius: 10%;
+    /* font-weight: 600; */
+    font-size: 22px;
+    border-radius: 15%;
     cursor: pointer;
+    /* margin-top: -10%; */
 }
 
 .wel-btn:active{
     transform: scale(1.1);
 }
 
+.image-container img{
+    border-radius: 10%;
+    box-shadow: 8px 8px 8px rgb(100, 153, 145);
+    /* margin-left: 35%; */
+    margin-top: 10%;
+    width: 300px;
+    margin-left: 2%;
+    /* margin-right: 15%; */
+}
 
+.land-des p{
+    color: rgb(87, 64, 64);
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Poppins";
+    margin-right: 5%;
+}
+
+.land-right{
+    margin-right: 5%;
+}
