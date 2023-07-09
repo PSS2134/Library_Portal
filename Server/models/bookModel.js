@@ -6,10 +6,6 @@ const bookSchema= new mongoose.Schema({
         required: true,
     },
     book:[{
-        id:{
-        type:Number,
-        required: true,
-    },
     name:{
         type:String,
         required: true,
@@ -49,7 +45,7 @@ const bookSchema= new mongoose.Schema({
     id:{
         type:String,
         required: true,
-    }
+    },
 
 
 }]

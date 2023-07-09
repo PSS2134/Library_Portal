@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("./models/userModel");
 const Book = require("./models/bookModel");
+const Admin= require("./models/adminbookModel");
 const router = express.Router();
 
 router.post("/api/signup", async (req, res) => {
@@ -68,6 +69,24 @@ router.post("/api/add", async (req, res) => {
     // console.log(returndate);
   const book=req.body;
   const email=req.query.email;
+  const bookname=book.name;
+  const genre=book.genre;
+  const id=book.id;
+  const {name}=await User.findOne({email:email});
+  const ifPresent= await Admin.findOne({});
+  if(ifPresent)
+  { 
+    const{allbooks}=ifPresent;
+    allbooks.push({email:email,username:name,bookname:bookname,genre:genre,bookid:id,issued:0,returned:0,issuedate:issuedate,issuetime:issuetime,returndate:returndate});
+    await ifPresent.save();
+    console.log("pushed");
+
+  }
+  else{
+  const adminBook=new Admin({allbooks:[{email:email,username:name,bookname:bookname,genre:genre,bookid:id,issued:0,returned:0,issuedate:issuedate,issuetime:issuetime,returndate:returndate}]});
+  await adminBook.save();
+  console.log("Book saved to admin");
+  }
   // console.log(book);
 const checkUser=await Book.findOne({ email: email});
 if(checkUser) {
@@ -81,6 +100,7 @@ if(checkUser) {
   if(count<2)
   {
     checkUser.book.push({...book,issued:0,returned:0,issuedate:issuedate,issuetime:issuetime,returndate:returndate});
+   
 
     await checkUser.save();
     return res.json({message:'Added Successfully',title:book.name});
@@ -139,29 +159,80 @@ router.delete('/api/remove',async(req,res)=>{
 //  console.log(email,id);
 // console.log(String(id));
  const Bookdetails=await Book.findOne({email:email});
- console.log(Bookdetails);
+//  console.log(Bookdetails);
 // console.log(Bookdetails.book);
 Bookdetails.book.map(async(singleBook)=>{
   if(singleBook.id==String(id)){
-    console.log(singleBook);
+    // console.log(singleBook);
     const index=Bookdetails.book.indexOf(singleBook);
-    console.log(index);
+    // console.log(index);
     if (index > -1) { // only splice array when item is found
       Bookdetails.book.splice(index, 1); 
-      console.log("deleted Successfully");
+      console.log("deleted Successfully from bookModel");
       // 2nd parameter means remove one item only
     }
   }
    
 })
 await Bookdetails.save();
+
+const resadmin=await Admin.findOne({});
+console.log(resadmin);
+resadmin.allbooks.map(async(singleBook)=>{
+  // console.log(singleBook.bookid);
+  if(singleBook.bookid==String(id)){
+    console.log(singleBook);
+    const index=resadmin.allbooks.indexOf(singleBook);
+    console.log(index);
+    if (index > -1) { // only splice array when item is found
+      resadmin.allbooks.splice(index, 1); 
+      console.log("deleted Successfully from admin");
+      // 2nd parameter means remove one item only
+    }
+  }
+   
+})
+await resadmin.save();
+
+
+console.log("saved")
  
   res.json("deleted")
 
 })
-// router.get('/api/admin_issue',async(req, res_)=>{
+router.get('/api/admin',async(req, res)=>{
  
-//   const res
+  const {allbooks}=await Admin.findOne({});
+  console.log("get request received");
+  return res.json(allbooks);
 
-// })
+})
+
+router.put('/api/admin/:id',async(req, res)=>{
+  const object_id=req.params.id
+  let email,book_id;
+  const resadmin=await Admin.findOne({});
+  resadmin.allbooks.map((singleAdminBook)=>{
+     if(singleAdminBook._id==object_id)
+     {
+      email=singleAdminBook.email,
+      book_id=singleAdminBook.bookid;
+       singleAdminBook.issued=1;
+     }
+  })
+  await resadmin.save();
+
+  const resbookmodel=await Book.findOne({email:email});
+   resbookmodel.book.map((singleBook)=>{
+    if(singleBook.id==String(book_id) && !singleBook.issued)
+    {
+      singleBook.issued=1;
+    }
+   });
+   await resbookmodel.save();
+  // console.log(resadmin);
+  console.log("updated");
+  return res.json("updated");
+
+})
 module.exports = router;

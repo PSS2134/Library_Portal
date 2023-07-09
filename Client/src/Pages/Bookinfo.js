@@ -34,7 +34,7 @@ function Bookinfo() {
   const email = JSON.parse(localStorage.getItem("user")).email;
 
   const postData = async () => {
-    const res = await fetch(`http://localhost:5000/api/add?email=${email}`, {
+    const res = await fetch(`/api/add?email=${email}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
