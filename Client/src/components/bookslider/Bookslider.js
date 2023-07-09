@@ -1,10 +1,22 @@
-import React from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// import React from "react";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import React,{useState,useEffect} from "react";
 import Bookcard from "../bookcard/Bookcard";
+import '../recommended/muststyles.css'
 
 function Bookslider() {
+
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    fetch("https://mocki.io/v1/e54f5fb5-64df-4584-9fb9-b8d50beb97a3")
+      .then((response) => response.json())
+      .then((data) => setBooks(data))
+      .catch((error) => console.log(error));
+  }, []);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -31,22 +43,15 @@ function Bookslider() {
   return (
     <div className="book-slider-container">
       <Slider {...settings}>
-        <div>
-          <Bookcard name="Book1" />
-        </div>
-        <div>
-          <Bookcard name="Book2" />
-        </div>
-        <div>
-          <Bookcard name="Book3" />
-        </div>
-        <div>
-          <Bookcard name="Book4" />
-        </div>
-        <div>
-          <Bookcard name="Book5" />
-        </div>
-        {/* Add more book items here */}
+      {books.map((book) => (
+          <div key={book.id}>
+            <div class="book-cardr">
+              <img src={book.url} alt="Book 1"></img>
+              <h3>{book?book.name:""}</h3>
+              <p>{book?book.author:""}</p>
+            </div>
+          </div>
+        ))}
       </Slider>
     </div>
   );

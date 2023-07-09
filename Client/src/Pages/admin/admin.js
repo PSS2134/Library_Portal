@@ -4,18 +4,41 @@ import Issued from '../../components/admincomp/issued'
 import Add from '../../components/admincomp/add'
 import './admin.css';
 import Requested from '../../components/admincomp/Requested';
+import HashLoader from "react-spinners/HashLoader";
+
+
 
 function Admin() {
-  const [allBooksData, setAllBooksData]=useState([]);
+
+  const[loading,setLoading]=useState(true);
+   const [allBooksData, setAllBooksData]=useState([]);
   useEffect(()=>{
    fetch("/api/admin").then(res=>res.json()).then((data)=>{
     console.log(data);
     setAllBooksData(data);
+     
    })
+     setTimeout(()=>{
+        setLoading(false);
+      },1300)
   },[])
 
   return (
-    <div className="admin">
+    <>
+    {loading?
+
+      <div className="loading">
+        <HashLoader
+        color={'#F37A24'}
+        loading={loading}
+        size={100}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+        />
+      </div>
+
+      :
+        <div className="admin">
         <Navbar />
         <div className="issued">
             <h1 className='left-head'>Issued Books</h1>
@@ -30,7 +53,9 @@ function Admin() {
             <Add />
         </div>
     </div>
-  )
-}
+   
+    }
+    </>
+
 
 export default Admin

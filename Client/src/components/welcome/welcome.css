@@ -1,0 +1,125 @@
+/* .welcoming{
+    font-weight: 800;
+    margin-left: 3%;
+}
+
+.above-about{
+    margin: 3%;
+    margin-left: 4%;
+} */
+
+ /* .back{
+   
+    display: flex;
+    flex-direction: column;
+    opacity: 0.9;
+}
+
+.inup{
+    display: flex;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin-left: 60%;
+    padding: 2px 2px;
+
+}
+
+.inside button{
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: yellow;
+    margin: 5px;
+    cursor: pointer;
+    color: black;
+}
+
+.hea{
+    margin: 6%;
+    margin-bottom: 0%;
+    color: yellow;
+}
+
+.about{
+    width: 80%;
+    margin: 3%;
+    font-weight: 300px;
+}
+
+.icon{
+    width: 120px;
+    margin: 1%;
+}
+
+.ab{
+    margin-left: 3%;
+    color: blueviolet;
+}
+
+.line{
+    width: 10%;
+    margin-left: 3%;
+} 
+
+.inside{
+    display: flex;
+    flex-direction: column;
+}
+
+.inside h3{
+    color: darkcyan;
+} */
+
+.land-wrapper{
+    color: white;
+    /* position: relative; */
+    padding-bottom: 2rem;
+    background-color: #0E2954;
+}
+
+.land-container{
+    
+    margin-left: 13%;
+}
+
+.paddings{
+    padding: 1rem;
+}
+
+.land-left{
+    gap: 3rem;
+    margin-top: 5%;
+}
+
+.land-title>h1{
+    font-weight: 600;
+    font-size: 3rem;
+    /* line-height: 4rem; */
+    /* margin-left: 23%; */
+    color: yellow;
+}
+
+.flex-btn{
+    display: flex;
+    margin-top: 1%;
+}
+.flex-btn h3{
+    color: aliceblue;
+}
+
+.wel-btn{
+    background-color: #0E2954;
+    border:2px solid lawngreen;
+    padding: 6px 6px;
+    margin-left: 20%;
+    color: lawngreen;
+    font-weight: 600;
+    border-radius: 10%;
+    cursor: pointer;
+}
+
+.wel-btn:active{
+    transform: scale(1.1);
+}
+
+

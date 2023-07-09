@@ -163,6 +163,32 @@ function User() {
                     </table>
                 </div> :<h1 style={{"textAlign":"center","fontFamily":"Poppins","fontWeight":"500","padding":"1%"
                 ,"color":"orange"}}>You Have no books</h1>}
+                {data.book.length?<div className="user-books">
+                    <h1 className='Issued-books'>Past Issued Books</h1>
+                    <table>
+                    <thead>
+                        <tr>
+                        <th>Book ID</th>
+                        <th>Book Name</th>
+                        <th>Book Genre</th>
+                        <th>Issue Date</th>
+                        <th>Issue Time</th>
+                        <th>Return Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>id</td>
+                        <td>name</td>
+                        <td>genre</td>
+                        <td>issuedate</td>
+                        <td>issuetime</td>
+                        <td>returndate</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div> :<h1 style={{"textAlign":"center","fontFamily":"Poppins","fontWeight":"500","padding":"1%"
+                ,"color":"orange"}}>You haven't issued any book yet</h1>}
             </div>
             <Footer />
         </div></>}
