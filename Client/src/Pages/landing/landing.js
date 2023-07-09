@@ -7,17 +7,17 @@ import Recommended from '../../components/recommended/recommended';
 import Welcome from '../../components/welcome/welcome';
 import Header from '../../components/header/header';
 
-function Landing() {
+function Landing({ updateUser }) {
   return (
     <div className="landing">
-        <Header />
+        <Header updateUser={updateUser}/>
         <Welcome />
         <About />
         <Services />
         <Recommended />
         <Footer />
     </div>
-  )
+  );
 }
 
-export default Landing
+export default Landing;

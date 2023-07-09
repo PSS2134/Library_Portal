@@ -7,31 +7,15 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Delete from "../../Images/delete.svg";
 
-function User() {
+function User({ updateUser }) {
   const [data, setData] = useState({});
   const [picture, setPicture] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
   const [loading, setLoading] = useState(true);
   let [approvecount, setApproveCount] = useState(0);
-  const email = JSON.parse(localStorage.getItem("user")).email;
-  const pending = async () => {
-    try {
-      const res = await fetch(`/api/books?email=${email}`, {
-        method: "POST",
-        body: email,
-      });
-      const data = await res.json();
-      console.log(data);
-      if (data === "1") {
-        toast.warning("You have 1 book issued");
-      } else if (data === "2") {
-        toast.warning("You have 2 books issued");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const email = JSON.parse(localStorage.getItem("useraudify")).email;
+
   useEffect(() => {
     fetch(`/api/profile?email=${email}`)
       .then((response) => response.json())
@@ -41,7 +25,15 @@ function User() {
         setTimeout(() => {
           setLoading(false);
         }, 1250);
-        pending();
+        const refresher = () => {
+          let cnt = 0;
+          console.log(data.book);
+          data.book.map((singleBook) => {
+            if (singleBook.issued === 1) cnt++;
+          });
+          toast.warning(`You have ${cnt} book issued`);
+        };
+        refresher();
       });
   }, []);
   // toast.success(`You have ${approvecount} approved! Start reading them...`);
@@ -80,7 +72,7 @@ function User() {
         }
       );
       const urlData = await res.json();
-      console.log(urlData.url);
+      // console.log(urlData.url);
       setPicture(urlData.url.toString());
       setLoading(false);
       setImagePreview(URL.createObjectURL(picture));
@@ -161,7 +153,8 @@ function User() {
         ) : (
           <>
             <div className="user">
-              <Navbar />`{console.log(data.userData.picture)}`
+              <Navbar updateUser={updateUser} />`
+              {/* {console.log(data.userData.picture)}` */}
               <div className="user-profile">
                 <div className="box">
                   <div className="signup-profile-pic__container">

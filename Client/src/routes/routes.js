@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 //components
@@ -17,19 +17,75 @@ import Members from "../Pages/team/Team";
 // import books from "../Data/data";
 
 function Routes_new() {
+  const [user, setLoginUser] = useState({});
+  useEffect(() => {
+    // const user_after_every_load=
+    setLoginUser(JSON.parse(localStorage.getItem("useraudify")));
+  }, []);
+  const updateUser = (user) => {
+    localStorage.setItem("useraudify", JSON.stringify(user));
+    setLoginUser(user);
+  };
   return (
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route exact path="/" element={<Landing />} />
-        <Route path="/user" element={<User />} />
+        <Route
+          exact
+          path="/"
+          element={
+            user && user.email ? (
+              <Landing updateUser={updateUser} />
+            ) : (
+              <Login updateUser={updateUser} />
+            )
+          }
+        />
+        <Route
+          path="/user"
+          element={
+            user && user.email ? <User updateUser={updateUser} /> : <Login updateUser={updateUser} />
+          }
+        />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/library" element={<Library />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/library/:genre" element={<Booklist />} />
-        <Route path="/library/:genre/:id" element={<Bookinfo />} />
-        <Route path="/team" element={<Members/>} />
+        <Route path="/login" element={<Login updateUser={updateUser} />} />
+        <Route
+          path="/library"
+          element={
+            user && user.email ? (
+              <Library updateUser={updateUser} />
+            ) : (
+              <Login updateUser={updateUser} />
+            )
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            user && user.email ? <Admin updateUser={updateUser}/> : <Login updateUser={updateUser} />
+          }
+        />
+        <Route
+          path="/library/:genre"
+          element={
+            user && user.email ? (
+              <Booklist updateUser={updateUser}/>
+            ) : (
+              <Login updateUser={updateUser} />
+            )
+          }
+        />
+        <Route
+          path="/library/:genre/:id"
+          element={
+            user && user.email ? (
+              <Bookinfo updateUser={updateUser}/>
+            ) : (
+              <Login updateUser={updateUser} />
+            )
+          }
+        />
+
         <Route path="*" element={<h1>Home</h1>} />
       </Routes>
     </BrowserRouter>

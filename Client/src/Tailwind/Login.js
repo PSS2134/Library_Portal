@@ -7,7 +7,7 @@ import "../Styles/Login.css";
 import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
-function SignIn() {
+function SignIn({ updateUser }) {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ email: "", password: "" });
   let name, value;
@@ -37,7 +37,7 @@ function SignIn() {
         navigate("/login");
       } else if (data == "user exists") {
         toast.success("LoggedIn Successfully");
-        localStorage.setItem("user", JSON.stringify(userData));
+        updateUser(userData);
         navigate("/library");
       }
     }

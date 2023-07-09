@@ -7,7 +7,7 @@ import Navbar from "../components/navbar/navbar"
 import Footer from "../components/footer/footer";
 
 
-function Bookinfo() {
+function Bookinfo(updateUser) {
   const { id } = useParams();
   const[booksData,setBooksData] =useState([]);
   // this will fetch books acording to particular genre
@@ -57,7 +57,7 @@ function Bookinfo() {
   return (
      <>
      
-   {book && <><Navbar/><div className="bookinfo">
+   {book && <><Navbar updateUser={updateUser}/><div className="bookinfo">
       <div className="left">
         <img className="bookimage" src={book.url} alt="book" />
       </div>
