@@ -12,22 +12,35 @@ function User() {
 
     const [data,setData]=useState({});
     const[loading,setLoading]=useState(true);
+    let[approvecount,setApproveCount]=useState(0);
     const email=JSON.parse(localStorage.getItem('user')).email;
     useEffect(() =>{
-        fetch(`http://localhost:5000/api/profile?email=${email}`).then((response) =>  response.json()).then((data)=>{
+        fetch(`/api/profile?email=${email}`).then((response) =>  response.json()).then((data)=>{
             console.log(data);
             setData(data);
             setTimeout(()=>{
                 setLoading(false);
             },1250);
+            
         })
+     
+        
     },[])
-    console.log(data);
+    // toast.success(`You have ${approvecount} approved! Start reading them...`);
+//     console.log(data);
+//    {data.book && data.book.map((singleBook)=>{
+//     if(singleBook.issued && !singleBook.returned)
+//     {
+//        setApproveCount(approvecount=>approvecount+1);
+//     }
+
+// })} 
+    // console.log(data);
 
     const handleRemove=async(e)=>{
         console.log(e.target);
         const id=e.target.name;
-      const res=  await fetch(`http://localhost:5000/api/remove?email=${email}&id=${id}`,{
+      const res=  await fetch(`/api/remove?email=${email}&id=${id}`,{
             method: 'DELETE',
             headers: {"Content-Type": "application/json"},
              
@@ -101,7 +114,8 @@ function User() {
                     </div>
                     
                 </div>
-                {data.book.length?<div className="user-books">
+                
+                {data.book&&data.book.length?<div className="user-books">
                     <h1 className='Issued-books'>Issued Books</h1>
                     <table>
                     <thead>
@@ -112,7 +126,7 @@ function User() {
                         <th>Issue Date</th>
                         <th>Issue Time</th>
                         <th>Return Date</th>
-                        <th>Remove</th>
+                        <th>Action</th>
                         <th>Status</th>
                         </tr>
                     </thead>
@@ -123,6 +137,12 @@ function User() {
                             {/* console.log(book.date) */}
                             {/* let month=book.date.getMonth()
                             const datereturn=book.date.setMonth(month-1); */}
+                            let approved;
+                            if(book.issued)
+                            {
+                              approved=true;
+                              
+                            }
 
                             return(
                                 <tr>
@@ -133,8 +153,8 @@ function User() {
                         <td>{book.issuetime}</td>
                         <td>{book.returndate}</td>
                         
-                        <td><img style={{"cursor":"pointer",}} onClick={handleRemove} name={book.id} src={Delete}/></td>
-                        <td>Pending</td>
+                       
+                        {approved?<><td><button style={{"cursor":"pointer","backgroundColor":"red","color":"white","fontWeight":"600","padding":"5px","border":"none","borderRadius":"5px"}}>Return</button></td><td style={{"color":"green","fontWeight":"600"}}>Issued</td></>: <><td><img style={{"cursor":"pointer",}} onClick={handleRemove} name={book.id} src={Delete}/></td><td style={{"color":"blue","fontWeight":"600"}}>Pending</td></>}
                         </tr>
                             )
                         })

@@ -7,7 +7,11 @@ const Routes = require("./routes.js");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
+// app.use(cors());
+// const { createProxyMiddleware } = require('http-proxy-middleware');
+// const clientProxy = require('../Client/setupProxy');
+
+// clientProxy(app);
 
 app.listen(5000, () => {
   console.log("listening on port 5000...");
