@@ -6,7 +6,7 @@ import "./admin.css";
 import Requested from "../../components/admincomp/Requested";
 import HashLoader from "react-spinners/HashLoader";
 
-function Admin() {
+function Admin({ updateUser }) {
   const [loading, setLoading] = useState(true);
   const [allBooksData, setAllBooksData] = useState([]);
   useEffect(() => {
@@ -35,7 +35,7 @@ function Admin() {
         </div>
       ) : (
         <div className="admin">
-          <Navbar />
+          <Navbar updateUser={updateUser} />
           <div className="issued">
             <h1 className="left-head">Issued Books</h1>
             <Issued />
