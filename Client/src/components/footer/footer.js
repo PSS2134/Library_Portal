@@ -1,6 +1,11 @@
 import React from "react";
 import './footer.css'
 import { BsLinkedin } from 'react-icons/bs';
+import { BsFillPersonFill } from 'react-icons/bs';
+import { BsInstagram } from 'react-icons/bs';
+import { BsGithub } from 'react-icons/bs';
+import { BiLogoGmail } from 'react-icons/bi';
+import { BsFillTelephoneFill } from 'react-icons/bs';
 
 const Footer = () => {
     return (
@@ -8,32 +13,33 @@ const Footer = () => {
             <div className="sb_footer section_padding">
                 <div className="sb_footer-links">
                     <div className="sb_footer-links_div">
-                        <h4>Developers</h4>
-                        <p>Aryan Solanki</p>
-                        <p>Ashutosh Mishra</p>
-                        <p>Priyansh</p>
-                        <p>Abhishek Gupta</p>
-                    </div>
-                    <div className="sb_footer-links_div linkedin_div">
-                        <h4>Connect</h4>
+                        <h2>Admin</h2>
+                        <p><BsFillPersonFill /> Priyansh</p>
                         <a href="/linkedin">
-                            <BsLinkedin />
+                            <BsLinkedin /> LinkedIn
                         </a>
                         <a href="/github">
-                            <BsLinkedin />
+                            <BsGithub /> GitHub
                         </a>
                         <a href="/instagram">
-                            <BsLinkedin />
+                            <BsInstagram /> Instagram
+                        </a>
+                    </div>
+                    <div className="sb_footer-links_div linkedin_div">
+                        <h2>Lohit Hostel</h2>
+                        <p><BsFillTelephoneFill /> +91-1234567890</p>
+                        <a href="/gmail">
+                            <BiLogoGmail /> Mail Id
                         </a>
                         <a href="/instagram">
-                            <BsLinkedin />
+                            <BsInstagram /> Instagram
                         </a>
                     </div>
                     {/* <div className="sb_footer-links_div">
                         <h4>View Website in</h4>
                         <p>English</p>
                     </div> */}
-                    <div className="sb_footer-links_div">
+                    {/* <div className="sb_footer-links_div">
                         <h4>Need Help?</h4>
                         <a href="/helpcentre">
                             <p>Visit Help Centre</p>
@@ -41,17 +47,14 @@ const Footer = () => {
                         <a href="/feedback">
                             <p>Share Feedback</p>
                         </a>
-                    </div>
+                    </div> */}
                     <div className="sb_footer-links_div">
-                        <h4>Connect with Us</h4>
-                        <a href="/linkedin">
-                            <p>LinkedIn</p>
+                        <h2>Quick Links</h2>
+                        <a href="/">
+                            <p>Home</p>
                         </a>
-                        <a href="/github">
-                            <p>GitHub</p>
-                        </a>
-                        <a href="/instagram">
-                            <p>Instagram</p>
+                        <a href="/team">
+                            <p>Team</p>
                         </a>
                     </div>
                 </div>

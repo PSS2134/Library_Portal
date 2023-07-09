@@ -19,9 +19,9 @@ function Navbar() {
         </div>
         <div className="middlebar">
             <Link to={'/'}><button className="nav-btn">Home</button></Link>
-            <button className="nav-btn">About</button>
-            <button className="nav-btn">Services</button>
-            <button className="nav-btn">Recommended</button>
+            <button className="nav-btn">Team</button>
+            {/* <button className="nav-btn">Services</button>
+            <button className="nav-btn">Recommended</button> */}
             
         </div>  
         <div className="rightbar">
