@@ -1,8 +1,4 @@
-.user-profile {
-  /* display: flex; */
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
+
 
 .box {
   /* background-color: rgb(42, 87, 87); */
@@ -11,6 +7,7 @@
   border-radius: 20px;
   height: 100%;
   display: flex;
+  flex-wrap: wrap;
   margin: 0 auto;
   max-width: 100%;
   justify-content: center;
@@ -24,7 +21,7 @@
 .user-desc {
   color: black;
   text-align: left;
-  margin-top: 0%;
+  margin-top: 1%;
   margin-left: 7%;
   font-family: "Poppins";
 }
@@ -33,11 +30,12 @@
   width: 100px;
   height: 100px;
   position: relative;
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  margin-top: 55%;
 }
 
 .signup-profile-pic {
-  width: 200%;
+  /* width: 200%; */
   border-radius: 10%;
   /* border: 2px solid gray; */
   object-fit: cover;
@@ -66,6 +64,7 @@
 
 .student-information {
   padding: 5px;
+  margin-left: 10%;
 }
 
 .user-books {
@@ -75,10 +74,10 @@
 table {
   width: 100%;
   border-collapse: collapse;
+  box-shadow: 7px 7px 7px rgb(194, 184, 184);
 }
 
-th,
-td {
+th,td {
   padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ccc;

@@ -1,5 +1,5 @@
 
-  /* .book-card {
+  .book-cardz {
     background-color: rgb(217, 219, 224);
     width: 200px;
     border: 3px solid #ccc;
@@ -9,33 +9,34 @@
     text-align: center;
     margin: 10px;
     display: inline-block; 
-  } */
+  }
   
-  /* .book-card img {
+  .book-cardz img {
+    /* object-fit: cover; */
     width: 150px;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
     border-radius: 25px;
     margin-bottom: 0px;
-  } */
+  }
   
-  /* .book-card h3 {
+  .book-cardz h3 {
     font-size: 18px;
     margin-bottom: 5px;
   }
-   */
-  /* .book-card p {
+  
+  .book-cardz p {
     font-size: 14px;
     color: #0f0a14;
   }
  
   
-  h2{
+  .meet h2{
     color:cyan;
     text-align: center;
-  } */
+  }
 
-  .details{
+  .detailsz{
     margin-left:12%;
   }
 

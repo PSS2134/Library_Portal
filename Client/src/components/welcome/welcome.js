@@ -3,8 +3,11 @@ import './welcome.css';
 import { Link } from 'react-router-dom';
 
 function Welcome() {
+
+    const user = JSON.parse(localStorage.getItem("user"));
+  
     return (
-        <div className="landing">
+        <div className="landing" id='1'>
           <section className="land-wrapper">
             <div className="paddings innerwidth flexcentre land-container ">
                 <div className=" land-left">
@@ -16,16 +19,19 @@ function Welcome() {
                             <h3>New to this app</h3>
                             <Link to={'/signup'}><button className='wel-btn'>Register</button></Link>
                         </div> */}
-                        <div className='flex-btn'>
-                            <Link to={'/signup'}><button className='wel-btn'>Register</button></Link>
-                            <Link to={'/login'}><button className='wel-btn'>Login</button></Link>
-                        </div>
+
+                        {!user &&
+                          <div className='flex-btn'>
+                              <Link to={'/signup'}><button className='wel-btn'>Register</button></Link>
+                              <Link to={'/login'}><button className='wel-btn'>Login</button></Link>
+                          </div>
+                        }       
                     </div>
                   </div>
                 </div>
                 <div className="land-right">
                   <div className="image-container">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/71wOJkqutUL._AC_SL1240_.jpg" alt="" />
+                    <img src="https://thumbs.dreamstime.com/b/d-people-guy-reading-books-78621393.jpg" alt="" />
                   </div>
                 </div>
             </div>
