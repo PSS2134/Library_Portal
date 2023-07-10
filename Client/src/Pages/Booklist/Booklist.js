@@ -16,7 +16,8 @@ function Booklist({ updateUser }) {
   });
 
   useEffect(() => {
-    fetch("https://mocki.io/v1/e54f5fb5-64df-4584-9fb9-b8d50beb97a3")
+    fetch("https://mocki.io/v1/543bcd3a-e8aa-46ac-9279-0289293acfcd")
+    
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -59,7 +60,7 @@ function Booklist({ updateUser }) {
               id={book.id}
               title={book.name.slice(0, 18) + "..."}
               author={book.author}
-              summary={book.summary.slice(0, 100) + "..."}
+              summary={book.summary&&book.summary.slice(0, 100) + "..."}
               genre={book.genre}
               url={book.url}
             />

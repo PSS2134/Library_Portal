@@ -85,7 +85,7 @@ function Routes_new() {
             )
           }
         />
-
+        <Route path="/team" element={<Members/>}/>
         <Route path="*" element={<h1>Home</h1>} />
       </Routes>
     </BrowserRouter>

@@ -25,17 +25,27 @@ function User({ updateUser }) {
         setTimeout(() => {
           setLoading(false);
         }, 1250);
-        const refresher = () => {
-          let cnt = 0;
-          console.log(data.book);
-          data.book.map((singleBook) => {
-            if (singleBook.issued === 1) cnt++;
-          });
-          toast.warning(`You have ${cnt} book issued`);
-        };
-        refresher();
+        
       });
   }, []);
+  const refresher = () => {
+    sessionStorage.setItem("reloading", true);
+    // document.location.reload();
+    let cnt = 0;
+    console.log(data.book);
+    data.book.map((singleBook) => {
+      if (singleBook.issued === 1) cnt++;
+    });
+    toast.warning(`You have ${cnt} book issued`);
+  };
+  
+  window.onload = function() {
+    var reloading = sessionStorage.getItem("reloading");
+    if (reloading) {
+        sessionStorage.removeItem("reloading");
+        refresher();
+    }
+  }
   // toast.success(`You have ${approvecount} approved! Start reading them...`);
   //     console.log(data);
   //    {data.book && data.book.map((singleBook)=>{
@@ -157,6 +167,7 @@ function User({ updateUser }) {
               {/* {console.log(data.userData.picture)}` */}
               <div className="user-profile">
                 <div className="box">
+                <div className="profile-box">
                   <div className="signup-profile-pic__container">
                     <img
                       src={imagePreview || data.userData.picture}
@@ -176,10 +187,12 @@ function User({ updateUser }) {
                       onChange={(e) => postDetails(e.target.files[0])}
                     />
                     <div className="img-box">
-                      <button className="uploadbutton" onClick={handleImage}>
-                        Upload Image
-                      </button>
+
+                    {picture && <button className="uploadbutton" onClick={handleImage}>
+                        Save
+                      </button>}
                     </div>
+                  </div>
                   </div>
 
                   <div className="user-desc" style={{ fontSize: "1rem" }}>

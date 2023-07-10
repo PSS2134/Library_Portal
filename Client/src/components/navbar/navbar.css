@@ -19,6 +19,7 @@
   }
   .nav-btn:hover{
     color: yellow;
+    border-bottom:1px solid yellow ;
   }
 /* 
   .app-name{

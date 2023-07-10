@@ -11,9 +11,11 @@
   border-radius: 20px;
   height: 100%;
   display: flex;
-  margin-left: 0 auto;
-  max-width: 1200px;
+  margin: 0 auto;
+  max-width: 100%;
+  justify-content: center;
 }
+
 
 /* .line{
     margin-left:0%;
@@ -30,26 +32,36 @@
 .signup-profile-pic__container {
   width: 100px;
   height: 100px;
-  margin: 0 auto;
   position: relative;
+  margin: 0 auto;
 }
 
 .signup-profile-pic {
-  width: 100px;
-  border-radius: 50%;
-  border: 2px solid gray;
+  width: 200%;
+  border-radius: 10%;
+  /* border: 2px solid gray; */
   object-fit: cover;
-  height: 100px;
+  height: 200%;
+ width: 200%;
+ margin: 0 -25%;
+ box-shadow: 4px 4px 4px black;
+}
+.signup-profile-pic:hover{
+  box-shadow: 4px 4px 4px #0618e0;
 }
 
 .add-picture-icon {
   position: absolute;
-  bottom: 0;
-  right: 10px;
+  bottom: -13vh;
+  right: -5vw;
   color: green;
-  background: white;
+  /* background: white; */
   cursor: pointer;
+  height: 10%;
   z-index: 99;
+  padding: 2%;
+  font-size: 20px;
+
 }
 
 .student-information {
@@ -99,6 +111,8 @@ th {
   border: 2px solid orange;
   border-radius: 30%;
   cursor: pointer;
+  display: block;
+  margin: 0 auto;
 }
 .btn-select {
   background-color: white;
@@ -131,4 +145,19 @@ th {
 
 .delete-btn:active {
   transform: scale(1.2);
+}
+.uploadbutton{
+  display: block;
+  padding: 5%;
+  width: 80%;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10%;
+  background-color: #525fe1;
+  color: white;
+  font-weight: 600;
+  box-shadow: 3px 3px 3px rgb(1, 19, 62);
+}
+.uploadbutton:active{
+  box-shadow: none;
 }
