@@ -27,12 +27,18 @@ const adminbookSchema = new mongoose.Schema({
                 type:Number,
                 required:true,
             },
+            return_requested:{
+                type:Number,
+                required:true,
+            },
             issuedate:{
                 type:String,
+                required: true,
               
             },
             issuetime:{
                 type:String,
+                required: true,
                 
             },
             returndate:{

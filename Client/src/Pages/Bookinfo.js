@@ -31,7 +31,7 @@ function Bookinfo({ updateUser }) {
   const book = filteredArray[0];
   console.log(filteredArray);
   // const { name, genre, summary, author, url } = book;
-  const email = JSON.parse(localStorage.getItem("useraudify")).email;
+  const email = JSON.parse(localStorage.getItem("user")).email;
 
   const postData = async () => {
     const res = await fetch(`/api/add?email=${email}`, {

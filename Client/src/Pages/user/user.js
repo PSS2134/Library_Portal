@@ -14,7 +14,7 @@ function User({ updateUser }) {
 
   const [loading, setLoading] = useState(true);
   let [approvecount, setApproveCount] = useState(0);
-  const email = JSON.parse(localStorage.getItem("useraudify")).email;
+  const email = JSON.parse(localStorage.getItem("user")).email;
 
   useEffect(() => {
     fetch(`/api/profile?email=${email}`)
@@ -125,7 +125,8 @@ function User({ updateUser }) {
   const handleReturn = async (e) => {
     // console.log(e.target.name);
       const bookid=e.target.name;
-      const res = await fetch(`/api/return/?email=${email}&id=${bookid}`, {
+      const returndate=new Date().toLocaleDateString();
+      const res = await fetch(`/api/return/?email=${email}&id=${bookid}&${returndate}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         
@@ -221,7 +222,7 @@ function User({ updateUser }) {
 
                 {data.book && data.book.length ? (
                   <div className="user-books">
-                    <h1 className="Issued-books">Issued Books</h1>
+                    <h1 className="Issued-books">Requested Books</h1>
                     <table>
                       <thead>
                         <tr>
@@ -230,7 +231,7 @@ function User({ updateUser }) {
                           <th>Book Genre</th>
                           <th>Issue Date</th>
                           <th>Issue Time</th>
-                          <th>Return Date</th>
+                          <th>Expected Return Date</th>
                           <th>Action</th>
                           <th>Status</th>
                         </tr>
@@ -239,11 +240,11 @@ function User({ updateUser }) {
                         {data.book.map((book) => {
                        
                           let issued,returned;
-                          if (book.issued && !book.returned) {
+                          if (book.issued && !book.return_requested) {
                             issued = true;
                             returned=false
                           }
-                          else if(!book.issued && !book.returned){
+                          else if(!book.issued && !book.return_requested){
                                issued=false;
                                returned=false;
                           }
@@ -251,8 +252,9 @@ function User({ updateUser }) {
                             issued=true;
                             returned=true;
                           }
-
+                          console.log(book.returndate);
                           return (
+                            
                             <tr>
                               <td>{book.id}</td>
                               <td>{book.name}</td>
@@ -261,7 +263,7 @@ function User({ updateUser }) {
                               <td>{book.issuetime}</td>
                               <td>{book.returndate}</td>
 
-                              {issued && !returned ? (
+                              {issued && !returned? (
                                 <>
                                   <td>
                                     <button
@@ -336,7 +338,7 @@ function User({ updateUser }) {
                           <th>Book Genre</th>
                           <th>Issue Date</th>
                           <th>Issue Time</th>
-                          <th>Return Date</th>
+                          <th>Expected Return Date</th>
                         </tr>
                       </thead>
                       <tbody>

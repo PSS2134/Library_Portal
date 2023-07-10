@@ -53,7 +53,7 @@ router.get("/api/login", async (req, res) => {
 });
 
 router.post("/api/add", async (req, res) => {
-  try {
+
     const date = new Date();
     const issuedate = date.toLocaleDateString();
     const issuetime = date.toLocaleTimeString();
@@ -74,23 +74,75 @@ router.post("/api/add", async (req, res) => {
     const id = book.id;
     const { name } = await User.findOne({ email: email });
     const ifPresent = await Admin.findOne({});
-    if (ifPresent) {
-      const { allbooks } = ifPresent;
-      allbooks.push({
-        email: email,
-        username: name,
-        bookname: bookname,
-        genre: genre,
-        bookid: id,
-        issued: 0,
-        returned: 0,
-        issuedate: issuedate,
-        issuetime: issuetime,
-        returndate: returndate,
+   
+    
+      
+    
+    
+    // console.log(book);
+    const checkUser = await Book.findOne({ email: email });
+    if (checkUser) {
+      console.log("hi");
+      let count = 0;
+      checkUser.book.map((singleBook) => {
+        if (singleBook.return_requested == 0) {
+          count++;
+        }
       });
-      await ifPresent.save();
-      console.log("pushed");
-    } else {
+      console.log(count);
+      if (count < 2) {
+        console.log("hemlo");
+        checkUser.book.push({
+          ...book,
+          issued: 0,
+          returned: 0,
+          issuedate: issuedate,
+          issuetime: issuetime,
+          returndate: returndate,
+          return_requested:0,
+        });
+
+        await checkUser.save();
+        console.log(returndate);
+        if (ifPresent) {
+          const { allbooks } = ifPresent;
+          allbooks.push({
+            email: email,
+            username: name,
+            bookname: bookname,
+            genre: genre,
+            bookid: id,
+            issued: 0,
+            returned: 0,
+            issuedate: issuedate,
+            issuetime: issuetime,
+            returndate: returndate,
+            return_requested:0,
+          });
+          await ifPresent.save();
+          console.log("pushed");
+        return res.json({ message: "Added Successfully", title: book.name });
+      } }else {
+        console.log("hlo")
+        return res.json({ message: "greater than 2" });
+      }
+    
+     }else {
+      const bookUpdated = [
+        {
+          ...book,
+          issued: 0,
+          returned: 0,
+          issuedate: issuedate,
+          issuetime: issuetime,
+          returndate: returndate,
+          return_requested:0,
+        },
+      ];
+      // console.log(bookUpdated)
+      // book.push({issued:0,returned:0,date:date,time:time})
+      const bookdata = new Book({ email: email, book: bookUpdated });
+      await bookdata.save();
       const adminBook = new Admin({
         allbooks: [
           {
@@ -104,58 +156,18 @@ router.post("/api/add", async (req, res) => {
             issuedate: issuedate,
             issuetime: issuetime,
             returndate: returndate,
+            return_requested:0,
           },
         ],
       });
       await adminBook.save();
       console.log("Book saved to admin");
-    }
-    // console.log(book);
-    const checkUser = await Book.findOne({ email: email });
-    if (checkUser) {
-      let count = 0;
-      checkUser.book.map((singleBook) => {
-        if (singleBook.returned == 0) {
-          count++;
-        }
-      });
-      if (count < 2) {
-        checkUser.book.push({
-          ...book,
-          issued: 0,
-          returned: 0,
-          issuedate: issuedate,
-          issuetime: issuetime,
-          returndate: returndate,
-        });
-
-        await checkUser.save();
-        return res.json({ message: "Added Successfully", title: book.name });
-      } else {
-        return res.json({ message: "greater than 2" });
-      }
-    } else {
-      const bookUpdated = [
-        {
-          ...book,
-          issued: 0,
-          returned: 0,
-          issuedate: issuedate,
-          issuetime: issuetime,
-          returndate: returndate,
-        },
-      ];
-      // console.log(bookUpdated)
-      // book.push({issued:0,returned:0,date:date,time:time})
-      const bookdata = new Book({ email: email, book: bookUpdated });
-      await bookdata.save();
       // console.log({message:'new Added',title:book.name});
-      res.json({ message: "new Added", title: book.name });
+      return res.json({ message: "new Added", title: book.name });
     }
-  } catch (err) {
-    console.log(err);
   }
-});
+  
+);
 
 router.get("/api/profile", async (req, res) => {
   const email = req.query.email;
@@ -229,27 +241,56 @@ router.get("/api/admin", async (req, res) => {
 });
 
 router.put("/api/admin/:id", async (req, res) => {
+  console.log(req.query);
   const object_id = req.params.id;
   let email, book_id;
   const resadmin = await Admin.findOne({});
+  if(req.query.action=="issued"){
+console.log('hello...');
+    resadmin.allbooks.map((singleAdminBook) => {
+      if (singleAdminBook._id == object_id) {
+        (email = singleAdminBook.email), (book_id = singleAdminBook.bookid);
+        singleAdminBook.issued = 1;
+        singleAdminBook.issuedate=new Date().toLocaleDateString();
+      }
+    });
+    await resadmin.save();
+  
+    const resbookmodel = await Book.findOne({ email: email });
+    resbookmodel.book.map((singleBook) => {
+      if (singleBook.id == String(book_id) && !singleBook.issued) {
+        singleBook.issued = 1;
+        singleBook.issuedate=new Date().toLocaleDateString();
+     
+      }
+    });
+    await resbookmodel.save();
+    console.log("updated");
+    return res.json("issued");
+  }
+ else{
   resadmin.allbooks.map((singleAdminBook) => {
     if (singleAdminBook._id == object_id) {
       (email = singleAdminBook.email), (book_id = singleAdminBook.bookid);
-      singleAdminBook.issued = 1;
+      singleAdminBook.returned = 1;
+      // singleAdminBook.issuedate=new Date().toLocaleDateString();
     }
   });
   await resadmin.save();
-
   const resbookmodel = await Book.findOne({ email: email });
-  resbookmodel.book.map((singleBook) => {
-    if (singleBook.id == String(book_id) && !singleBook.issued) {
-      singleBook.issued = 1;
-    }
-  });
-  await resbookmodel.save();
+    resbookmodel.book.map((singleBook) => {
+      if (singleBook.id == String(book_id) && !singleBook.returned) {
+        singleBook.returned = 1;
+        // singleBook.issuedate=new Date().toLocaleDateString();
+     
+      }
+    });
+    await resbookmodel.save();
+    console.log("updated");
+    return res.json("returned");
+ }
   // console.log(resadmin);
-  console.log("updated");
-  return res.json("updated");
+
 });
 router.put("/api/image", async (req, res) => {
   const { email, picture } = req.body;
@@ -274,7 +315,8 @@ router.post("/api/books", async (req, res) => {
 });
 
 router.put("/api/return", async(req,res)=>{
-  const { email, id } = req.query;
+  const { email, id,returndate } = req.query;
+  console.log(returndate);
   //  console.log(req.query)
   //  console.log(email,id);
   // console.log(String(id));
@@ -284,20 +326,23 @@ router.put("/api/return", async(req,res)=>{
   Bookdetails.book.map(async (singleBook) => {
     if (singleBook.id == String(id)) {
       // console.log(singleBook);
-      singleBook.returned=1;
+      singleBook.return_requested=1;
+      singleBook.returndate=returndate;
      
     }
   });
   await Bookdetails.save();
 
+  let expected;
   const resadmin = await Admin.findOne({});
   console.log(resadmin);
   resadmin.allbooks.map(async (singleBook) => {
     if (singleBook.bookid == String(id) && singleBook.email==email) {
       
 
-      singleBook.returned=1;
-   
+      singleBook.return_requested=1;
+      singleBook.returndate=returndate;
+      
      
     }
   });
@@ -308,6 +353,8 @@ router.put("/api/return", async(req,res)=>{
   res.json("returned");
 });
 
+router.get("/api/return", async(req, res) => {
 
+})
 
 module.exports = router;

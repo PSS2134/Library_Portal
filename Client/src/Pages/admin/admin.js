@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/navbar";
-import Issued from "../../components/admincomp/issued";
+import Issued from "../../components/admincomp/Issued";
 import Add from "../../components/admincomp/add";
 import "./admin.css";
 import Requested from "../../components/admincomp/Requested";
@@ -38,7 +38,7 @@ function Admin({ updateUser }) {
           <Navbar updateUser={updateUser} />
           <div className="issued">
             <h1 className="left-head">Issued Books</h1>
-            <Issued />
+            <Issued allBooks={allBooksData} />
           </div>
           <div className="issue">
             <h1 className="left-head">Books Requested</h1>

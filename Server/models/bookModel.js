@@ -30,6 +30,10 @@ const bookSchema= new mongoose.Schema({
         type:Number,
         required:true,
     },
+    return_requested:{
+        type:Number,
+        required:true,
+    },
     issuedate:{
         type:String,
       
