@@ -12,7 +12,7 @@ function Bookinfo({ updateUser }) {
   // this will fetch books acording to particular genre
 
   useEffect(() => {
-    fetch("https://mocki.io/v1/e54f5fb5-64df-4584-9fb9-b8d50beb97a3")
+    fetch("https://mocki.io/v1/543bcd3a-e8aa-46ac-9279-0289293acfcd")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
