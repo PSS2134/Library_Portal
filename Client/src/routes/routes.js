@@ -20,10 +20,10 @@ function Routes_new() {
   const [user, setLoginUser] = useState({});
   useEffect(() => {
     // const user_after_every_load=
-    setLoginUser(JSON.parse(localStorage.getItem("useraudify")));
+    setLoginUser(JSON.parse(localStorage.getItem("user")));
   }, []);
   const updateUser = (user) => {
-    localStorage.setItem("useraudify", JSON.stringify(user));
+    localStorage.setItem("user", JSON.stringify(user));
     setLoginUser(user);
   };
   return (
@@ -33,13 +33,7 @@ function Routes_new() {
         <Route
           exact
           path="/"
-          element={
-            user && user.email ? (
-              <Landing updateUser={updateUser} />
-            ) : (
-              <Login updateUser={updateUser} />
-            )
-          }
+          element={<Landing updateUser={updateUser} />}
         />
         <Route
           path="/user"

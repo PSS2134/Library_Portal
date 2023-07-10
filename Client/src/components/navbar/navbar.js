@@ -9,19 +9,19 @@ function Navbar(props) {
   const navigate = useNavigate();
   const Logout = () => {
     toast.success("Logged Out Successfully");
-    localStorage.removeItem("useraudify");
+    localStorage.removeItem("user");
     navigate("/");
-    const user = JSON.parse(localStorage.getItem("useraudify"));
+    const user = JSON.parse(localStorage.getItem("user"));
     props.updateUser(user);
   };
   return (
     <nav className="navbar">
       <div className="leftbar">
-        <div class="dropdown">
+        <div className="dropdown">
           <Link to={"/library"}>
-            <button class="dropbtn">LIBRARY</button>
+            <button className="dropbtn">LIBRARY</button>
           </Link>
-          <div class="dropdown-content">
+          <div className="dropdown-content">
             <a href="/library/Fiction">Fiction</a>
             <a href="/library/Competitive">Competitive</a>
             <a href="/library/Autobiography">Autobiography</a>
@@ -33,7 +33,9 @@ function Navbar(props) {
         <Link to={"/"}>
           <button className="nav-btn">Home</button>
         </Link>
+        <Link to={"/team"}>
         <button className="nav-btn">Team</button>
+        </Link>
         {/* <button className="nav-btn">Services</button>
             <button className="nav-btn">Recommended</button> */}
       </div>

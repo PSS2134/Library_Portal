@@ -12,7 +12,7 @@ export default function Recommended() {
   // }, []);
 
   return (
-  <div className="recom"> 
+  <div className="recom" id="4"> 
     <h1>Recommended Books</h1>
     <div className="recommended">
       <div class="book-cardr">

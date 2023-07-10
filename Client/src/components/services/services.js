@@ -3,7 +3,7 @@ import React from 'react'
 
 function Services() {
   return (
-    <div>
+    <div id='3'>
         <h1 className='services-heading'>Services</h1>
         {/* <hr className='line'></hr> */}
         <div className='serve'>

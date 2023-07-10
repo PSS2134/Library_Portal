@@ -1,21 +1,21 @@
 
-.fullabout{
-    margin-top: 10px;
-    
- }
  
  .cont-about{
     font-weight:600;
     text-align: justify;
-    margin-left: 5%;
+    margin-right: 5%;
     display: flex;
     font-family: "Poppins";
     margin-top: 2%;
  }
+
+ .cont-about p{
+  margin-top: 2%;
+ }
  
  .image-about{
    margin-left: 5%;
-   margin-right: 5%;
+   margin-right: 4%;
    border-radius: 7%;
    box-shadow: 6px 6px 6px rgb(149, 140, 140);
  }

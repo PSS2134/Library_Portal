@@ -9,7 +9,7 @@ import { BsFillTelephoneFill } from 'react-icons/bs';
 
 const Footer = () => {
     return (
-        <div className="footer">
+        <div className="footer" id="5">
             <div className="sb_footer section_padding">
                 <div className="sb_footer-links">
                     <div className="sb_footer-links_div">

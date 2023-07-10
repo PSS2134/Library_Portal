@@ -53,9 +53,9 @@ const libArray = [
 function Library({ updateUser }) {
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState("");
-  const email = JSON.parse(localStorage.getItem("useraudify")).email;
+  const email = JSON.parse(localStorage.getItem("user")).email;
   useEffect(() => {
-    fetch(`http://localhost:5000/api/login?email=${email}`)
+    fetch(`/api/login?email=${email}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

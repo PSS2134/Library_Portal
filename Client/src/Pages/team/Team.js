@@ -46,6 +46,7 @@ import React from "react";
 import Abhi from './2.jpg';
 import Priyansh from './3.jpg';
 import Vashu from './1.jpg';
+import aryan from './4.jpg';
 //import Carousel from "react-elastic-carousel";
 
 import "./Team.css";
@@ -56,10 +57,10 @@ export default function Members() {
 
   <h2>Meet the team</h2>
 
-    <div className="details">
+    <div className="detailsz">
    
     <div className="ashu">
-   <div className="book-card">
+   <div className="book-cardz">
     <img src={Vashu} alt="ahishek"></img>
     <h3>Ashutosh Mishra </h3>
     <p>Civil</p>
@@ -68,7 +69,7 @@ export default function Members() {
 
 
   <div className="pri">
-  <div className="book-card">
+  <div className="book-cardz">
    <img src={Priyansh} alt="Book 4"></img>
     <h3>Priyansh Shrivastava</h3>
     <p>ECE</p>
@@ -76,7 +77,7 @@ export default function Members() {
   </div>
 
   <div className="abhi">
-  <div className="book-card">
+  <div className="book-cardz">
  <img src={Abhi} alt="Book 3"></img>
     <h3>Abhishek Gupta</h3>
     <p>EEE</p>
@@ -85,8 +86,8 @@ export default function Members() {
 
 
   <div className="sol">
-    <div className="book-card">
-    {/* <img src={Priyansh} alt="Book 1"></img> */}
+    <div className="book-cardz">
+    <img src={aryan} alt="Book 1"></img>
     <h3>Aryan Solanki</h3>
     <p>Civil</p>
   </div>
