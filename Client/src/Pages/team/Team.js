@@ -48,59 +48,94 @@ import Priyansh from './3.jpg';
 import Vashu from './1.jpg';
 import aryan from './4.jpg';
 //import Carousel from "react-elastic-carousel";
+import { BsLinkedin } from 'react-icons/bs';
+import { BsInstagram } from 'react-icons/bs';
+import { BsGithub } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 import "./Team.css";
 
 export default function Members() {
   return (
     <div className="meet">
-
-  <h2>Meet the team</h2>
-
-    <div className="detailsz">
+      <Link to={'/'}><button className="home-from-team">Home</button></Link>
+      <h1 className="team-heading">TEAM</h1>
+      <div className="detailsz">
    
-    <div className="ashu">
-   <div className="book-cardz">
-    <img src={Vashu} alt="ahishek"></img>
-    <h3>Ashutosh Mishra </h3>
-    <p>Civil</p>
+        <div className="ashu">
+          <div className="book-cardz">
+            <img src={Vashu} alt="ahishek"></img>
+            <hr style={{"height":"2px","backgroundColor":"white"}}></hr>
+            <div className="links-with">
+              <Link to={'/'}><BsLinkedin className="linked"/></Link>
+              <Link to={'/'}><BsInstagram className="insta"/></Link>
+              <Link to={'/'}><BsGithub className="hubgit"/></Link>
+            </div>
+          </div>
+          <div className="member-description">
+            <h2>Ashutosh Mishra</h2>
+            <h5>Frontend</h5>
+            <p>Made the User Interface of user and landing page and added so many components in both the pages and other pages as well</p>
+          </div>
+        </div>
+        
+
+
+        <div className="pri">
+          <div className="member-description">
+            <h2>Priyansh Shrivastav</h2>
+            <h5>Backend</h5>
+            <p>Made the User Interface of user and landing page and added so many components in both the pages and other pages as well</p>
+          </div>
+          <div className="book-cardz">
+            <img src={Priyansh} alt="Book 4"></img>
+            <hr style={{"height":"2px","backgroundColor":"white"}}></hr>
+            <div className="links-with">
+              <Link to={'/'}><BsLinkedin className="linked"/></Link>
+              <Link to={'/'}><BsInstagram className="insta"/></Link>
+              <Link to={'/'}><BsGithub className="hubgit"/></Link>
+            </div>
+          </div>
+          
+        </div>
+
+        <div className="abhi">
+          <div className="book-cardz">
+            <img src={Abhi} alt="Book 3"></img>
+            <hr style={{"height":"2px","backgroundColor":"white"}}></hr>
+            <div className="links-with">
+              <Link to={'/'}><BsLinkedin className="linked"/></Link>
+              <Link to={'/'}><BsInstagram className="insta"/></Link>
+              <Link to={'/'}><BsGithub className="hubgit"/></Link>
+            </div>
+          </div>
+          <div className="member-description">
+            <h2>Abhishek Gupta</h2>
+            <h5>Frontend</h5>
+            <p>Made the User Interface of user and landing page and added so many components in both the pages and other pages as well</p>
+          </div>
+        </div>
+
+
+        <div className="sol">
+          <div className="member-description">
+            <h2>Aryan Solanki</h2>
+            <h5>Frontend</h5>
+            <p>Made the User Interface of user and landing page and added so many components in both the pages and other pages as well</p>
+          </div>
+          <div className="book-cardz">
+            <img src={aryan} alt="Book 1"></img>
+            <hr style={{"height":"2px","backgroundColor":"white"}}></hr>
+            <div className="links-with">
+              <Link to={'/'}><BsLinkedin className="linked"/></Link>
+              <Link to={'/'}><BsInstagram className="insta"/></Link>
+              <Link to={'/'}><BsGithub className="hubgit"/></Link>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </div>
-
-
-  <div className="pri">
-  <div className="book-cardz">
-   <img src={Priyansh} alt="Book 4"></img>
-    <h3>Priyansh Shrivastava</h3>
-    <p>ECE</p>
-    </div>
-  </div>
-
-  <div className="abhi">
-  <div className="book-cardz">
- <img src={Abhi} alt="Book 3"></img>
-    <h3>Abhishek Gupta</h3>
-    <p>EEE</p>
-    </div>
-  </div>
-
-
-  <div className="sol">
-    <div className="book-cardz">
-    <img src={aryan} alt="Book 1"></img>
-    <h3>Aryan Solanki</h3>
-    <p>Civil</p>
-  </div>
-  </div>
-
-
-  </div>
-  
-  
-  
- 
-
-  </div>
   
     );
 }
