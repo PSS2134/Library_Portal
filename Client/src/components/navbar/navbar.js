@@ -1,16 +1,17 @@
 import React from "react";
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BiUserCircle } from "react-icons/bi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Navbar(props) {
+  const navigate = useNavigate();
   const Logout = () => {
     toast.success("Logged Out Successfully");
     localStorage.removeItem("useraudify");
+    navigate("/");
     const user = JSON.parse(localStorage.getItem("useraudify"));
-
     props.updateUser(user);
   };
   return (
