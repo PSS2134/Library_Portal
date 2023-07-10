@@ -1,24 +1,24 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "../Styles/bookinfo.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Navbar from "../components/navbar/navbar"
+import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 
-
-function Bookinfo(updateUser) {
+function Bookinfo({ updateUser }) {
   const { id } = useParams();
-  const[booksData,setBooksData] =useState([]);
+  const [booksData, setBooksData] = useState([]);
   // this will fetch books acording to particular genre
- 
 
-  useEffect(() =>{
-    fetch("https://mocki.io/v1/e54f5fb5-64df-4584-9fb9-b8d50beb97a3").then((res)=>res.json()).then((data)=>{
-      console.log(data);
-      setBooksData(data);
-    })
-  },[])
+  useEffect(() => {
+    fetch("https://mocki.io/v1/e54f5fb5-64df-4584-9fb9-b8d50beb97a3")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setBooksData(data);
+      });
+  }, []);
 
   // console.log(id);
   console.log(booksData);
@@ -31,7 +31,7 @@ function Bookinfo(updateUser) {
   const book = filteredArray[0];
   console.log(filteredArray);
   // const { name, genre, summary, author, url } = book;
-  const email = JSON.parse(localStorage.getItem("user")).email;
+  const email = JSON.parse(localStorage.getItem("useraudify")).email;
 
   const postData = async () => {
     const res = await fetch(`/api/add?email=${email}`, {
@@ -42,45 +42,46 @@ function Bookinfo(updateUser) {
       body: JSON.stringify(book),
     });
     const data = await res.json();
-    if(data.message=="greater than 2")
-    {
-         toast.warn("You already have 2 books to be issued");
-    }
-    else if(data.message=='new Added'){
- toast.success(`Congratulations! on adding your first book`);
-    }
-    else{
+    if (data.message == "greater than 2") {
+      toast.warn("You already have 2 books to be issued");
+    } else if (data.message == "new Added") {
+      toast.success(`Congratulations! on adding your first book`);
+    } else {
       toast.success(`${data.title} added successfully`);
     }
   };
-// console.log(book.url);
+  // console.log(book.url);
   return (
-     <>
-     
-   {book && <><Navbar updateUser={updateUser}/><div className="bookinfo">
-      <div className="left">
-        <img className="bookimage" src={book.url} alt="book" />
-      </div>
-      <div className="right">
-        <div className="center">
-          <div className="titlecon">
-            <h1 className="title">{book.name}</h1>
-          </div>
-          <div className="info">
-            <h2>Language : English</h2>
-            <h2>Author : {book.author}</h2>
-            <h2>Genre : {book.genre}</h2>
-            <h4>Summary: {book.summary}</h4>
-            <div className="button">
-              <button onClick={postData} className="cart">
-                Issue Book
-              </button>
+    <>
+      {book && (
+        <>
+          <Navbar updateUser={updateUser} />
+          <div className="bookinfo">
+            <div className="left">
+              <img className="bookimage" src={book.url} alt="book" />
+            </div>
+            <div className="right">
+              <div className="center">
+                <div className="titlecon">
+                  <h1 className="title">{book.name}</h1>
+                </div>
+                <div className="info">
+                  <h2>Language : English</h2>
+                  <h2>Author : {book.author}</h2>
+                  <h2>Genre : {book.genre}</h2>
+                  <h4>Summary: {book.summary}</h4>
+                  <div className="button">
+                    <button onClick={postData} className="cart">
+                      Issue Book
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <Footer/></>}
+          <Footer />
+        </>
+      )}
     </>
   );
 }

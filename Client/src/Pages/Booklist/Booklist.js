@@ -55,6 +55,7 @@ function Booklist({ updateUser }) {
         <div className="grid" key={rowno}>
           {row.map((book) => (
             <Bookcard
+              updateUser={updateUser}
               id={book.id}
               title={book.name.slice(0, 18) + "..."}
               author={book.author}
