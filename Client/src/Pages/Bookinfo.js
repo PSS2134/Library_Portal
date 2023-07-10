@@ -5,10 +5,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
+import HashLoader from "react-spinners/HashLoader";
 
 function Bookinfo({ updateUser }) {
   const { id } = useParams();
   const [booksData, setBooksData] = useState([]);
+  const [loading, setLoading] = useState(true);
   // this will fetch books acording to particular genre
 
   useEffect(() => {
@@ -18,6 +20,9 @@ function Bookinfo({ updateUser }) {
         console.log(data);
         setBooksData(data);
       });
+      setTimeout(() => {
+        setLoading(false);
+      }, 1250);
   }, []);
 
   // console.log(id);
@@ -53,6 +58,18 @@ function Bookinfo({ updateUser }) {
   // console.log(book.url);
   return (
     <>
+    {loading?
+    <div className="loading">
+    <HashLoader
+      color={"#F37A24"}
+      loading={loading}
+      size={100}
+      aria-label="Loading Spinner"
+      data-testid="loader"
+    />
+  </div>
+  :
+    <>
       {book && (
         <>
           <Navbar updateUser={updateUser} />
@@ -83,6 +100,8 @@ function Bookinfo({ updateUser }) {
         </>
       )}
     </>
+}
+</>
   );
 }
 

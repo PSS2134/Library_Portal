@@ -54,6 +54,9 @@ function Header(props) {
             <Scroll to="4" smooth={true} offset={-30} duration={500}>
               <button className="head-btn">Recommended</button>
             </Scroll>
+            <Scroll to="5" smooth={true} offset={-30} duration={500}>
+              <button className="head-btn">Contact</button>
+            </Scroll>
         </div>  
         <div className="rightbarr">
             {user&&

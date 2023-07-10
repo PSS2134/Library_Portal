@@ -4,10 +4,12 @@ import Bookcard from "../../components/bookcard/Bookcard";
 import "../../Styles/booklist.css";
 import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
+import HashLoader from "react-spinners/HashLoader";
 
 function Booklist({ updateUser }) {
   const { genre } = useParams();
   const [booksData, setBooksData] = useState([]);
+  const [loading, setLoading] = useState(true);
   // this will fetch books acording to particular genre
   const genregroup = booksData.filter((book) => {
     if (book.genre === genre) {
@@ -23,6 +25,9 @@ function Booklist({ updateUser }) {
         console.log(data);
         setBooksData(data);
       });
+      setTimeout(() => {
+        setLoading(false);
+      }, 1250);
   }, []);
   let oneliner = "";
   if (genre === "Fiction") {
@@ -46,6 +51,18 @@ function Booklist({ updateUser }) {
     return chunkedArray;
   }
   return (
+    <>
+    {loading?
+    <div className="loading">
+    <HashLoader
+      color={"#F37A24"}
+      loading={loading}
+      size={100}
+      aria-label="Loading Spinner"
+      data-testid="loader"
+    />
+  </div>
+  :
     <div className="booklist">
       <Navbar updateUser={updateUser} />
       <div className="head">
@@ -69,6 +86,8 @@ function Booklist({ updateUser }) {
       ))}
       <Footer />
     </div>
+}
+</>
   );
 }
 export default Booklist;
