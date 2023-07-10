@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { BiUserCircle } from "react-icons/bi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link as Scroll } from 'react-scroll'
 
 function Navbar(props) {
   const navigate = useNavigate();
@@ -36,6 +37,9 @@ function Navbar(props) {
         <Link to={"/team"}>
         <button className="nav-btn">Team</button>
         </Link>
+        <Scroll to="5" smooth={true} offset={-30} duration={500}>
+              <button className="head-btn">Contact</button>
+        </Scroll>
         {/* <button className="nav-btn">Services</button>
             <button className="nav-btn">Recommended</button> */}
       </div>
