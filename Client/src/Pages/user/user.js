@@ -226,6 +226,7 @@ function User({ updateUser }) {
                 {data.book && data.book.length ? (
                   <div className="user-books">
                     <h1 className="Issued-books">Requested Books</h1>
+                    <div className="zinda-hoon-2" >
                     <table>
                       <thead>
                         <tr>
@@ -349,6 +350,7 @@ function User({ updateUser }) {
                         })}
                       </tbody>
                     </table>
+                    </div>
                   </div>
                 ) : (
                   <h1
@@ -366,6 +368,7 @@ function User({ updateUser }) {
                 {data.book && data.book.length ? (
                   <div className="user-books">
                     <h1 className="Issued-books">Past Issued Books</h1>
+                    <div className="zinda-hoon-2" >
                     <table>
                       <thead>
                         <tr>
@@ -373,7 +376,7 @@ function User({ updateUser }) {
                           <th>Book Name</th>
                           <th>Book Genre</th>
                           <th>Issue Date</th>
-                          <th>Issue Time</th>
+                          <th>Expected Return</th>
                           <th> Return Date</th>
                           <th>Status</th>
                         </tr>
@@ -415,6 +418,7 @@ function User({ updateUser }) {
                         })}
                       </tbody>
                     </table>
+                    </div>
                   </div>
                 ) : (
                   <h1

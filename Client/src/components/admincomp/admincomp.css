@@ -1,9 +1,16 @@
 
 
 .table{
+    width: 100%;
+    box-shadow: 7px 7px 7px rgb(194, 184, 184);
+}
+
+.zinda-hoon{
+    /* width: 82%; */
     width: 82%;
     margin-left: 9%;
-    box-shadow: 7px 7px 7px rgb(194, 184, 184);
+    max-height: 40vh;
+    overflow-y: scroll;
 }
 
 .approve-btnn{

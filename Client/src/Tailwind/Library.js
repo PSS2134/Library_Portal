@@ -10,13 +10,12 @@ import HashLoader from "react-spinners/HashLoader";
 const libArray = [
   {
     title: "Competitive",
-    des: `Fiction books create imaginary worlds and characters, exploring
-        various themes and narratives. They can range from contemporary
-        fiction to historical epics, encompassing genres like literary
-      fiction, dystopian novels, and coming-of-age stories. Fiction
-      allows readers to escape reality and immerse themselves in
-          captivating tales of imagination and human experiences.`,
-    url: Fiction,
+    des: `Whether you're a student, a professional, or just someone who
+     enjoys a challenge, our competitive books will help you improve your
+      skills and knowledge.So whether you're looking to ace your next test, 
+      land your dream job, or just become a better person, our competitive 
+      books can help you achieve your goals.`,
+    url: "https://th.bing.com/th/id/OIP.tPpcG9A8uMNXGTX8BdXqQgAAAA?pid=ImgDet&rs=1",
   },
   {
     title: "Fiction",
@@ -30,23 +29,22 @@ const libArray = [
   },
   {
     title: "Autobiography",
-    des: `Fiction books create imaginary worlds and characters, exploring
-            various themes and narratives. They can range from contemporary
-            fiction to historical epics, encompassing genres like literary
-          fiction, dystopian novels, and coming-of-age stories. Fiction
-          allows readers to escape reality and immerse themselves in
-              captivating tales of imagination and human experiences.`,
-    url: Fiction,
+    des: `Learn about the lives of some of the most fascinating people in
+     history with our selection of autobiographies. From celebrities to politicians
+      to everyday people, these books offer a unique glimpse into the lives of others.
+      With our wide selection of autobiographies, you're sure to find someone whose story 
+      resonates with you. So pick up a book and learn from the experiences of others.`,
+    url: "https://images.saymedia-content.com/.image/c_limit%2Ccs_srgb%2Cq_auto:eco%2Cw_760/MTczOTEwODA5Mzg1MTgyMjcy/thegenreofautobiography.webp",
   },
   {
     title: "Others",
-    des: `Fiction books create imaginary worlds and characters, exploring
-              various themes and narratives. They can range from contemporary
-              fiction to historical epics, encompassing genres like literary
-            fiction, dystopian novels, and coming-of-age stories. Fiction
-            allows readers to escape reality and immerse themselves in
-                captivating tales of imagination and human experiences.`,
-    url: Fiction,
+    des: `Our "Others" category includes books that don't fit neatly into any other genre.
+     Here you'll find everything from cookbooks to travel guides to self-help books.
+     Our "Others" category is a great place to find books that are both informative and 
+     entertaining. So browse our selection and find something that interests you.
+     So explore our "Others" category and find something new to read. You might just be 
+     surprised at what you find.`,
+    url: "https://th.bing.com/th/id/OIP.THlupAhQ4N3oo--fzXFQ7QHaEo?pid=ImgDet&rs=1",
   },
 ];
 
