@@ -12,6 +12,7 @@ import Bookinfo from "../Pages/Bookinfo";
 import Booklist from "../Pages/Booklist/Booklist";
 import ScrollToTop from "./Scroll";
 import Members from "../Pages/team/Team";
+import FormElement from "../components/order/Form";
 
 //data
 // import books from "../Data/data";
@@ -57,6 +58,12 @@ function Routes_new() {
           path="/admin"
           element={
             user && user.email ? <Admin updateUser={updateUser}/> : <Login updateUser={updateUser} />
+          }
+        />
+        <Route
+          path="/order"
+          element={
+            user && user.email ? <FormElement updateUser={updateUser}/> : <Login updateUser={updateUser} />
           }
         />
         <Route
