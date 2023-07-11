@@ -315,7 +315,8 @@ router.post("/api/books", async (req, res) => {
 });
 
 router.put("/api/return", async(req,res)=>{
-  const { email, id,returndate } = req.query;
+  const { email, id } = req.query;
+const returndate=new Date().toLocaleDateString();
   console.log(returndate);
   //  console.log(req.query)
   //  console.log(email,id);

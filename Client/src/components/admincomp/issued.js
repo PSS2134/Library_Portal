@@ -111,7 +111,7 @@ function Issued({ allBooks }) {
                   <td>{book.bookname}</td>
                   <td>{book.genre}</td>
                   <td>{book.issuedate}</td>
-                  <td>'{days1}/{newmonth}/{year1}'</td>
+                  <td>{days1}/{newmonth}/{year1}</td>
                   <td>{book.returndate}</td>
                   
                   <td style={{"color":"red","fontWeight":"600"}}>Returned</td>

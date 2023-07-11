@@ -25,7 +25,6 @@ function User({ updateUser }) {
         setTimeout(() => {
           setLoading(false);
         }, 1250);
-        
       });
   }, []);
   const refresher = () => {
@@ -38,14 +37,14 @@ function User({ updateUser }) {
     });
     toast.warning(`You have ${cnt} book issued`);
   };
-  
+
   window.onload = function() {
     var reloading = sessionStorage.getItem("reloading");
     if (reloading) {
-        sessionStorage.removeItem("reloading");
-        refresher();
+      sessionStorage.removeItem("reloading");
+      refresher();
     }
-  }
+  };
   // toast.success(`You have ${approvecount} approved! Start reading them...`);
   //     console.log(data);
   //    {data.book && data.book.map((singleBook)=>{
@@ -124,29 +123,29 @@ function User({ updateUser }) {
 
   const handleReturn = async (e) => {
     // console.log(e.target.name);
-      const bookid=e.target.name;
-      const returndate=new Date().toLocaleDateString();
-      const res = await fetch(`/api/return/?email=${email}&id=${bookid}&${returndate}`, {
+    const bookid = e.target.name;
+    const returndate = new Date().toLocaleDateString();
+    const res = await fetch(
+      `/api/return/?email=${email}&id=${bookid}&${returndate}`,
+      {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        
-      });
-      const data = await res.json();
-      if(data=="returned")
-      {
-        toast.success("Returned Successfully");
-        window.location.reload();
       }
-  }
-// console.log(data.book);
-//   const notreturned=data.book.filter((book)=>{
-//     if(!book.returned)
-//     {
-//         return book;
-//     }
-//   })
-//   console.log(notreturned);
-
+    );
+    const data = await res.json();
+    if (data == "returned") {
+      toast.success("Returned Successfully");
+      window.location.reload();
+    }
+  };
+  // console.log(data.book);
+  //   const notreturned=data.book.filter((book)=>{
+  //     if(!book.returned)
+  //     {
+  //         return book;
+  //     }
+  //   })
+  //   console.log(notreturned);
 
   return (
     <div className="user-loading">
@@ -168,32 +167,36 @@ function User({ updateUser }) {
               {/* {console.log(data.userData.picture)}` */}
               <div className="user-profile">
                 <div className="box">
-                <div className="profile-box">
-                  <div className="signup-profile-pic__container">
-                    <img
-                      src={imagePreview || data.userData.picture}
-                      className="signup-profile-pic"
-                    />
-                    <label
-                      htmlFor="image-upload"
-                      className="image-upload-label"
-                    >
-                      <i className="fas fa-plus-circle add-picture-icon"></i>
-                    </label>
-                    <input
-                      type="file"
-                      id="image-upload"
-                      hidden
-                      accept="image/png, image/jpeg"
-                      onChange={(e) => postDetails(e.target.files[0])}
-                    />
-                    <div className="img-box">
-
-                    {picture && <button className="uploadbutton" onClick={handleImage}>
-                        Save
-                      </button>}
+                  <div className="profile-box">
+                    <div className="signup-profile-pic__container">
+                      <img
+                        src={imagePreview || data.userData.picture}
+                        className="signup-profile-pic"
+                      />
+                      <label
+                        htmlFor="image-upload"
+                        className="image-upload-label"
+                      >
+                        <i className="fas fa-plus-circle add-picture-icon"></i>
+                      </label>
+                      <input
+                        type="file"
+                        id="image-upload"
+                        hidden
+                        accept="image/png, image/jpeg"
+                        onChange={(e) => postDetails(e.target.files[0])}
+                      />
+                      <div className="img-box">
+                        {picture && (
+                          <button
+                            className="uploadbutton"
+                            onClick={handleImage}
+                          >
+                            Save
+                          </button>
+                        )}
+                      </div>
                     </div>
-                  </div>
                   </div>
 
                   <div className="user-desc" style={{ fontSize: "1rem" }}>
@@ -238,78 +241,111 @@ function User({ updateUser }) {
                       </thead>
                       <tbody>
                         {data.book.map((book) => {
-                       
-                          let issued,returned;
-                          if (book.issued && !book.return_requested) {
+                          let issued,
+                            returned,
+                            return_req = false;
+                          if (book.return_requested) {
+                            return_req = true;
+                          }
+                          if (book.issued && !book.returned) {
                             issued = true;
-                            returned=false
+                            returned = false;
+                          } else if (!book.issued && !book.returned) {
+                            issued = false;
+                            returned = false;
+                          } else {
+                            issued = true;
+                            returned = true;
                           }
-                          else if(!book.issued && !book.return_requested){
-                               issued=false;
-                               returned=false;
+                          {
+                            /* console.log(book.returndate); */
                           }
-                          else{
-                            issued=true;
-                            returned=true;
-                          }
-                          console.log(book.returndate);
-                          return (
-                            
-                            <tr>
-                              <td>{book.id}</td>
-                              <td>{book.name}</td>
-                              <td>{book.genre}</td>
-                              <td>{book.issuedate}</td>
-                              <td>{book.issuetime}</td>
-                              <td>{book.returndate}</td>
+                          console.log(issued, returned);
+                          if (!returned) {
+                            return (
+                              <tr>
+                                <td>{book.id}</td>
+                                <td>{book.name}</td>
+                                <td>{book.genre}</td>
+                                <td>{book.issuedate}</td>
+                                <td>{book.issuetime}</td>
+                                <td>{book.returndate}</td>
 
-                              {issued && !returned? (
-                                <>
-                                  <td>
-                                    <button
+                                {issued && !returned && !return_req ? (
+                                  <>
+                                    <td>
+                                      <button
+                                        style={{
+                                          cursor: "pointer",
+                                          backgroundColor: "red",
+                                          color: "white",
+                                          fontWeight: "600",
+                                          padding: "5px",
+                                          border: "none",
+                                          borderRadius: "5px",
+                                        }}
+                                        onClick={handleReturn}
+                                        name={book.id}
+                                      >
+                                        Return
+                                      </button>
+                                    </td>
+                                    <td
                                       style={{
-                                        cursor: "pointer",
-                                        backgroundColor: "red",
-                                        color: "white",
+                                        color: "green",
                                         fontWeight: "600",
-                                        padding: "5px",
-                                        border: "none",
-                                        borderRadius: "5px",
                                       }}
-                                      onClick={handleReturn}
-                                      name={book.id}
                                     >
-                                      Return
-                                    </button>
-                                  </td>
-                                  <td
-                                    style={{
-                                      color: "green",
-                                      fontWeight: "600",
-                                    }}
-                                  >
-                                    Issued
-                                  </td>
-                                </>
-                              ) : (
-                                <>
-                                 { !issued && !returned?<td>
-                                    <img
-                                      style={{ cursor: "pointer" }}
-                                      onClick={handleRemove}
-                                      name={book.id}
-                                      src={Delete}
-                                    />
-                                  </td>:<td style={{"color":"red","fontWeight":"600"}}>Returning</td>}
-                                  <td
-                                    style={{ color: "blue", fontWeight: "600" }}
-                                  >
-                                    Pending
-                                  </td>
-                                </>
-                              )}
-                            </tr>
-                          );
+                                      Issued
+                                    </td>
+                                  </>
+                                ) : (
+                                  <>
+                                    {!issued && !return_req && !returned ? (
+                                      <>
+                                        <td>
+                                          <img
+                                            style={{ cursor: "pointer" }}
+                                            onClick={handleRemove}
+                                            name={book.id}
+                                            src={Delete}
+                                          />
+                                        </td>
+                                        <td
+                                          style={{
+                                            color: "blue",
+                                            fontWeight: "600",
+                                          }}
+                                        >
+                                          Pending
+                                        </td>
+                                      </>
+                                    ) : (
+                                      <>
+                                      <td
+                                        style={{
+                                          color: "red",
+                                          fontWeight: "600",
+                                        }}
+                                      >
+                                        Returning
+                                      </td>
+                                      <td
+                                          style={{
+                                            color: "blue",
+                                            fontWeight: "600",
+                                          }}
+                                        >
+                                          Pending
+                                        </td>
+                                        </>
+                                    )}
+                                    <>{returned && <td>Returned</td>}</>
+                                  </>
+                                )}
+                              </tr>
+                            );
+                          }
                         })}
                       </tbody>
                     </table>
@@ -338,18 +374,45 @@ function User({ updateUser }) {
                           <th>Book Genre</th>
                           <th>Issue Date</th>
                           <th>Issue Time</th>
-                          <th>Expected Return Date</th>
+                          <th> Return Date</th>
+                          <th>Status</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>id</td>
-                          <td>name</td>
-                          <td>genre</td>
-                          <td>issuedate</td>
-                          <td>issuetime</td>
-                          <td>returndate</td>
-                        </tr>
+                        {data.book.map((book) => {
+                          const issue_date = book.issuedate;
+
+                          let year1 = issue_date.slice(5, 9);
+                          let month1 = issue_date.slice(3, 4);
+                          let newmonth = Number(month1) + 1;
+                          if (newmonth == 13) {
+                            year1 = Number(year1) + 1;
+                            newmonth = 1;
+                          }
+                          const days1 = issue_date.slice(0, 2);
+                          if (book.returned) {
+                            return (
+                              <tr>
+                                <td>{book.id}</td>
+                                <td>{book.name}</td>
+                                <td>{book.genre}</td>
+                                <td>{book.issuedate}</td>
+                                <td>
+                                  {days1}/{newmonth}/{year1}
+                                </td>
+                                <td>{book.returndate}</td>
+                                <td
+                                  style={{
+                                    color: "blueviolet",
+                                    fontWeight: "600",
+                                  }}
+                                >
+                                  Returned
+                                </td>
+                              </tr>
+                            );
+                          }
+                        })}
                       </tbody>
                     </table>
                   </div>
