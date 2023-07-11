@@ -17,8 +17,9 @@ function Issued({ allBooks }) {
   };
 
   return (
-    <div>
-      <table className="table">
+    <div >
+      <div className="zinda-hoon" >
+      <table className="table" >
         
         <thead>
                   <tr>
@@ -32,8 +33,9 @@ function Issued({ allBooks }) {
                       <th>Action</th>
                       </tr>
                   </thead>
-                  <tbody>
-          {allBooks.map((book) => {
+                  <tbody >
+                  
+          {allBooks.toReversed().map((book) => {
             
             {/* console.log(year1); */}
             {/* const month1 = issue_date.slice(); */}
@@ -64,7 +66,7 @@ function Issued({ allBooks }) {
                     <td>'{days1}/{newmonth}/{year1}'</td>
                     <td>{book.returndate}</td>
                     <td>
-                      <button name={book._id} onClick={handleApprove}>
+                      <button className='approve-btnn' name={book._id} onClick={handleApprove}>
                         Approve
                       </button>
                     </td>
@@ -119,8 +121,10 @@ function Issued({ allBooks }) {
                 </>);
             }
           })}
+           
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

@@ -22,6 +22,7 @@ function Requested({allBooks}) {
     }
   return (
     <div>
+      <div className="zinda-hoon" >
         <table className='table'>
                 <thead>
                     <tr>
@@ -55,6 +56,7 @@ function Requested({allBooks}) {
                     
                 </tbody>
             </table> 
+            </div>
     </div>
   )
 }

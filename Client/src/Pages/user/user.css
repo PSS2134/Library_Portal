@@ -77,6 +77,14 @@ table {
   box-shadow: 7px 7px 7px rgb(194, 184, 184);
 }
 
+.zinda-hoon-2{
+  /* width: 82%; */
+  width: 96%;
+  margin-left: 2%;
+  max-height: 30vh;
+  overflow-y: scroll;
+}
+
 th,td {
   padding: 10px;
   text-align: left;

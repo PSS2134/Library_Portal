@@ -4,6 +4,7 @@ import './admincomp.css'
 function Add() {
   return (
     <div>
+        <div className="zinda-hoon" >
         <table className='table'>
                 <thead>
                     <tr>
@@ -24,6 +25,7 @@ function Add() {
                     </tr>
                 </tbody>
             </table>
+            </div>
     </div>
   )
 }

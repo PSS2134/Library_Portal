@@ -36,6 +36,7 @@ justify-content: center;
 .library-img{
     height: 100%;
     width: 25vw;
+    height: 50vh;
     border-radius: 10px;
     box-shadow: 6px 6px 6px  rgb(51 65 85);
     cursor:pointer;
