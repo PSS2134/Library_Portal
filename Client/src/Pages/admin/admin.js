@@ -5,6 +5,7 @@ import Add from "../../components/admincomp/add";
 import "./admin.css";
 import Requested from "../../components/admincomp/Requested";
 import HashLoader from "react-spinners/HashLoader";
+import Footer from "../../components/footer/footer";
 
 function Admin({ updateUser }) {
   const [loading, setLoading] = useState(true);
@@ -48,6 +49,7 @@ function Admin({ updateUser }) {
             <h1 className="left-head">Books to be Ordered</h1>
             <Add />
           </div>
+          <Footer/>
         </div>
       )}
     </>

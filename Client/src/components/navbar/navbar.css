@@ -6,7 +6,7 @@
     padding-left: 10px;
     padding-right: 10px;
     background-color: #0E2954;
-    width: 100%;
+    /* width:90%; */
   }
 
   .nav-btn{
@@ -62,7 +62,7 @@
     font-size: 22px;
     height: 60%;
     width: 100%;
-    margin-top: 5%;
+    margin-top: 3%;
     padding: 0 3%;
     cursor: pointer;
   }
