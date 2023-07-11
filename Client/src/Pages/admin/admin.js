@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/navbar";
-import Issued from "../../components/admincomp/Issued";
+import Issued from "../../components/admincomp/issued";
 import Add from "../../components/admincomp/add";
 import "./admin.css";
 import Requested from "../../components/admincomp/Requested";
