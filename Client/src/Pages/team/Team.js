@@ -54,11 +54,13 @@ import { BsGithub } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
 import "./Team.css";
+import Teambar from "../../components/teambar/teambar";
 
-export default function Members() {
+export default function Members({ updateUser }) {
   return (
     <div className="meet">
-      <Link to={'/'}><button className="home-from-team">Home</button></Link>
+      {/* <Link to={'/'}><button className="home-from-team">Home</button></Link> */}
+      <Teambar updateUser={updateUser} />
       <h1 className="team-heading">TEAM</h1>
       <div className="detailsz">
    
@@ -67,9 +69,9 @@ export default function Members() {
             <img src={Vashu} alt="ahishek"></img>
             <hr style={{"height":"2px","backgroundColor":"white"}}></hr>
             <div className="links-with">
-              <Link to={'/'}><BsLinkedin className="linked"/></Link>
-              <Link to={'/'}><BsInstagram className="insta"/></Link>
-              <Link to={'/'}><BsGithub className="hubgit"/></Link>
+              <Link to={'www.linkedin.com/in/ashutosh-mishra-690a40251'}><BsLinkedin className="linked"/></Link>
+              <Link to={'https://www.instagram.com/ashutosh_mishra.0/'}><BsInstagram className="insta"/></Link>
+              <Link to={'https://github.com/Ashutosh5548'}><BsGithub className="hubgit"/></Link>
             </div>
           </div>
           <div className="member-description">

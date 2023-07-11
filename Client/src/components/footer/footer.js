@@ -28,10 +28,10 @@ const Footer = () => {
                     <div className="sb_footer-links_div">
                         <h2>Quick Links</h2>
                         <a href="/">
-                            <p style={{"margin-top":"15px"}}>Home</p>
+                            <p style={{"marginTop":"15px"}}>Home</p>
                         </a>
                         <a href="/team">
-                            <p style={{"margin-top":"15px"}}>Team</p>
+                            <p style={{"marginTop":"15px"}}>Team</p>
                         </a>
                     </div>
                     <div className="sb_footer-links_div linkedin_div">

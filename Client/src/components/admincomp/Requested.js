@@ -45,7 +45,7 @@ function Requested({allBooks}) {
                         <td>{book.genre}</td>
                         <td>{book.issuedate}</td>
                         <td>{book.issuetime}</td>
-                        <td><button name={book._id} onClick={handleApprove}>Approve</button></td>
+                        <td><button className='approve-btnn' name={book._id} onClick={handleApprove}>Approve</button></td>
                     </tr>
                     )
                 }

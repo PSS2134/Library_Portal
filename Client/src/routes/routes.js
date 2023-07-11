@@ -79,7 +79,7 @@ function Routes_new() {
             )
           }
         />
-        <Route path="/team" element={<Members/>}/>
+        <Route path="/team" element={<Members updateUser={updateUser}/>}/>
         <Route path="*" element={<h1>Home</h1>} />
       </Routes>
     </BrowserRouter>
