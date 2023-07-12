@@ -84,7 +84,7 @@ function Signup() {
         justifyContent: "center",
         height: "110vh",
         overflowY: "hidden",
-        backgroundColor: "#f6cbcb",
+        backgroundColor: "#021a42",
       }}
     >
       <form
@@ -103,7 +103,7 @@ function Signup() {
           style={{
             textAlign: "center",
             padding: "0 4% 4% 0",
-            color: "#FF6666",
+            color: "#0E2954",
             fontFamily: "Poppins",
           }}
         >

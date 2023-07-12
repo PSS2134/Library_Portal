@@ -112,23 +112,6 @@ th {
   align-items: center;
 }
 
-.btn-update {
-  background-color: white;
-  padding: 4px;
-  border: 2px solid orange;
-  border-radius: 30%;
-  cursor: pointer;
-  display: block;
-  margin: 0 auto;
-}
-.btn-select {
-  background-color: white;
-  padding: 4px;
-  border: 2px solid orange;
-  border-radius: 30%;
-  cursor: pointer;
-}
-
 .photo-change {
   display: flex;
   margin-left: 10%;
@@ -151,7 +134,7 @@ th {
 }
 
 .delete-btn:active {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 .uploadbutton{
   display: block;
@@ -167,4 +150,8 @@ th {
 }
 .uploadbutton:active{
   box-shadow: none;
+}
+
+.return-btnz:active{
+  transform: scale(1.1);
 }

@@ -41,7 +41,7 @@
 // </div>
 
     
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import Aryan from './Solankiimg.jpeg';
 import Abhi from './2.jpg';
 import Priyansh from './3.jpg';
@@ -54,30 +54,50 @@ import { BsGithub } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
 import "./Team.css";
+import HashLoader from "react-spinners/HashLoader";
 import Teambar from "../../components/teambar/teambar";
 
 export default function Members({ updateUser }) {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1250);
+  }, []);
+
   return (
-    <div className="meet">
+    <>
       {/* <Link to={'/'}><button className="home-from-team">Home</button></Link> */}
+      {loading?
+      <div className="loading">
+      <HashLoader
+        color={"#F37A24"}
+        loading={loading}
+        size={100}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>
+    :
+    <div className="meet">
       <Teambar updateUser={updateUser} />
       <h1 className="team-heading">TEAM</h1>
       <div className="detailsz">
    
         <div className="ashu">
-          <div className="book-cardz">
+          <div className="book-cardz1">
             <img src={Vashu} alt="ahishek"></img>
             <hr style={{"height":"2px","backgroundColor":"white"}}></hr>
             <div className="links-with">
-              <Link to={'www.linkedin.com/in/ashutosh-mishra-690a40251'}><BsLinkedin className="linked"/></Link>
+              <Link to={'https://www.linkedin.com/in/ashutosh-mishra-690a40251/'}><BsLinkedin className="linked"/></Link>
               <Link to={'https://www.instagram.com/ashutosh_mishra.0/'}><BsInstagram className="insta"/></Link>
               <Link to={'https://github.com/Ashutosh5548'}><BsGithub className="hubgit"/></Link>
             </div>
           </div>
           <div className="member-description">
-            <h2>Ashutosh Mishra</h2>
-            <h5>Frontend</h5>
-            <p style={{"color":"white","fontSize":"1.5rem"}}>Made the User Interface of user and landing page and added so many components in both the pages and other pages as well</p>
+            <h2 style={{"color":"white","fontSize":"1.75rem"}}>Ashutosh Mishra</h2>
+            <h5 style={{"fontSize":"1.6rem"}}>Frontend Lead</h5>
+            <p style={{"color":"white","fontSize":"1.4rem"}}>Made the UI of user page, admin page, landing page and team page. Made so many components and Maintained overall css of the website</p>
           </div>
         </div>
         
@@ -102,7 +122,7 @@ export default function Members({ updateUser }) {
         </div>
 
         <div className="abhi">
-          <div className="book-cardz">
+          <div className="book-cardz1">
             <img src={Abhi} alt="Book 3"></img>
             <hr style={{"height":"2px","backgroundColor":"white"}}></hr>
             <div className="links-with">
@@ -112,33 +132,34 @@ export default function Members({ updateUser }) {
             </div>
           </div>
           <div className="member-description">
-            <h2>Abhishek Gupta</h2>
-            <h5>Frontend Lead and Backend</h5>
-            <p style={{"color":"white","fontSize":"1.5rem"}}>Made the Logout Backend, and Image Upload feature , also developed UI for Book List section,and many more</p>
+            <h2 style={{"color":"white","fontSize":"1.75rem"}}>Abhishek Gupta</h2>
+            <h5 style={{"fontSize":"1.6rem"}}>Frontend Lead and Backend</h5>
+            <p style={{"color":"white","fontSize":"1.4rem"}}>Made the Logout Backend, and Image Upload feature , also developed UI for Book List section,and many more</p>
           </div>
         </div>
 
 
         <div className="sol">
           <div className="member-description">
-            <h2>Aryan Solanki</h2>
-            <h5>Frontend</h5>
-            <p style={{"color":"white","fontSize":"1.5rem"}}>Made the User Interface of user and landing page and added so many components in both the pages and other pages as well</p>
+            <h2 style={{"color":"white","fontSize":"1.75rem"}}>Aryan Solanki</h2>
+            <h5 style={{"fontSize":"1.6rem"}}>Frontend</h5>
+            <p style={{"color":"white","fontSize":"1.4rem"}}>Made components of landing page and user page. Improved overall css of the website</p>
           </div>
           <div className="book-cardz">
             <img src={aryan} alt="Book 1"></img>
             <hr style={{"height":"2px","backgroundColor":"white"}}></hr>
             <div className="links-with">
-              <Link to={'/'}><BsLinkedin className="linked"/></Link>
-              <Link to={'/'}><BsInstagram className="insta"/></Link>
-              <Link to={'/'}><BsGithub className="hubgit"/></Link>
+              <Link to={'https://www.linkedin.com/in/asolankii/'}><BsLinkedin className="linked"/></Link>
+              <Link to={'https://instagram.com/solanki____275?igshid=MzNlNGNkZWQ4Mg=='}><BsInstagram className="insta"/></Link>
+              <Link to={'https://github.com/aldol275'}><BsGithub className="hubgit"/></Link>
             </div>
           </div>
         </div>
 
       </div>
-    </div>
-  
+      </div>
+}
+    </>
     );
 }
 
