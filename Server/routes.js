@@ -2,6 +2,7 @@ const express = require("express");
 const User = require("./models/userModel");
 const Book = require("./models/bookModel");
 const Admin = require("./models/adminbookModel");
+const Databook= require("./models/databooksModel")
 const router = express.Router();
 
 router.post("/api/signup", async (req, res) => {
@@ -98,47 +99,60 @@ router.post("/api/add", async (req, res) => {
         return_requested: 0,
       });
 
-      await checkUser.save();
-      console.log(returndate);
+        await checkUser.save();
+        console.log(returndate);
+  
+          const { allbooks } = ifPresent;
+          allbooks.push({
+            email: email,
+            username: name,
+            bookname: bookname,
+            genre: genre,
+            bookid: id,
+            issued: 0,
+            returned: 0,
+            issuedate: issuedate,
+            issuetime: issuetime,
+            returndate: returndate,
+            return_requested:0,
+          });
+          await ifPresent.save();
+          console.log("pushed");
 
-      const { allbooks } = ifPresent;
-      allbooks.push({
-        email: email,
-        username: name,
-        bookname: bookname,
-        genre: genre,
-        bookid: id,
-        issued: 0,
-        returned: 0,
-        issuedate: issuedate,
-        issuetime: issuetime,
-        returndate: returndate,
-        return_requested: 0,
-      });
-      await ifPresent.save();
-      console.log("pushed");
-      return res.json({ message: "Added Successfully", title: book.name });
-    } else {
-      console.log("hlo");
-      return res.json({ message: "greater than 2" });
-    }
-  } else if (!checkUser) {
-    const bookUpdated = [
+
+          const resdatabook=await Databook.findOne({});
+          const {data}=resdatabook;
+          data.map((book)=>{
+              if(book.id==id)
+              {
+                book.Available=false;
+              }
+          })
+          await resdatabook.save();
+        return res.json({ message: "Added Successfully", title: book.name });
+       }else {
+        console.log("hlo")
+        return res.json({ message: "greater than 2" });
+      }
+    
+     }else if(!checkUser ) {
+      const bookUpdated = [
+        {
+          ...book,
+          issued: 0,
+          returned: 0,
+          issuedate: issuedate,
+          issuetime: issuetime,
+          returndate: returndate,
+          return_requested:0,
+        },
+      ];
+      // console.log(bookUpdated)
+      // book.push({issued:0,returned:0,date:date,time:time})
+      const bookdata = new Book({ email: email, book: bookUpdated });
+      await bookdata.save();
+      if(!ifPresent)
       {
-        ...book,
-        issued: 0,
-        returned: 0,
-        issuedate: issuedate,
-        issuetime: issuetime,
-        returndate: returndate,
-        return_requested: 0,
-      },
-    ];
-    // console.log(bookUpdated)
-    // book.push({issued:0,returned:0,date:date,time:time})
-    const bookdata = new Book({ email: email, book: bookUpdated });
-    await bookdata.save();
-    if (!ifPresent) {
       const adminBook = new Admin({
         allbooks: [
           {
@@ -157,6 +171,15 @@ router.post("/api/add", async (req, res) => {
         ],
       });
       await adminBook.save();
+      const resdatabook=await Databook.findOne({});
+      const {data}=resdatabook;
+      data.map((book)=>{
+          if(book.id==id)
+          {
+            book.Available=false;
+          }
+      })
+      await data.save();
       console.log("Book saved to admin");
     } else {
       const { allbooks } = ifPresent;
@@ -174,6 +197,15 @@ router.post("/api/add", async (req, res) => {
         return_requested: 0,
       });
       await ifPresent.save();
+      const resdatabook=await Databook.findOne({});
+      const {data}=resdatabook;
+      data.map((book)=>{
+          if(book.id==id)
+          {
+            book.Available=false;
+          }
+      })
+      await resdatabook.save();
       console.log("pushed");
     }
 
@@ -248,6 +280,15 @@ router.delete("/api/remove", async (req, res) => {
   });
   await resadmin.save();
 
+  const resdatabook=await Databook.findOne({})
+  const {data}=resdatabook;
+      data.map((book)=>{
+          if(book.id==id)
+          {
+            book.Available=true;
+          }
+      })
+      await resdatabook.save();
   console.log("saved");
 
   res.json("deleted");
@@ -357,22 +398,28 @@ router.put("/api/return", async (req, res) => {
     }
   });
   await resadmin.save();
+  const resdatabook=await Databook.findOne({})
+  const {data}=resdatabook;
+      data.map((book)=>{
+          if(book.id==id)
+          {
+            book.Available=true;
+          }
+      })
+      await resdatabook.save();
 
   console.log("returned");
 
   res.json("returned");
 });
+router.get("/api/databooks", async (req, res) => {
+  const{data}= await Databook.findOne({});
 
-router.get("/api/return", async (req, res) => {});
-router.post("/api/order", async (req, res) => {
-  const email = req.query;
-  const Formdata = req.body;
-  const newOrder = new Order({
-    name: Formdata.name,
-    genre: Formdata.genre,
-    author: Formdata.author,
-  });
-  await newOrder.save();
-  res.json("new Order");
+  return res.json(data);
 });
+
+router.get("/api/return", async(req, res) => {
+
+})
+
 module.exports = router;

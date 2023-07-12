@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function NotAvailable({ title, id, author, genre, summary, url }) {
  
   return (
-    <div id="container">
+    <div id="container" style={{"backgroundColor":"white"}}>
     <div style={{"opacity":"0.5"}}>
       <div className="card">
         <img className="bookimg" src={url} alt="bookimg" />

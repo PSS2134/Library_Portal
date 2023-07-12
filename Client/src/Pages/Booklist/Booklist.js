@@ -5,6 +5,7 @@ import "./booklist.css";
 import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import HashLoader from "react-spinners/HashLoader";
+import NotAvailable from "../../components/bookcard/Notavailable";
 
 function Booklist({ updateUser }) {
   const { genre } = useParams();
@@ -22,7 +23,7 @@ function Booklist({ updateUser }) {
     return Object.values(book)[1].toLowerCase().includes(query.toLowerCase());
   });
   useEffect(() => {
-    fetch("https://mocki.io/v1/543bcd3a-e8aa-46ac-9279-0289293acfcd")
+    fetch("/api/databooks")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -45,6 +46,8 @@ function Booklist({ updateUser }) {
     oneliner =
       "Explore uncharted worlds, unravel mysteries, and experience the endless possibilities of other books genres";
   }
+
+ 
   // function to break array of books into groups of given size
   function makegroup(array, size) {
     const chunkedArray = [];
@@ -98,7 +101,8 @@ function Booklist({ updateUser }) {
           {makegroup(filteredItems, 3).map((row, rowno) => (
             <div className="grid" key={rowno}>
               {row.map((book) => (
-                <Bookcard
+                
+               book.Available?<Bookcard
                   updateUser={updateUser}
                   id={book.id}
                   title={book.name.slice(0, 18) + "..."}
@@ -106,10 +110,16 @@ function Booklist({ updateUser }) {
                   summary={book.summary && book.summary.slice(0, 100) + "..."}
                   genre={book.genre}
                   url={book.url}
-                />
+                />:<NotAvailable  id={book.id}
+                  title={book.name.slice(0, 18) + "..."}
+                  
+                  summary={book.summary && book.summary.slice(0, 100) + "..."}
+                  genre={book.genre}
+                  url={book.url}/>
               ))}
             </div>
           ))}
+      
           <Footer />
         </div>
       )}
