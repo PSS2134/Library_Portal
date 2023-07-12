@@ -74,6 +74,7 @@ router.post("/api/add", async (req, res) => {
     const id = book.id;
     const { name } = await User.findOne({ email: email });
     const ifPresent = await Admin.findOne({});
+    console.log(ifPresent);
    
     
       
@@ -104,7 +105,7 @@ router.post("/api/add", async (req, res) => {
 
         await checkUser.save();
         console.log(returndate);
-        if (ifPresent) {
+  
           const { allbooks } = ifPresent;
           allbooks.push({
             email: email,
@@ -122,12 +123,12 @@ router.post("/api/add", async (req, res) => {
           await ifPresent.save();
           console.log("pushed");
         return res.json({ message: "Added Successfully", title: book.name });
-      } }else {
+       }else {
         console.log("hlo")
         return res.json({ message: "greater than 2" });
       }
     
-     }else {
+     }else if(!checkUser ) {
       const bookUpdated = [
         {
           ...book,
@@ -143,6 +144,8 @@ router.post("/api/add", async (req, res) => {
       // book.push({issued:0,returned:0,date:date,time:time})
       const bookdata = new Book({ email: email, book: bookUpdated });
       await bookdata.save();
+      if(!ifPresent)
+      {
       const adminBook = new Admin({
         allbooks: [
           {
@@ -159,9 +162,29 @@ router.post("/api/add", async (req, res) => {
             return_requested:0,
           },
         ],
-      });
+      })
       await adminBook.save();
       console.log("Book saved to admin");
+    }
+    else{
+      const { allbooks } = ifPresent;
+      allbooks.push({
+        email: email,
+        username: name,
+        bookname: bookname,
+        genre: genre,
+        bookid: id,
+        issued: 0,
+        returned: 0,
+        issuedate: issuedate,
+        issuetime: issuetime,
+        returndate: returndate,
+        return_requested:0,
+      });
+      await ifPresent.save();
+      console.log("pushed");
+    };
+      
       // console.log({message:'new Added',title:book.name});
       return res.json({ message: "new Added", title: book.name });
     }

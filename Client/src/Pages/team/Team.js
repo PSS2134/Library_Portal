@@ -77,7 +77,7 @@ export default function Members({ updateUser }) {
           <div className="member-description">
             <h2>Ashutosh Mishra</h2>
             <h5>Frontend</h5>
-            <p>Made the User Interface of user and landing page and added so many components in both the pages and other pages as well</p>
+            <p style={{"color":"white","fontSize":"1.5rem"}}>Made the User Interface of user and landing page and added so many components in both the pages and other pages as well</p>
           </div>
         </div>
         
@@ -85,17 +85,17 @@ export default function Members({ updateUser }) {
 
         <div className="pri">
           <div className="member-description">
-            <h2>Priyansh Shrivastav</h2>
-            <h5>Backend</h5>
-            <p>Made the User Interface of user and landing page and added so many components in both the pages and other pages as well</p>
+            <h2 style={{"color":"white","fontSize":"1.75rem"}}>Priyansh Shrivastav</h2>
+            <h5 style={{"fontSize":"1.6rem"}}>Project and Backend Lead</h5>
+            <p style={{"color":"white","fontSize":"1.4rem"}}>Made the Overall Backend of Website and made Library Page UI and Login Signup UI as well, suggested and made some changes in Frontend and fixed bugs</p>
           </div>
           <div className="book-cardz">
             <img src={Priyansh} alt="Book 4"></img>
             <hr style={{"height":"2px","backgroundColor":"white"}}></hr>
             <div className="links-with">
-              <Link to={'/'}><BsLinkedin className="linked"/></Link>
-              <Link to={'/'}><BsInstagram className="insta"/></Link>
-              <Link to={'/'}><BsGithub className="hubgit"/></Link>
+              <Link to={'https://www.linkedin.com/in/priyansh-shrivastav-b5868b229/'}><BsLinkedin className="linked"/></Link>
+              <Link to={'https://www.instagram.com/priyansh_s_s/'}><BsInstagram className="insta"/></Link>
+              <Link to={'https://github.com/PSS2134'}><BsGithub className="hubgit"/></Link>
             </div>
           </div>
           
@@ -106,15 +106,15 @@ export default function Members({ updateUser }) {
             <img src={Abhi} alt="Book 3"></img>
             <hr style={{"height":"2px","backgroundColor":"white"}}></hr>
             <div className="links-with">
-              <Link to={'/'}><BsLinkedin className="linked"/></Link>
-              <Link to={'/'}><BsInstagram className="insta"/></Link>
-              <Link to={'/'}><BsGithub className="hubgit"/></Link>
+              <Link to={'https://www.linkedin.com/in/abhishekg2409/'}><BsLinkedin className="linked"/></Link>
+              <Link to={'https://www.instagram.com/abhi_g_24__/'}><BsInstagram className="insta"/></Link>
+              <Link to={'https://github.com/Abhi24iitg'}><BsGithub className="hubgit"/></Link>
             </div>
           </div>
           <div className="member-description">
             <h2>Abhishek Gupta</h2>
-            <h5>Frontend</h5>
-            <p>Made the User Interface of user and landing page and added so many components in both the pages and other pages as well</p>
+            <h5>Frontend Lead and Backend</h5>
+            <p style={{"color":"white","fontSize":"1.5rem"}}>Made the Logout Backend, and Image Upload feature , also developed UI for Book List section,and many more</p>
           </div>
         </div>
 
@@ -123,7 +123,7 @@ export default function Members({ updateUser }) {
           <div className="member-description">
             <h2>Aryan Solanki</h2>
             <h5>Frontend</h5>
-            <p>Made the User Interface of user and landing page and added so many components in both the pages and other pages as well</p>
+            <p style={{"color":"white","fontSize":"1.5rem"}}>Made the User Interface of user and landing page and added so many components in both the pages and other pages as well</p>
           </div>
           <div className="book-cardz">
             <img src={aryan} alt="Book 1"></img>
