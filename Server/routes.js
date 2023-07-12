@@ -382,8 +382,18 @@ const returndate=new Date().toLocaleDateString();
   res.json("returned");
 });
 
-router.get("/api/return", async(req, res) => {
 
-})
+router.get("/api/return", async (req, res) => {});
+router.post("/api/order", async (req, res) => {
+  const email=req.query;
+  const Formdata = req.body;
+  const newOrder = new Order({
+    name: Formdata.name,
+    genre: Formdata.genre,
+    author: Formdata.author,
+  });
+  await newOrder.save();
+  res.json("new Order");
+});
 
 module.exports = router;

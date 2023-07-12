@@ -57,6 +57,20 @@ function Bookinfo({ updateUser }) {
     } else {
       toast.success(`${data.title} added successfully`);
     }
+  // const bookres=await fetch(`https://mocki.io/v1/5fe99cc7-0e42-46f3-a511-5a18c0abd765/${book.id}`,{
+  //   method:"PUT",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({
+  //     ...book,Available:false,
+
+  //   }),
+
+  // })
+  // const bookresnew=await bookres.json();
+  // console.log("update");
+
   };
   // console.log(book.url);
   return (
