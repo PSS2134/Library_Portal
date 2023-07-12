@@ -13,7 +13,6 @@ import Booklist from "../Pages/Booklist/Booklist";
 import ScrollToTop from "./Scroll";
 import Members from "../Pages/team/Team";
 import FormElement from "../components/order/Form";
-import Searchbar from "../Pages/Booklist/searchbar";
 
 //data
 // import books from "../Data/data";
@@ -96,7 +95,6 @@ function Routes_new() {
           }
         />
         <Route path="/team" element={<Members updateUser={updateUser} />} />
-        <Route path="/search" element={<Searchbar />} />
         <Route path="*" element={<h1>Home</h1>} />
       </Routes>
     </BrowserRouter>

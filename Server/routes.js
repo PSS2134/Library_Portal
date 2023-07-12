@@ -2,6 +2,7 @@ const express = require("express");
 const User = require("./models/userModel");
 const Book = require("./models/bookModel");
 const Admin = require("./models/adminbookModel");
+const Order = require("./models/orderModel");
 const router = express.Router();
 
 router.post("/api/signup", async (req, res) => {
@@ -53,121 +54,114 @@ router.get("/api/login", async (req, res) => {
 });
 
 router.post("/api/add", async (req, res) => {
+  const date = new Date();
+  const issuedate = date.toLocaleDateString();
+  const issuetime = date.toLocaleTimeString();
+  // const month=date.getMonth();
+  // console.log(month);
+  // let returndate=new Date().setMonth(month+1);
+  // console.log(returndate);
+  let dt = new Date();
+  let no_of_months = 1;
+  dt.setMonth(dt.getMonth() + no_of_months);
+  const returndate = dt.toLocaleDateString();
 
-    const date = new Date();
-    const issuedate = date.toLocaleDateString();
-    const issuetime = date.toLocaleTimeString();
-    // const month=date.getMonth();
-    // console.log(month);
-    // let returndate=new Date().setMonth(month+1);
-    // console.log(returndate);
-    let dt = new Date();
-    let no_of_months = 1;
-    dt.setMonth(dt.getMonth() + no_of_months);
-    const returndate = dt.toLocaleDateString();
+  // console.log(returndate);
+  const book = req.body;
+  const email = req.query.email;
+  const bookname = book.name;
+  const genre = book.genre;
+  const id = book.id;
+  const { name } = await User.findOne({ email: email });
+  const ifPresent = await Admin.findOne({});
 
-    // console.log(returndate);
-    const book = req.body;
-    const email = req.query.email;
-    const bookname = book.name;
-    const genre = book.genre;
-    const id = book.id;
-    const { name } = await User.findOne({ email: email });
-    const ifPresent = await Admin.findOne({});
-   
-    
-      
-    
-    
-    // console.log(book);
-    const checkUser = await Book.findOne({ email: email });
-    if (checkUser) {
-      console.log("hi");
-      let count = 0;
-      checkUser.book.map((singleBook) => {
-        if (singleBook.return_requested == 0) {
-          count++;
-        }
-      });
-      console.log(count);
-      if (count < 2) {
-        console.log("hemlo");
-        checkUser.book.push({
-          ...book,
-          issued: 0,
-          returned: 0,
-          issuedate: issuedate,
-          issuetime: issuetime,
-          returndate: returndate,
-          return_requested:0,
-        });
-
-        await checkUser.save();
-        console.log(returndate);
-        if (ifPresent) {
-          const { allbooks } = ifPresent;
-          allbooks.push({
-            email: email,
-            username: name,
-            bookname: bookname,
-            genre: genre,
-            bookid: id,
-            issued: 0,
-            returned: 0,
-            issuedate: issuedate,
-            issuetime: issuetime,
-            returndate: returndate,
-            return_requested:0,
-          });
-          await ifPresent.save();
-          console.log("pushed");
-        return res.json({ message: "Added Successfully", title: book.name });
-      } }else {
-        console.log("hlo")
-        return res.json({ message: "greater than 2" });
+  // console.log(book);
+  const checkUser = await Book.findOne({ email: email });
+  if (checkUser) {
+    console.log("hi");
+    let count = 0;
+    checkUser.book.map((singleBook) => {
+      if (singleBook.return_requested == 0) {
+        count++;
       }
-    
-     }else {
-      const bookUpdated = [
-        {
-          ...book,
+    });
+    console.log(count);
+    if (count < 2) {
+      console.log("hemlo");
+      checkUser.book.push({
+        ...book,
+        issued: 0,
+        returned: 0,
+        issuedate: issuedate,
+        issuetime: issuetime,
+        returndate: returndate,
+        return_requested: 0,
+      });
+
+      await checkUser.save();
+      console.log(returndate);
+      if (ifPresent) {
+        const { allbooks } = ifPresent;
+        allbooks.push({
+          email: email,
+          username: name,
+          bookname: bookname,
+          genre: genre,
+          bookid: id,
           issued: 0,
           returned: 0,
           issuedate: issuedate,
           issuetime: issuetime,
           returndate: returndate,
-          return_requested:0,
-        },
-      ];
-      // console.log(bookUpdated)
-      // book.push({issued:0,returned:0,date:date,time:time})
-      const bookdata = new Book({ email: email, book: bookUpdated });
-      await bookdata.save();
-      const adminBook = new Admin({
-        allbooks: [
-          {
-            email: email,
-            username: name,
-            bookname: bookname,
-            genre: genre,
-            bookid: id,
-            issued: 0,
-            returned: 0,
-            issuedate: issuedate,
-            issuetime: issuetime,
-            returndate: returndate,
-            return_requested:0,
-          },
-        ],
-      });
-      await adminBook.save();
-      console.log("Book saved to admin");
-      // console.log({message:'new Added',title:book.name});
-      return res.json({ message: "new Added", title: book.name });
+          return_requested: 0,
+        });
+        await ifPresent.save();
+        console.log("pushed");
+        return res.json({ message: "Added Successfully", title: book.name });
+      }
+    } else {
+      console.log("hlo");
+      return res.json({ message: "greater than 2" });
     }
+  } else {
+    const bookUpdated = [
+      {
+        ...book,
+        issued: 0,
+        returned: 0,
+        issuedate: issuedate,
+        issuetime: issuetime,
+        returndate: returndate,
+        return_requested: 0,
+      },
+    ];
+    // console.log(bookUpdated)
+    // book.push({issued:0,returned:0,date:date,time:time})
+    const bookdata = new Book({ email: email, book: bookUpdated });
+    await bookdata.save();
+    const adminBook = new Admin({
+      allbooks: [
+        {
+          email: email,
+          username: name,
+          bookname: bookname,
+          genre: genre,
+          bookid: id,
+          issued: 0,
+          returned: 0,
+          issuedate: issuedate,
+          issuetime: issuetime,
+          returndate: returndate,
+          return_requested: 0,
+        },
+      ],
+    });
+    await adminBook.save();
+    console.log("Book saved to admin");
+    // console.log({message:'new Added',title:book.name});
+    return res.json({ message: "new Added", title: book.name });
   }
-  
-);
+});
 
 router.get("/api/profile", async (req, res) => {
   const email = req.query.email;
@@ -245,52 +239,48 @@ router.put("/api/admin/:id", async (req, res) => {
   const object_id = req.params.id;
   let email, book_id;
   const resadmin = await Admin.findOne({});
-  if(req.query.action=="issued"){
-console.log('hello...');
+  if (req.query.action == "issued") {
+    console.log("hello...");
     resadmin.allbooks.map((singleAdminBook) => {
       if (singleAdminBook._id == object_id) {
         (email = singleAdminBook.email), (book_id = singleAdminBook.bookid);
         singleAdminBook.issued = 1;
-        singleAdminBook.issuedate=new Date().toLocaleDateString();
+        singleAdminBook.issuedate = new Date().toLocaleDateString();
       }
     });
     await resadmin.save();
-  
+
     const resbookmodel = await Book.findOne({ email: email });
     resbookmodel.book.map((singleBook) => {
       if (singleBook.id == String(book_id) && !singleBook.issued) {
         singleBook.issued = 1;
-        singleBook.issuedate=new Date().toLocaleDateString();
-     
+        singleBook.issuedate = new Date().toLocaleDateString();
       }
     });
     await resbookmodel.save();
     console.log("updated");
     return res.json("issued");
-  }
- else{
-  resadmin.allbooks.map((singleAdminBook) => {
-    if (singleAdminBook._id == object_id) {
-      (email = singleAdminBook.email), (book_id = singleAdminBook.bookid);
-      singleAdminBook.returned = 1;
-      // singleAdminBook.issuedate=new Date().toLocaleDateString();
-    }
-  });
-  await resadmin.save();
-  const resbookmodel = await Book.findOne({ email: email });
+  } else {
+    resadmin.allbooks.map((singleAdminBook) => {
+      if (singleAdminBook._id == object_id) {
+        (email = singleAdminBook.email), (book_id = singleAdminBook.bookid);
+        singleAdminBook.returned = 1;
+        // singleAdminBook.issuedate=new Date().toLocaleDateString();
+      }
+    });
+    await resadmin.save();
+    const resbookmodel = await Book.findOne({ email: email });
     resbookmodel.book.map((singleBook) => {
       if (singleBook.id == String(book_id) && !singleBook.returned) {
         singleBook.returned = 1;
         // singleBook.issuedate=new Date().toLocaleDateString();
-     
       }
     });
     await resbookmodel.save();
     console.log("updated");
     return res.json("returned");
- }
+  }
   // console.log(resadmin);
-
 });
 router.put("/api/image", async (req, res) => {
   const { email, picture } = req.body;
@@ -314,9 +304,9 @@ router.post("/api/books", async (req, res) => {
   else if (cnt == 1) return res.json("1");
 });
 
-router.put("/api/return", async(req,res)=>{
+router.put("/api/return", async (req, res) => {
   const { email, id } = req.query;
-const returndate=new Date().toLocaleDateString();
+  const returndate = new Date().toLocaleDateString();
   console.log(returndate);
   //  console.log(req.query)
   //  console.log(email,id);
@@ -327,9 +317,8 @@ const returndate=new Date().toLocaleDateString();
   Bookdetails.book.map(async (singleBook) => {
     if (singleBook.id == String(id)) {
       // console.log(singleBook);
-      singleBook.return_requested=1;
-      singleBook.returndate=returndate;
-     
+      singleBook.return_requested = 1;
+      singleBook.returndate = returndate;
     }
   });
   await Bookdetails.save();
@@ -338,13 +327,9 @@ const returndate=new Date().toLocaleDateString();
   const resadmin = await Admin.findOne({});
   console.log(resadmin);
   resadmin.allbooks.map(async (singleBook) => {
-    if (singleBook.bookid == String(id) && singleBook.email==email) {
-      
-
-      singleBook.return_requested=1;
-      singleBook.returndate=returndate;
-      
-     
+    if (singleBook.bookid == String(id) && singleBook.email == email) {
+      singleBook.return_requested = 1;
+      singleBook.returndate = returndate;
     }
   });
   await resadmin.save();
@@ -354,8 +339,17 @@ const returndate=new Date().toLocaleDateString();
   res.json("returned");
 });
 
-router.get("/api/return", async(req, res) => {
-
-})
+router.get("/api/return", async (req, res) => {});
+router.post("/api/order", async (req, res) => {
+  const email=req.query;
+  const Formdata = req.body;
+  const newOrder = new Order({
+    name: Formdata.name,
+    genre: Formdata.genre,
+    author: Formdata.author,
+  });
+  await newOrder.save();
+  res.json("new Order");
+});
 
 module.exports = router;
