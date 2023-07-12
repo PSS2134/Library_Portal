@@ -7,6 +7,7 @@ import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import HashLoader from "react-spinners/HashLoader";
 
+
 function Bookinfo({ updateUser }) {
   const { id } = useParams();
   const [booksData, setBooksData] = useState([]);
@@ -15,7 +16,7 @@ function Bookinfo({ updateUser }) {
   // this will fetch books acording to particular genre
 
   useEffect(() => {
-    fetch("https://mocki.io/v1/543bcd3a-e8aa-46ac-9279-0289293acfcd")
+    fetch("/api/databooks")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -37,6 +38,7 @@ function Bookinfo({ updateUser }) {
   });
   const book = filteredArray[0];
   console.log(filteredArray);
+  book && console.log(book.Available);
   // const { name, genre, summary, author, url } = book;
   const email = JSON.parse(localStorage.getItem("user")).email;
 
@@ -54,8 +56,10 @@ function Bookinfo({ updateUser }) {
       toast.warn("You already have 2 books to be issued");
     } else if (data.message == "new Added") {
       toast.success(`Congratulations! on adding your first book`);
+      window.location.reload();
     } else {
       toast.success(`${data.title} added successfully`);
+      window.location.reload()
     }
   // const bookres=await fetch(`https://mocki.io/v1/5fe99cc7-0e42-46f3-a511-5a18c0abd765/${book.id}`,{
   //   method:"PUT",
@@ -72,8 +76,9 @@ function Bookinfo({ updateUser }) {
   // console.log("update");
 
   };
+ 
   // console.log(book.url);
-  return (
+    return (
     <>
     {loading?
     <div className="loading">
@@ -105,9 +110,13 @@ function Bookinfo({ updateUser }) {
                   <h2>Genre : {book.genre}</h2>
                   <h4>Summary: {book.summary}</h4>
                   <div className="button">
-                    <button onClick={postData} className="cart">
+                   {book.Available? <button onClick={postData} className="cart">
                       Issue Book
-                    </button>
+                    </button>:<button  className="cart" onClick={()=>{
+                  toast.error("Not Available Currently")
+                }}>
+                      Not Available
+                    </button>}
                   </div>
                 </div>
               </div>

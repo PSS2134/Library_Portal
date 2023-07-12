@@ -2,6 +2,7 @@ const express = require("express");
 const User = require("./models/userModel");
 const Book = require("./models/bookModel");
 const Admin = require("./models/adminbookModel");
+const Databook= require("./models/databooksModel")
 const router = express.Router();
 
 router.post("/api/signup", async (req, res) => {
@@ -122,6 +123,17 @@ router.post("/api/add", async (req, res) => {
           });
           await ifPresent.save();
           console.log("pushed");
+
+
+          const resdatabook=await Databook.findOne({});
+          const {data}=resdatabook;
+          data.map((book)=>{
+              if(book.id==id)
+              {
+                book.Available=false;
+              }
+          })
+          await resdatabook.save();
         return res.json({ message: "Added Successfully", title: book.name });
        }else {
         console.log("hlo")
@@ -164,6 +176,15 @@ router.post("/api/add", async (req, res) => {
         ],
       })
       await adminBook.save();
+      const resdatabook=await Databook.findOne({});
+      const {data}=resdatabook;
+      data.map((book)=>{
+          if(book.id==id)
+          {
+            book.Available=false;
+          }
+      })
+      await data.save();
       console.log("Book saved to admin");
     }
     else{
@@ -182,6 +203,15 @@ router.post("/api/add", async (req, res) => {
         return_requested:0,
       });
       await ifPresent.save();
+      const resdatabook=await Databook.findOne({});
+      const {data}=resdatabook;
+      data.map((book)=>{
+          if(book.id==id)
+          {
+            book.Available=false;
+          }
+      })
+      await resdatabook.save();
       console.log("pushed");
     };
       
@@ -258,6 +288,15 @@ router.delete("/api/remove", async (req, res) => {
   });
   await resadmin.save();
 
+  const resdatabook=await Databook.findOne({})
+  const {data}=resdatabook;
+      data.map((book)=>{
+          if(book.id==id)
+          {
+            book.Available=true;
+          }
+      })
+      await resdatabook.save();
   console.log("saved");
 
   res.json("deleted");
@@ -376,11 +415,29 @@ const returndate=new Date().toLocaleDateString();
     }
   });
   await resadmin.save();
+  const resdatabook=await Databook.findOne({})
+  const {data}=resdatabook;
+      data.map((book)=>{
+          if(book.id==id)
+          {
+            book.Available=true;
+          }
+      })
+      await resdatabook.save();
 
   console.log("returned");
 
   res.json("returned");
 });
+
+
+router.get('/api/databooks',async(req,res)=>{
+const response=await Databook.findOne({});
+const {data}=response;
+return res.json(data);
+
+
+})
 
 
 router.get("/api/return", async (req, res) => {});
