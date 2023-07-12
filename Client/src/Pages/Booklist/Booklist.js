@@ -10,6 +10,7 @@ function Booklist({ updateUser }) {
   const { genre } = useParams();
   const [booksData, setBooksData] = useState([]);
   const [loading, setLoading] = useState(true);
+
   // this will fetch books acording to particular genre
   const genregroup = booksData.filter((book) => {
     if (book.genre === genre) {
@@ -19,15 +20,14 @@ function Booklist({ updateUser }) {
 
   useEffect(() => {
     fetch("https://mocki.io/v1/543bcd3a-e8aa-46ac-9279-0289293acfcd")
-    
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setBooksData(data);
       });
-      setTimeout(() => {
-        setLoading(false);
-      }, 1250);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1250);
   }, []);
   let oneliner = "";
   if (genre === "Fiction") {
@@ -52,42 +52,42 @@ function Booklist({ updateUser }) {
   }
   return (
     <>
-    {loading?
-    <div className="loading">
-    <HashLoader
-      color={"#F37A24"}
-      loading={loading}
-      size={100}
-      aria-label="Loading Spinner"
-      data-testid="loader"
-    />
-  </div>
-  :
-    <div className="booklist">
-      <Navbar updateUser={updateUser} />
-      <div className="head">
-        <h1>Welcome to {genre} genre</h1>
-        <p className="head-oneliner">{oneliner}</p>
-      </div>
-      {makegroup(genregroup, 3).map((row, rowno) => (
-        <div className="grid" key={rowno}>
-          {row.map((book) => (
-            <Bookcard
-              updateUser={updateUser}
-              id={book.id}
-              title={book.name.slice(0, 18) + "..."}
-              author={book.author}
-              summary={book.summary&&book.summary.slice(0, 100) + "..."}
-              genre={book.genre}
-              url={book.url}
-            />
-          ))}
+      {loading ? (
+        <div className="loading">
+          <HashLoader
+            color={"#F37A24"}
+            loading={loading}
+            size={100}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
         </div>
-      ))}
-      <Footer />
-    </div>
-}
-</>
+      ) : (
+        <div className="booklist">
+          <Navbar updateUser={updateUser} />
+          <div className="head">
+            <h1>Welcome to {genre} genre</h1>
+            <p className="head-oneliner">{oneliner}</p>
+          </div>
+          {makegroup(genregroup, 3).map((row, rowno) => (
+            <div className="grid" key={rowno}>
+              {row.map((book) => (
+                <Bookcard
+                  updateUser={updateUser}
+                  id={book.id}
+                  title={book.name.slice(0, 18) + "..."}
+                  author={book.author}
+                  summary={book.summary && book.summary.slice(0, 100) + "..."}
+                  genre={book.genre}
+                  url={book.url}
+                />
+              ))}
+            </div>
+          ))}
+          <Footer />
+        </div>
+      )}
+    </>
   );
 }
 export default Booklist;
