@@ -2,7 +2,6 @@
 
 // function Members(){
 //     return (
-        
 
 // <div class="body">
 //  <h1>Meet the Team</h1>
@@ -34,24 +33,20 @@
 //   <p>Position: Content Writer</p>
 //   <p>Experience: 2 years</p>
 // </div>
-      
-
-
 
 // </div>
 
-    
 import React, { useEffect, useState } from "react";
 // import Aryan from './Solankiimg.jpeg';
-import Abhi from './2.jpg';
-import Priyansh from './3.jpg';
-import Vashu from './1.jpg';
-import aryan from './4.jpg';
+import Abhi from "./2.jpg";
+import Priyansh from "./3.jpg";
+import Vashu from "./1.jpg";
+import aryan from "./4.jpg";
 //import Carousel from "react-elastic-carousel";
-import { BsLinkedin } from 'react-icons/bs';
-import { BsInstagram } from 'react-icons/bs';
-import { BsGithub } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { BsLinkedin } from "react-icons/bs";
+import { BsInstagram } from "react-icons/bs";
+import { BsGithub } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 import "./Team.css";
 import HashLoader from "react-spinners/HashLoader";
@@ -68,98 +63,152 @@ export default function Members({ updateUser }) {
   return (
     <>
       {/* <Link to={'/'}><button className="home-from-team">Home</button></Link> */}
-      {loading?
-      <div className="loading">
-      <HashLoader
-        color={"#F37A24"}
-        loading={loading}
-        size={100}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      />
-    </div>
-    :
-    <div className="meet">
-      <Teambar updateUser={updateUser} />
-      <h1 className="team-heading">TEAM</h1>
-      <div className="detailsz">
-   
-        <div className="ashu">
-          <div className="book-cardz1">
-            <img src={Vashu} alt="ahishek"></img>
-            <hr style={{"height":"2px","backgroundColor":"white"}}></hr>
-            <div className="links-with">
-              <Link to={'https://www.linkedin.com/in/ashutosh-mishra-690a40251/'}><BsLinkedin className="linked"/></Link>
-              <Link to={'https://www.instagram.com/ashutosh_mishra.0/'}><BsInstagram className="insta"/></Link>
-              <Link to={'https://github.com/Ashutosh5548'}><BsGithub className="hubgit"/></Link>
+      {loading ? (
+        <div className="loading">
+          <HashLoader
+            color={"#F37A24"}
+            loading={loading}
+            size={100}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      ) : (
+        <div className="meet">
+          <Teambar updateUser={updateUser} />
+          <h1 className="team-heading">TEAM</h1>
+          <div className="detailsz">
+            <div className="ashu">
+              <div className="book-cardz1">
+                <img src={Vashu} alt="ahishek"></img>
+                <hr style={{ height: "2px", backgroundColor: "white" }}></hr>
+                <div className="links-with">
+                  <Link
+                    to={
+                      "https://www.linkedin.com/in/ashutosh-mishra-690a40251/"
+                    }
+                  >
+                    <BsLinkedin className="linked" />
+                  </Link>
+                  <Link to={"https://www.instagram.com/ashutosh_mishra.0/"}>
+                    <BsInstagram className="insta" />
+                  </Link>
+                  <Link to={"https://github.com/Ashutosh5548"}>
+                    <BsGithub className="hubgit" />
+                  </Link>
+                </div>
+              </div>
+              <div className="member-description">
+                <h2 style={{ color: "white", fontSize: "1.75rem" }}>
+                  Ashutosh Mishra
+                </h2>
+                <h5 style={{ fontSize: "1.6rem" }}>Frontend Lead</h5>
+                <p style={{ color: "white", fontSize: "1.4rem" }}>
+                  Made the UI of user page, admin page, landing page and team
+                  page. Made so many components and Maintained overall css of
+                  the website
+                </p>
+              </div>
+            </div>
+
+            <div className="pri">
+              <div className="member-description">
+                <h2 style={{ color: "white", fontSize: "1.75rem" }}>
+                  Priyansh Shrivastav
+                </h2>
+                <h5 style={{ fontSize: "1.6rem" }}>Project and Backend Lead</h5>
+                <p style={{ color: "white", fontSize: "1.4rem" }}>
+                  Made the Overall Backend of Website and made Library Page UI
+                  and Login Signup UI as well, suggested and made some changes
+                  in Frontend and fixed bugs
+                </p>
+              </div>
+              <div className="book-cardz">
+                <img src={Priyansh} alt="Book 4"></img>
+                <hr style={{ height: "2px", backgroundColor: "white" }}></hr>
+                <div className="links-with">
+                  <Link
+                    to={
+                      "https://www.linkedin.com/in/priyansh-shrivastav-b5868b229/"
+                    }
+                  >
+                    <BsLinkedin className="linked" />
+                  </Link>
+                  <Link to={"https://www.instagram.com/priyansh_s_s/"}>
+                    <BsInstagram className="insta" />
+                  </Link>
+                  <Link to={"https://github.com/PSS2134"}>
+                    <BsGithub className="hubgit" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <div className="abhi">
+              <div className="book-cardz1">
+                <img src={Abhi} alt="Book 3"></img>
+                <hr style={{ height: "2px", backgroundColor: "white" }}></hr>
+                <div className="links-with">
+                  <Link to={"https://www.linkedin.com/in/abhishekg2409/"}>
+                    <BsLinkedin className="linked" />
+                  </Link>
+                  <Link to={"https://www.instagram.com/abhi_g_24__/"}>
+                    <BsInstagram className="insta" />
+                  </Link>
+                  <Link to={"https://github.com/Abhi24iitg"}>
+                    <BsGithub className="hubgit" />
+                  </Link>
+                </div>
+              </div>
+              <div className="member-description">
+                <h2 style={{ color: "white", fontSize: "1.75rem" }}>
+                  Abhishek Gupta
+                </h2>
+                <h5 style={{ fontSize: "1.6rem" }}>
+                  Frontend Lead and Backend
+                </h5>
+                <p style={{ color: "white", fontSize: "1.4rem" }}>
+                  Developed the UI for Booklist & BookInfo.Improved The
+                  CSS.Added the Image and Book Search functionality.Also
+                  Contributed in Backend for Logout and Image storing
+                </p>
+              </div>
+            </div>
+
+            <div className="sol">
+              <div className="member-description">
+                <h2 style={{ color: "white", fontSize: "1.75rem" }}>
+                  Aryan Solanki
+                </h2>
+                <h5 style={{ fontSize: "1.6rem" }}>Frontend</h5>
+                <p style={{ color: "white", fontSize: "1.4rem" }}>
+                  Made components of landing page and user page. Improved
+                  overall css of the website
+                </p>
+              </div>
+              <div className="book-cardz">
+                <img src={aryan} alt="Book 1"></img>
+                <hr style={{ height: "2px", backgroundColor: "white" }}></hr>
+                <div className="links-with">
+                  <Link to={"https://www.linkedin.com/in/asolankii/"}>
+                    <BsLinkedin className="linked" />
+                  </Link>
+                  <Link
+                    to={
+                      "https://instagram.com/solanki____275?igshid=MzNlNGNkZWQ4Mg=="
+                    }
+                  >
+                    <BsInstagram className="insta" />
+                  </Link>
+                  <Link to={"https://github.com/aldol275"}>
+                    <BsGithub className="hubgit" />
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="member-description">
-            <h2 style={{"color":"white","fontSize":"1.75rem"}}>Ashutosh Mishra</h2>
-            <h5 style={{"fontSize":"1.6rem"}}>Frontend Lead</h5>
-            <p style={{"color":"white","fontSize":"1.4rem"}}>Made the UI of user page, admin page, landing page and team page. Made so many components and Maintained overall css of the website</p>
-          </div>
         </div>
-        
-
-
-        <div className="pri">
-          <div className="member-description">
-            <h2 style={{"color":"white","fontSize":"1.75rem"}}>Priyansh Shrivastav</h2>
-            <h5 style={{"fontSize":"1.6rem"}}>Project and Backend Lead</h5>
-            <p style={{"color":"white","fontSize":"1.4rem"}}>Made the Overall Backend of Website and made Library Page UI and Login Signup UI as well, suggested and made some changes in Frontend and fixed bugs</p>
-          </div>
-          <div className="book-cardz">
-            <img src={Priyansh} alt="Book 4"></img>
-            <hr style={{"height":"2px","backgroundColor":"white"}}></hr>
-            <div className="links-with">
-              <Link to={'https://www.linkedin.com/in/priyansh-shrivastav-b5868b229/'}><BsLinkedin className="linked"/></Link>
-              <Link to={'https://www.instagram.com/priyansh_s_s/'}><BsInstagram className="insta"/></Link>
-              <Link to={'https://github.com/PSS2134'}><BsGithub className="hubgit"/></Link>
-            </div>
-          </div>
-          
-        </div>
-
-        <div className="abhi">
-          <div className="book-cardz1">
-            <img src={Abhi} alt="Book 3"></img>
-            <hr style={{"height":"2px","backgroundColor":"white"}}></hr>
-            <div className="links-with">
-              <Link to={'https://www.linkedin.com/in/abhishekg2409/'}><BsLinkedin className="linked"/></Link>
-              <Link to={'https://www.instagram.com/abhi_g_24__/'}><BsInstagram className="insta"/></Link>
-              <Link to={'https://github.com/Abhi24iitg'}><BsGithub className="hubgit"/></Link>
-            </div>
-          </div>
-          <div className="member-description">
-            <h2 style={{"color":"white","fontSize":"1.75rem"}}>Abhishek Gupta</h2>
-            <h5 style={{"fontSize":"1.6rem"}}>Frontend Lead and Backend</h5>
-            <p style={{"color":"white","fontSize":"1.4rem"}}>Made the Logout Backend, and Image Upload feature , also developed UI for Book List section,and many more</p>
-          </div>
-        </div>
-
-
-        <div className="sol">
-          <div className="member-description">
-            <h2 style={{"color":"white","fontSize":"1.75rem"}}>Aryan Solanki</h2>
-            <h5 style={{"fontSize":"1.6rem"}}>Frontend</h5>
-            <p style={{"color":"white","fontSize":"1.4rem"}}>Made components of landing page and user page. Improved overall css of the website</p>
-          </div>
-          <div className="book-cardz">
-            <img src={aryan} alt="Book 1"></img>
-            <hr style={{"height":"2px","backgroundColor":"white"}}></hr>
-            <div className="links-with">
-              <Link to={'https://www.linkedin.com/in/asolankii/'}><BsLinkedin className="linked"/></Link>
-              <Link to={'https://instagram.com/solanki____275?igshid=MzNlNGNkZWQ4Mg=='}><BsInstagram className="insta"/></Link>
-              <Link to={'https://github.com/aldol275'}><BsGithub className="hubgit"/></Link>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      </div>
-}
+      )}
     </>
-    );
+  );
 }
-
