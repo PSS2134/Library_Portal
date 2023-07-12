@@ -13,6 +13,7 @@ import Booklist from "../Pages/Booklist/Booklist";
 import ScrollToTop from "./Scroll";
 import Members from "../Pages/team/Team";
 import FormElement from "../components/order/Form";
+import AdminUser from "../components/admincomp/adminuser";
 
 //data
 // import books from "../Data/data";
@@ -49,6 +50,7 @@ function Routes_new() {
           }
         />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/adminuser/:email" element={<AdminUser />} />
         <Route path="/login" element={<Login updateUser={updateUser} />} />
         <Route
           path="/library"
