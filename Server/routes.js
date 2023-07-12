@@ -412,6 +412,11 @@ router.put("/api/return", async (req, res) => {
 
   res.json("returned");
 });
+router.get("/api/databooks", async (req, res) => {
+  const{data}= await Databook.findOne({});
+
+  return res.json(data);
+});
 
 router.get("/api/return", async(req, res) => {
 
