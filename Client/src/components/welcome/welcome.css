@@ -98,11 +98,11 @@
 }
 
 .land-title>h1{
-    font-weight: 600;
-    font-size: 3rem;
+    /* font-weight: 600; */
+    font-size: 4rem;
     /* line-height: 4rem; */
     /* margin-left: 23%; */
-    color: yellowgreen;
+    color: #0E2954;
 }
 
 .flex-btn{
@@ -118,7 +118,7 @@
 } */
 
 .wel-btn{
-    background-color: #333;
+    background-color: #0E2954;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -149,10 +149,9 @@
 }
 
 .land-des p{
-    color: rgb(87, 64, 64);
-    font-size: 15px;
-    font-weight: 600;
+    color: rgb(94, 62, 62);
     font-family: "Poppins";
+    font-weight: 600;
     margin-right: 2%;
 }
 

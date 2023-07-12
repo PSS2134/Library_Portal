@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Bookcard from "../../components/bookcard/Bookcard";
-import "../../Styles/booklist.css";
+import "./booklist.css";
 import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import HashLoader from "react-spinners/HashLoader";
@@ -10,15 +10,18 @@ import NotAvailable from "../../components/bookcard/Notavailable";
 function Booklist({ updateUser }) {
   const { genre } = useParams();
   const [booksData, setBooksData] = useState([]);
+  const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(true);
-
   // this will fetch books acording to particular genre
   const genregroup = booksData.filter((book) => {
     if (book.genre === genre) {
       return book;
     }
   });
-
+  // console.log(Object.values(genregroup[0])[1].toLowerCase());
+  const filteredItems = genregroup.filter((book) => {
+    return Object.values(book)[1].toLowerCase().includes(query.toLowerCase());
+  });
   useEffect(() => {
     fetch("/api/databooks")
       .then((res) => res.json())
@@ -72,7 +75,30 @@ function Booklist({ updateUser }) {
             <h1>Welcome to {genre} genre</h1>
             <p className="head-oneliner">{oneliner}</p>
           </div>
-          {makegroup(genregroup, 3).map((row, rowno) => (
+          <div
+            style={{
+              width: "100%",
+              backgroundColor: "#030c40",
+              padding: "0 35% 0 38%",
+            }}
+          >
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="book-search"
+              type="search"
+              placeholder="Search Your Book"
+              style={{
+                width: "350px",
+                height: "40px",
+                marginleft: "300px",
+                border: "2px black solid",
+                paddingLeft: "20px",
+                borderRadius: "16px",
+              }}
+            />
+          </div>
+          {makegroup(filteredItems, 3).map((row, rowno) => (
             <div className="grid" key={rowno}>
               {row.map((book) => (
                 

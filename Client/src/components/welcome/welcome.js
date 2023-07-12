@@ -12,9 +12,9 @@ function Welcome() {
             <div className="paddings innerwidth flexcentre land-container ">
                 <div className=" land-left">
                   <div className="land-title">
-                    <h1>Welcome, To Library!</h1>
+                    <h1>Welcome, to Library!</h1>
                     <div className="land-des">
-                        <p>Your gateway to a world of knowledge and inspiration! Discover a world of knowledge and endless possibilities with our vast collection of books.Whether you're a passionate reader or a curious learner, our library has something for everyone.</p>
+                        <p style={{"fontSize":"1.3rem","marginLeft":"3%"}}>Your gateway to a world of knowledge and inspiration!</p>
                         {/* <div className='flex-btn'>
                             <h3>New to this app</h3>
                             <Link to={'/signup'}><button className='wel-btn'>Register</button></Link>

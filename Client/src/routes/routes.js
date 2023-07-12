@@ -21,7 +21,6 @@ function Routes_new() {
   const [user, setLoginUser] = useState({});
   const [available, setAvailable] = useState(true);
 
-
   useEffect(() => {
     // const user_after_every_load=
     setLoginUser(JSON.parse(localStorage.getItem("user")));
@@ -30,23 +29,23 @@ function Routes_new() {
     localStorage.setItem("user", JSON.stringify(user));
     setLoginUser(user);
   };
-  const updateAvailable=(data)=>{
+  const updateAvailable = (data) => {
     setAvailable(data);
-  }
+  };
   console.log(available);
   return (
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route
-          exact
-          path="/"
-          element={<Landing updateUser={updateUser} />}
-        />
+        <Route exact path="/" element={<Landing updateUser={updateUser} />} />
         <Route
           path="/user"
           element={
-            user && user.email ? <User updateUser={updateUser} /> : <Login updateUser={updateUser} />
+            user && user.email ? (
+              <User updateUser={updateUser} />
+            ) : (
+              <Login updateUser={updateUser} />
+            )
           }
         />
         <Route path="/signup" element={<Signup />} />
@@ -64,20 +63,28 @@ function Routes_new() {
         <Route
           path="/admin"
           element={
-            user && user.email ? <Admin updateUser={updateUser}/> : <Login updateUser={updateUser} />
+            user && user.email ? (
+              <Admin updateUser={updateUser} />
+            ) : (
+              <Login updateUser={updateUser} />
+            )
           }
         />
         <Route
           path="/order"
           element={
-            user && user.email ? <FormElement updateUser={updateUser}/> : <Login updateUser={updateUser} />
+            user && user.email ? (
+              <FormElement updateUser={updateUser} />
+            ) : (
+              <Login updateUser={updateUser} />
+            )
           }
         />
         <Route
           path="/library/:genre"
           element={
             user && user.email ? (
-              <Booklist updateUser={updateUser} available={available}/>
+              <Booklist updateUser={updateUser} />
             ) : (
               <Login updateUser={updateUser} />
             )
@@ -87,13 +94,13 @@ function Routes_new() {
           path="/library/:genre/:id"
           element={
             user && user.email ? (
-              <Bookinfo updateUser={updateUser} updateAvailable={updateAvailable}/>
+              <Bookinfo updateUser={updateUser} />
             ) : (
               <Login updateUser={updateUser} />
             )
           }
         />
-        <Route path="/team" element={<Members updateUser={updateUser}/>}/>
+        <Route path="/team" element={<Members updateUser={updateUser} />} />
         <Route path="*" element={<h1>Home</h1>} />
       </Routes>
     </BrowserRouter>
