@@ -13,7 +13,6 @@ import Booklist from "../Pages/Booklist/Booklist";
 import ScrollToTop from "./Scroll";
 import Members from "../Pages/team/Team";
 import FormElement from "../components/order/Form";
-import Searchbar from "../Pages/Booklist/searchbar";
 
 //data
 // import books from "../Data/data";
@@ -21,7 +20,6 @@ import Searchbar from "../Pages/Booklist/searchbar";
 function Routes_new() {
   const [user, setLoginUser] = useState({});
   const [available, setAvailable] = useState(true);
-
 
   useEffect(() => {
     // const user_after_every_load=
@@ -31,9 +29,9 @@ function Routes_new() {
     localStorage.setItem("user", JSON.stringify(user));
     setLoginUser(user);
   };
-  const updateAvailable=(data)=>{
+  const updateAvailable = (data) => {
     setAvailable(data);
-  }
+  };
   console.log(available);
   return (
     <BrowserRouter>
@@ -86,11 +84,7 @@ function Routes_new() {
           path="/library/:genre"
           element={
             user && user.email ? (
-
               <Booklist updateUser={updateUser} />
-
-              <Booklist updateUser={updateUser} />
-
             ) : (
               <Login updateUser={updateUser} />
             )
@@ -100,18 +94,13 @@ function Routes_new() {
           path="/library/:genre/:id"
           element={
             user && user.email ? (
-
-              <Bookinfo updateUser={updateUser}/>
-
               <Bookinfo updateUser={updateUser} />
-
             ) : (
               <Login updateUser={updateUser} />
             )
           }
         />
         <Route path="/team" element={<Members updateUser={updateUser} />} />
-        <Route path="/search" element={<Searchbar />} />
         <Route path="*" element={<h1>Home</h1>} />
       </Routes>
     </BrowserRouter>

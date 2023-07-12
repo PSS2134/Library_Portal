@@ -1,23 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./Form.css";
 import Navbar from "../navbar/navbar";
 
 const FormElement = ({ updateUser }) => {
   const [formData, setFormData] = useState({
-    name: "",
+    yourName: "",
+    bookName: "",
     genre: "",
     author: "",
-    summary: "",
   });
-
+  const input1 = useRef(null);
+  const input2 = useRef(null);
+  const input3 = useRef(null);
+  const input4 = useRef(null);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  const handleSubmit = (e) => {
+  const email = JSON.parse(localStorage.getItem("user")).email;
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
+    try {
+      await fetch(`/api/order?email=${email}`, {
+        method: "POST",
+        body: formData,
+      });
+      input1.current.value = "";
+      input2.current.value = "";
+      input3.current.value = "";
+      input4.current.value = "";
+    } catch (error) {
+      console.error("Order failed", error);
+    }
   };
 
   return (
@@ -26,13 +39,27 @@ const FormElement = ({ updateUser }) => {
       <div className="form-container">
         <form className="insideform" onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="name">Your Name:</label>
             <input
               type="text"
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
+              ref={input1}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="name">Book Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.bookname}
+              onChange={handleChange}
+              ref={input2}
+              required
             />
           </div>
 
@@ -44,6 +71,8 @@ const FormElement = ({ updateUser }) => {
               name="genre"
               value={formData.genre}
               onChange={handleChange}
+              ref={input3}
+              required
             />
           </div>
 
@@ -55,20 +84,13 @@ const FormElement = ({ updateUser }) => {
               name="author"
               value={formData.author}
               onChange={handleChange}
+              ref={input4}
+              required
             />
           </div>
-
-          <div>
-            <label htmlFor="summary">Summary:</label>
-            <textarea
-              id="summary"
-              name="summary"
-              value={formData.summary}
-              onChange={handleChange}
-            />
-          </div>
-
-          <button className="orderformbutton"type="submit">Submit</button>
+          <button className="orderformbutton" type="submit">
+            Submit
+          </button>
         </form>
       </div>
     </>
