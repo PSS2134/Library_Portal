@@ -20,6 +20,9 @@ import Searchbar from "../Pages/Booklist/searchbar";
 
 function Routes_new() {
   const [user, setLoginUser] = useState({});
+  const [available, setAvailable] = useState(true);
+
+
   useEffect(() => {
     // const user_after_every_load=
     setLoginUser(JSON.parse(localStorage.getItem("user")));
@@ -28,6 +31,10 @@ function Routes_new() {
     localStorage.setItem("user", JSON.stringify(user));
     setLoginUser(user);
   };
+  const updateAvailable=(data)=>{
+    setAvailable(data);
+  }
+  console.log(available);
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -79,7 +86,11 @@ function Routes_new() {
           path="/library/:genre"
           element={
             user && user.email ? (
+
               <Booklist updateUser={updateUser} />
+
+              <Booklist updateUser={updateUser} />
+
             ) : (
               <Login updateUser={updateUser} />
             )
@@ -89,7 +100,11 @@ function Routes_new() {
           path="/library/:genre/:id"
           element={
             user && user.email ? (
+
+              <Bookinfo updateUser={updateUser}/>
+
               <Bookinfo updateUser={updateUser} />
+
             ) : (
               <Login updateUser={updateUser} />
             )

@@ -11,6 +11,7 @@ function Booklist({ updateUser }) {
   const [booksData, setBooksData] = useState([]);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(true);
+
   // this will fetch books acording to particular genre
   const genregroup = booksData.filter((book) => {
     if (book.genre === genre) {
@@ -72,6 +73,9 @@ function Booklist({ updateUser }) {
             <h1>Welcome to {genre} genre</h1>
             <p className="head-oneliner">{oneliner}</p>
           </div>
+
+          {makegroup(genregroup, 3).map((row, rowno) => (
+
           <div
             style={{
               width: "100%",
@@ -95,20 +99,7 @@ function Booklist({ updateUser }) {
               }}
             />
           </div>
-          {makegroup(filteredItems, 3).map((row, rowno) => (
-            <div className="grid" key={rowno}>
-              {row.map((book) => (
-                <Bookcard
-                  updateUser={updateUser}
-                  id={book.id}
-                  title={book.name.slice(0, 18) + "..."}
-                  author={book.author}
-                  summary={book.summary && book.summary.slice(0, 100) + "..."}
-                  genre={book.genre}
-                  url={book.url}
-                />
-              ))}
-            </div>
+         
           ))}
           <Footer />
         </div>

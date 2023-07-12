@@ -163,7 +163,7 @@ function User({ updateUser }) {
         ) : (
           <>
             <div className="user">
-              <Navbar updateUser={updateUser} />`
+              <Navbar updateUser={updateUser} />
               {/* {console.log(data.userData.picture)}` */}
               <div className="user-profile">
                 <div className="box">

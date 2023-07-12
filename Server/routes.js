@@ -220,18 +220,23 @@ router.delete("/api/remove", async (req, res) => {
   const Bookdetails = await Book.findOne({ email: email });
   //  console.log(Bookdetails);
   // console.log(Bookdetails.book);
+  let a=true
   Bookdetails.book.map(async (singleBook) => {
+    if(a==true){
     if (singleBook.id == String(id)) {
       // console.log(singleBook);
+
       const index = Bookdetails.book.indexOf(singleBook);
       // console.log(index);
       if (index > -1) {
         // only splice array when item is found
         Bookdetails.book.splice(index, 1);
         console.log("deleted Successfully from bookModel");
+         a=false;
         // 2nd parameter means remove one item only
       }
     }
+  }
   });
   await Bookdetails.save();
 

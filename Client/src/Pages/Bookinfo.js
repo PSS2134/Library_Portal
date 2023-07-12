@@ -11,6 +11,7 @@ function Bookinfo({ updateUser }) {
   const { id } = useParams();
   const [booksData, setBooksData] = useState([]);
   const [loading, setLoading] = useState(true);
+  
   // this will fetch books acording to particular genre
 
   useEffect(() => {
@@ -25,6 +26,7 @@ function Bookinfo({ updateUser }) {
       }, 1250);
   }, []);
 
+  
   // console.log(id);
   console.log(booksData);
   const filteredArray = booksData.filter((book) => {
@@ -39,6 +41,7 @@ function Bookinfo({ updateUser }) {
   const email = JSON.parse(localStorage.getItem("user")).email;
 
   const postData = async () => {
+    
     const res = await fetch(`/api/add?email=${email}`, {
       method: "POST",
       headers: {
