@@ -12,9 +12,24 @@
     /* margin: 1%; */
     /* margin-left: 6%; */
     display: inline-block; 
+    transform: rotate(2deg);
+  }
+
+  .book-cardz1 {
+    background-color: black;
+    width: 260px;
+    border: 3px solid white;
+    /* border-radius: 10% 0%; */
+    /* border-color: olive green; */
+    padding: 10px;
+    text-align: center;
+    /* margin: 1%; */
+    /* margin-left: 6%; */
+    display: inline-block; 
+    transform: rotate(-2deg);
   }
   
-  .book-cardz img {
+  .book-cardz img, .book-cardz1 img {
     /* object-fit: cover; */
     width: 200px;
     height: 300px;

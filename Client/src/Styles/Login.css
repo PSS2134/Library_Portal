@@ -1,5 +1,5 @@
 .body{
-    background-color: #f6cbcb;
+    background-color: #021a42;
     height: 100vh;
     align-items:center;
     display: flex;
@@ -45,8 +45,8 @@ input[type="text"]:focus{
     margin-left: 15%;
     border: none;
     border-radius: 5px;
-    background-color: #FF6666;
-    box-shadow: 3px 3px 3px #3b0101;
+    background-color: #0E2954;
+    box-shadow: 3px 3px 3px #06214c;
     font-size: 20px;
     font-weight: 600;
     color: white;
@@ -60,7 +60,7 @@ input[type="text"]:focus{
     text-align: center;
     padding: 20px;
     margin-bottom: 20px;
-    color: #FF6666;
+    color: #0E2954;
     cursor: pointer;
     letter-spacing: 1.2px;
     /* line-height: 1.2em; */
@@ -76,9 +76,10 @@ input[type="text"]:focus{
     font-weight: 600;
 }
 .formfoot>a{
-    color:orangered ;
+    color:#3f69ab ;
+    text-decoration: underline;
 }
 .formfoot>a:visted{
-    color:orangered ;
+    color:#294778 ;
 
 }
