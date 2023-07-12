@@ -13,6 +13,7 @@ import Booklist from "../Pages/Booklist/Booklist";
 import ScrollToTop from "./Scroll";
 import Members from "../Pages/team/Team";
 import FormElement from "../components/order/Form";
+import Searchbar from "../Pages/Booklist/searchbar";
 
 //data
 // import books from "../Data/data";
@@ -38,15 +39,15 @@ function Routes_new() {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route
-          exact
-          path="/"
-          element={<Landing updateUser={updateUser} />}
-        />
+        <Route exact path="/" element={<Landing updateUser={updateUser} />} />
         <Route
           path="/user"
           element={
-            user && user.email ? <User updateUser={updateUser} /> : <Login updateUser={updateUser} />
+            user && user.email ? (
+              <User updateUser={updateUser} />
+            ) : (
+              <Login updateUser={updateUser} />
+            )
           }
         />
         <Route path="/signup" element={<Signup />} />
@@ -64,20 +65,32 @@ function Routes_new() {
         <Route
           path="/admin"
           element={
-            user && user.email ? <Admin updateUser={updateUser}/> : <Login updateUser={updateUser} />
+            user && user.email ? (
+              <Admin updateUser={updateUser} />
+            ) : (
+              <Login updateUser={updateUser} />
+            )
           }
         />
         <Route
           path="/order"
           element={
-            user && user.email ? <FormElement updateUser={updateUser}/> : <Login updateUser={updateUser} />
+            user && user.email ? (
+              <FormElement updateUser={updateUser} />
+            ) : (
+              <Login updateUser={updateUser} />
+            )
           }
         />
         <Route
           path="/library/:genre"
           element={
             user && user.email ? (
-              <Booklist updateUser={updateUser} available={available}/>
+
+              <Booklist updateUser={updateUser} />
+
+              <Booklist updateUser={updateUser} />
+
             ) : (
               <Login updateUser={updateUser} />
             )
@@ -87,13 +100,18 @@ function Routes_new() {
           path="/library/:genre/:id"
           element={
             user && user.email ? (
-              <Bookinfo updateUser={updateUser} updateAvailable={updateAvailable}/>
+
+              <Bookinfo updateUser={updateUser}/>
+
+              <Bookinfo updateUser={updateUser} />
+
             ) : (
               <Login updateUser={updateUser} />
             )
           }
         />
-        <Route path="/team" element={<Members updateUser={updateUser}/>}/>
+        <Route path="/team" element={<Members updateUser={updateUser} />} />
+        <Route path="/search" element={<Searchbar />} />
         <Route path="*" element={<h1>Home</h1>} />
       </Routes>
     </BrowserRouter>
