@@ -77,8 +77,8 @@ function Booklist({ updateUser }) {
           </div>
           <div
             style={{
-              width: "100%",
-              backgroundColor: "#030c40",
+              // width: "100%",
+              backgroundColor: "white",
               padding: "0 35% 0 38%",
             }}
           >
@@ -92,7 +92,7 @@ function Booklist({ updateUser }) {
                 width: "350px",
                 height: "40px",
                 marginleft: "300px",
-                border: "2px black solid",
+                border: "3px #0E2954 solid",
                 paddingLeft: "20px",
                 borderRadius: "16px",
               }}

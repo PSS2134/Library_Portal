@@ -14,7 +14,6 @@ const Footer = () => {
                 <div className="sb_footer-links">
                     <div className="sb_footer-links_div">
                         <h2>Admin</h2>
-                        <p><BsFillPersonFill /> Priyansh</p>
                         <a href="/linkedin">
                             <BsLinkedin /> LinkedIn
                         </a>
@@ -35,7 +34,7 @@ const Footer = () => {
                         </a>
                     </div>
                     <div className="sb_footer-links_div linkedin_div">
-                        <h2>Lohit Hostel</h2>
+                        <h2>Hostel</h2>
                         <p><BsFillTelephoneFill /> +91-1234567890</p>
                         <a href="/gmail">
                             <BiLogoGmail /> Mail Id

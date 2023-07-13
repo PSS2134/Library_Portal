@@ -58,14 +58,14 @@ function Issued({ allBooks }) {
                     <tr>
                       <td>
                         <td>
-                          <Link to={`/adminuser/${book.email}`}>
+                          <Link style={{"textDecoration":"none"}} to={`/adminuser/${book.email}`}>
                             <td>{book.username}</td>
                           </Link>
                         </td>
                       </td>
                       <td>{book.bookid}</td>
                       <td>
-                        <Link to={`/library/${book.genre}/${book.bookid}`}>
+                        <Link style={{"textDecoration":"none"}} to={`/library/${book.genre}/${book.bookid}`}>
                           <td>{book.bookname}</td>
                         </Link>
                       </td>

@@ -83,7 +83,7 @@ function Bookinfo({ updateUser }) {
     {loading?
     <div className="loading">
     <HashLoader
-      color={"#F37A24"}
+      color={"green"}
       loading={loading}
       size={100}
       aria-label="Loading Spinner"
@@ -112,7 +112,7 @@ function Bookinfo({ updateUser }) {
                   <div className="button">
                    {book.Available? <button onClick={postData} className="cart">
                       Issue Book
-                    </button>:<button  className="cart" onClick={()=>{
+                    </button>:<button  className="cart1" onClick={()=>{
                   toast.error("Not Available Currently")
                 }}>
                       Not Available
