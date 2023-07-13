@@ -133,7 +133,7 @@ th {
   cursor: pointer;
 }
 
-.delete-btn:active {
+.delete-icon:active {
   transform: scale(1.1);
 }
 .uploadbutton{

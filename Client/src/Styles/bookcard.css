@@ -5,10 +5,12 @@
   padding: 0;
 }
 .bookimg {
-  width: 100%;
-  border-radius: 12px;
-  height: 214px;
-  object-fit: contain;
+  width: 70%;
+  border: 2px white solid;
+  border-radius: 5%;
+  height: 210px;
+  /* object-fit: contain; */
+  margin-left: 15%;
 }
 #container {
   max-width: 300px;
@@ -17,11 +19,15 @@
 }
 .book-card {
   position: relative;
-  background-color: #fffffe;
-  box-shadow: 6px 6px 6px #3c4dae;
+  /* background-color: #fffffe; */
+  background-color: #29242f;
+  box-shadow: 6px 6px 6px #0a1f42;
+  /* box-shadow: 6px 6px 6px #3c4dae; */
   padding: 8px;
   border-radius: 12px;
-  border: 1px solid red;
+  /* align-items: center; */
+  /* justify-content: space-between; */
+  /* border: 1px solid red; */
 }
 .book-card:hover {
   transform: scale(1.05);
@@ -30,22 +36,22 @@
   padding: 2px 8px;
   border: 1px solid rgb(169, 185, 31);
   border-radius: 50px;
-  font-size: 19px;
+  font-size: 20px;
   font-family: "Poppins";
-  color: rgb(22 8 184);
+  color: rgb(154, 233, 239);
 }
 .bookname {
   font-family: "Poppins";
   font-size: 24px;
   margin-top: 14px;
-  color: rgb(18 122 255);
+  color: rgb(17, 246, 48);
 }
 
 .Summary {
   font-family: "Poppins";
   margin-top: 10px;
-  font-size: 14px;
-  color: rgb(7, 34, 57);
+  font-size: 16px;
+  color: white;
   line-height: 1.5;
 }
 .readmore {
@@ -64,15 +70,14 @@
 }
 .not-available {
   position: absolute;
-  width: 300px;
+  width: 90%;
   text-align: center;
-  top: 291px;
-  right: -58px;
+  top: 50%;
+  /* right: -58px; */
   background-color: rgb(54 91 177 / 70%);
   color: #ffffff;
   font-size: 18px;
   padding: 10px;
-  transform: rotate(-50deg); /* Rotate the label diagonally */
   transform-origin: top left; /* Set the rotation origin to top left */
   border-radius: 12px;
 }

@@ -36,15 +36,17 @@ const FormElement = ({ updateUser }) => {
   return (
     <>
       <Navbar updateUser={updateUser} />
+      <div className="form-back">
       <div className="form-container">
+        <h1 className="order-heading1">Order Form</h1>
         <form className="insideform" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name">Your Name:</label>
             <input
               type="text"
               id="name"
-              name="name"
-              value={formData.name}
+              name="yourName"
+              value={formData.yourName}
               onChange={handleChange}
               ref={input1}
               required
@@ -55,8 +57,8 @@ const FormElement = ({ updateUser }) => {
             <input
               type="text"
               id="name"
-              name="name"
-              value={formData.bookname}
+              name="bookName"
+              value={formData.bookName}
               onChange={handleChange}
               ref={input2}
               required
@@ -92,6 +94,7 @@ const FormElement = ({ updateUser }) => {
             Submit
           </button>
         </form>
+      </div>
       </div>
     </>
   );
