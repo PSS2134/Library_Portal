@@ -11,6 +11,7 @@
   border: 2px solid black;
   border-radius: 10%;
   margin-top: -20%;
+
 }
 .bookinfo {
   display: flex;
@@ -31,9 +32,11 @@
   flex: 6;
   padding-right: 40px;
   padding-left: 50px;
-  /* padding-top: 28vh; */
+
+ /* padding-top: 28vh; */
   margin-top: 5%;
   margin-bottom: 5%;
+
 }
 .center {
   display: flex;
@@ -86,6 +89,95 @@
   cursor: pointer;
   font-size: 16px;
 }
+
+@media screen and (max-width: 1000px) {
+  .bookimage {
+    top: 24vh;
+    left: 2vw;
+  }
+  .center {
+    row-gap: 15px;
+    font-size: 14px;
+  }
+  .info {
+    row-gap: 12px;
+  }
+  .info h2 {
+    font-size: 15px;
+  }
+  .info h4 {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .bookimage {
+    top: 20vh;
+    left: 4vw;
+  }
+  .center {
+    row-gap: 13px;
+    font-size: 13px;
+  }
+  .info {
+    row-gap: 10px;
+  }
+  .info h2 {
+    font-size: 13px;
+  }
+  .info h4 {
+    font-size: 11px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .bookimage {
+    top: 16vh;
+    left: 5vw;
+  }
+  .center {
+    row-gap: 11px;
+    font-size: 9px;
+  }
+  .info {
+    row-gap: 9px;
+  }
+  .info h2 {
+    font-size: 12px;
+  }
+  .info h4 {
+    font-size: 8px;
+  }
+  .cart {
+    font-size: 12px;
+    height: 40px;
+    width: 75px;
+  }
+}
+@media screen and (max-width: 475px) {
+  .bookimage {
+    top: 13vh;
+    left: 7vw;
+  }
+  .center {
+    row-gap: 11px;
+    font-size: 7px;
+  }
+  .info {
+    row-gap: 9px;
+  }
+  .info h2 {
+    font-size: 9px;
+  }
+  .info h4 {
+    font-size: 7px;
+  }
+  .cart {
+    font-size: 10px;
+    height: 35px;
+    width: 75px;
+  }
+}
+
 .cart:active{
   transform: scale(1.05);
 }
+
