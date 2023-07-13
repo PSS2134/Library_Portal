@@ -7,7 +7,7 @@
   display: flex;
   flex-wrap: wrap;
   row-gap: 50px;
-  background-color: #030c40;
+  background-color: white;
   padding-top: 10px;
 }
 .head {
@@ -16,11 +16,13 @@
   padding-top: 30px;
   padding-bottom: 20px;
   text-align: center;
-  color: rgb(219, 255, 16);
-  background-color: #030c40;
+  color: rgb(15, 202, 40);
+  font-size: 22px;
+  background-color: white;
 }
 .head-oneliner {
-  color: yellow;
+  color: rgb(149, 40, 9);
+  font-size: 17px;
 }
 input[type="search"]::-webkit-search-cancel-button {
   display: none;

@@ -3,15 +3,19 @@
   margin: 0;
 }
 .bookimage {
-  height: 40%;
+  height: 57%;
   width: 60%;
   position: relative;
   top: 32vh;
-  object-fit: contain;
+  /* object-fit: contain; */
+  border: 2px solid black;
+  border-radius: 10%;
+  margin-top: -20%;
 }
 .bookinfo {
   display: flex;
-  height: 100vh;
+  /* height: 100vh; */
+  
 }
 .left {
   display: flex;
@@ -27,16 +31,21 @@
   flex: 6;
   padding-right: 40px;
   padding-left: 50px;
-  padding-top: 28vh;
+  /* padding-top: 28vh; */
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 .center {
   display: flex;
   flex-direction: column;
   background-color: rgb(1, 28, 116);
   row-gap: 30px;
+  padding: 2%;
+  border-radius: 1%;
+  box-shadow: 5px 5px 5px rgb(3, 24, 92);
 }
 .title {
-  color: white;
+  color: yellow;
   padding: 0 30px;
 }
 .info {
@@ -56,14 +65,27 @@
 }
 .cart {
   height: 50px;
-  width: 100px;
-  border: 2px solid black;
+  width: 120px;
+  /* border: 2px solid black; */
   border-radius: 10px;
-  background-color: rgb(8, 60, 172);
+  border: none;
+  background-color: rgb(10, 163, 10);
   color: white;
   cursor: pointer;
-  box-shadow: 6px 6px 6px rgb(21, 53, 141);
+  font-size: 16px;
+  /* box-shadow: 6px 6px 6px rgb(21, 53, 141); */
+}
+.cart1{
+  height: 50px;
+  width: 120px;
+  /* border: 2px solid black; */
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(163, 33, 10);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
 }
 .cart:active{
-  box-shadow: none;
+  transform: scale(1.05);
 }

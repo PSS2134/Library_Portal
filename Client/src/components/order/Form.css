@@ -1,7 +1,30 @@
 .form-container {
-  max-width: 400px;
-  margin: 0 auto;
-  margin-top: 20vh;
+  /* max-width: 350px; */
+  width: 30%;
+  margin: auto;
+  margin-top: 10vh;
+  margin-bottom: 5%;
+  /* background-color: rgb(209, 204, 204); */
+  /* box-shadow: 4px 4px 4px ; */
+  border-radius: 5%;
+  padding: 2%;
+  background-color:#F5F5F5;
+  /* border-radius: 15px; */
+  box-shadow: 6px 6px 6px rgb(68, 20, 2);
+}
+.form-back{
+    background-color: #021a42;
+    height: 100vh;
+    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-heading1{
+  text-align: center;
+  padding: 2%;
+  color: #021a42;
 }
 
 .form-container label {
@@ -10,7 +33,7 @@
   margin-left: 10px;
 }
 .insideform {
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
 }
 .form-container input,
 .form-container textarea {
@@ -19,21 +42,25 @@
   margin-left: 12px;
   border: 1px solid #03363e;
   border-radius: 4px;
-  margin-bottom: 10px;
+  margin-bottom: 3%;
 }
 
 .orderformbutton {
-  padding: 10px 20px;
-  background-color: #4c59af;
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  margin-top: 30px;
+    padding: 11px;
+    width: 70%;
+    margin-left: 15%;
+    border: none;
+    border-radius: 5px;
+    background-color: #0E2954;
+    box-shadow: 3px 3px 3px #06214c;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    font-family: "Montserrat";
 }
 
 .orderformbutton:hover {
-  background-color: #ffdd00;
+  background-color: green;
 }
