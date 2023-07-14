@@ -1,4 +1,15 @@
-
+a:visited{
+color:black;
+}
+a{
+color: black;
+}
+a:hover{
+    color:blueviolet
+}
+.link-visited:visited{
+color: black;
+}
 
 .table{
     width: 100%;
@@ -11,6 +22,12 @@
     margin-left: 9%;
     max-height: 40vh;
     overflow-y: scroll;
+}
+.admin-td{
+    padding: 10px;
+    text-align: left;
+   border: none!important;
+    text-align: center;
 }
 
 .approve-btnn{

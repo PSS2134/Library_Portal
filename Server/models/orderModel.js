@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
+  email:{
+    type:String,
+    required:true,
+  },
   username:{
     type:String,
     required:true,
@@ -17,6 +21,15 @@ const orderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  date:{
+    type: String,
+    required: true,
+  },
+  approved:{
+    type:Boolean,
+    default:false,
+    required: true,
+  }
 });
 
 const Order = mongoose.model("Order", orderSchema);

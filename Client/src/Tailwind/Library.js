@@ -48,7 +48,7 @@ const libArray = [
   },
 ];
 
-function Library({ updateUser }) {
+function Library({ updateUser, updateAdmin}) {
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState("");
   const email = JSON.parse(localStorage.getItem("user")).email;
@@ -78,7 +78,7 @@ function Library({ updateUser }) {
         </div>
       ) : (
         <>
-          <Navbar updateUser={updateUser} />
+          <Navbar updateUser={updateUser} updateAdmin={updateAdmin} />
           <div className="library-body">
             <h1 className=" library-heading">
               Hello!{" "}

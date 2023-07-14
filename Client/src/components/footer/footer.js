@@ -9,37 +9,38 @@ import { BsFillTelephoneFill } from 'react-icons/bs';
 
 const Footer = () => {
     return (
-        <div className="footer" id="5">
+        <div className="footer" id="5" >
+       
             <div className="sb_footer section_padding">
                 <div className="sb_footer-links">
                     <div className="sb_footer-links_div">
                         <h2>Admin</h2>
-                        <a href="/linkedin">
+                        <a style={{"color":"white"}} href="/linkedin">
                             <BsLinkedin /> LinkedIn
                         </a>
-                        <a href="/github">
+                        <a style={{"color":"white"}} href="/github">
                             <BsGithub /> GitHub
                         </a>
-                        <a href="/instagram">
+                        <a style={{"color":"white"}}  href="/instagram">
                             <BsInstagram /> Instagram
                         </a>
                     </div>
                     <div className="sb_footer-links_div">
                         <h2>Quick Links</h2>
-                        <a href="/">
+                        <a style={{"color":"white"}} href="/">
                             <p style={{"marginTop":"15px"}}>Home</p>
                         </a>
-                        <a href="/team">
+                        <a style={{"color":"white"}} href="/team">
                             <p style={{"marginTop":"15px"}}>Team</p>
                         </a>
                     </div>
                     <div className="sb_footer-links_div linkedin_div">
                         <h2>Hostel</h2>
                         <p><BsFillTelephoneFill /> +91-1234567890</p>
-                        <a href="/gmail">
+                        <a style={{"color":"white"}} href="/gmail">
                             <BiLogoGmail /> Mail Id
                         </a>
-                        <a href="/instagram">
+                        <a style={{"color":"white"}} href="/instagram">
                             <BsInstagram /> Instagram
                         </a>
                     </div>

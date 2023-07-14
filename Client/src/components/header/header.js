@@ -14,9 +14,12 @@ function Header(props) {
   const Logout = () => {
     toast.success("Logged Out Successfully");
     localStorage.removeItem("user");
+    localStorage.removeItem("admin");
     navigate("/");
     const user = JSON.parse(localStorage.getItem("user"));
+    const admin = JSON.parse(localStorage.getItem("admin"));
     props.updateUser(user);
+    props.updateAdmin(admin);
   };
   const admin = JSON.parse(localStorage.getItem("admin"));
 
@@ -60,7 +63,7 @@ function Header(props) {
             </Scroll>
             {
                 admin &&
-                <Link className="head-btn" to={"/admin"}>
+                <Link style={{"color":"white"}} className="head-btn" to={"/admin"}>
                   Admin
                 </Link>
               }

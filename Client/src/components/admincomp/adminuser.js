@@ -62,7 +62,7 @@ function User() {
           </div>
         ) : (
           <>
-            <div className="user">
+            <div className="user" style={{"marginTop":"5%"}}>
               {/* <Navbar updateUser={updateUser} /> */}
               {/* {console.log(data.userData.picture)}` */}
               <div className="user-profile">
@@ -100,184 +100,12 @@ function User() {
                   </div>
                 </div>
 
-                {data.book && data.book.length ? (
-                  <div className="user-books">
-                    <h1 className="Issued-books">Requested Books</h1>
-                    <div className="zinda-hoon-2">
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>Book ID</th>
-                            <th>Book Name</th>
-                            <th>Book Genre</th>
-                            <th>Issue Date</th>
-                            <th>Issue Time</th>
-                            <th>Expected Return Date</th>
-                            <th>Status</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {data.book.map((book) => {
-                            let issued,
-                              returned,
-                              return_req = false;
-                            if (book.return_requested) {
-                              return_req = true;
-                            }
-                            if (book.issued && !book.returned) {
-                              issued = true;
-                              returned = false;
-                            } else if (!book.issued && !book.returned) {
-                              issued = false;
-                              returned = false;
-                            } else {
-                              issued = true;
-                              returned = true;
-                            }
-                            {
-                              /* console.log(book.returndate); */
-                            }
-                            console.log(issued, returned);
-                            if (!returned) {
-                              return (
-                                <tr>
-                                  <td>{book.id}</td>
-                                  <td>{book.name}</td>
-                                  <td>{book.genre}</td>
-                                  <td>{book.issuedate}</td>
-                                  <td>{book.issuetime}</td>
-                                  <td>{book.returndate}</td>
-
-                                  {issued && !returned && !return_req ? (
-                                    <>
-                                      <td
-                                        style={{
-                                          color: "green",
-                                          fontWeight: "600",
-                                        }}
-                                      >
-                                        Issued
-                                      </td>
-                                    </>
-                                  ) : (
-                                    <>
-                                      {!issued && !return_req && !returned ? (
-                                        <>
-                                          <td
-                                            style={{
-                                              color: "blue",
-                                              fontWeight: "600",
-                                            }}
-                                          >
-                                            Pending
-                                          </td>
-                                        </>
-                                      ) : (
-                                        <>
-                                          <td
-                                            style={{
-                                              color: "blue",
-                                              fontWeight: "600",
-                                            }}
-                                          >
-                                            Pending
-                                          </td>
-                                        </>
-                                      )}
-                                      <>{returned && <td>Returned</td>}</>
-                                    </>
-                                  )}
-                                </tr>
-                              );
-                            }
-                          })}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                ) : (
-                  <h1
-                    style={{
-                      textAlign: "center",
-                      fontFamily: "Poppins",
-                      fontWeight: "500",
-                      padding: "1%",
-                      color: "orange",
-                    }}
-                  >
-                    User has no books
-                  </h1>
-                )}
-                {data.book && data.book.length ? (
-                  <div className="user-books">
-                    <h1 className="Issued-books">Past Issued Books</h1>
-                    <div className="zinda-hoon-2">
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>Book ID</th>
-                            <th>Book Name</th>
-                            <th>Book Genre</th>
-                            <th>Issue Date</th>
-                            <th>Expected Return</th>
-                            <th> Return Date</th>
-                            <th>Status</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {data.book.map((book) => {
-                            const issue_date = book.issuedate;
-
-                            let year1 = issue_date.slice(5, 9);
-                            let month1 = issue_date.slice(3, 4);
-                            let newmonth = Number(month1) + 1;
-                            if (newmonth == 13) {
-                              year1 = Number(year1) + 1;
-                              newmonth = 1;
-                            }
-                            const days1 = issue_date.slice(0, 2);
-                            if (book.returned) {
-                              return (
-                                <tr>
-                                  <td>{book.id}</td>
-                                  <td>{book.name}</td>
-                                  <td>{book.genre}</td>
-                                  <td>{book.issuedate}</td>
-                                  <td>
-                                    {days1}/{newmonth}/{year1}
-                                  </td>
-                                  <td>{book.returndate}</td>
-                                  <td
-                                    style={{
-                                      color: "blueviolet",
-                                      fontWeight: "600",
-                                    }}
-                                  >
-                                    Returned
-                                  </td>
-                                </tr>
-                              );
-                            }
-                          })}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                ) : (
-                  <h1
-                    style={{
-                      textAlign: "center",
-                      fontFamily: "Poppins",
-                      fontWeight: "500",
-                      padding: "1%",
-                      color: "orange",
-                    }}
-                  >
-                    User haven't issued any book yet
-                  </h1>
-                )}
+               
               </div>
+              <div style={{"position":"fixed","bottom":"0","width":"100%"}}>
               <Footer />
+              </div>
+             
             </div>
           </>
         )}

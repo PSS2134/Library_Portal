@@ -46,7 +46,7 @@ function Routes_new() {
           path="/user"
           element={
             user && user.email ? (
-              <User updateUser={updateUser} />
+              <User updateUser={updateUser} updateAdmin={updateAdmin}  />
             ) : (
               <Login updateUser={updateUser} updateAdmin={updateAdmin} />
             )
@@ -105,7 +105,7 @@ function Routes_new() {
             )
           }
         />
-        <Route path="/team" element={<Members updateUser={updateUser} />} />
+        <Route path="/team" element={<Members updateUser={updateUser} updateAdmin={updateAdmin} />} />
         <Route path="*" element={<h1>Home</h1>} />
       </Routes>
     </BrowserRouter>

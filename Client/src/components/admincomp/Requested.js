@@ -39,15 +39,15 @@ function Requested({ allBooks }) {
                 return (
                   <tr>
                     <td>
-                      <Link to={`/adminuser/${book.email}`}>
-                        <td>{book.username}</td>
-                      </Link>
+                      <a href={`/adminuser/${book.email}`}>
+                        {book.username}
+                      </a>
                     </td>
                     <td>{book.bookid}</td>
                     <td>
-                      <Link to={`/library/${book.genre}/${book.bookid}`}>
-                        <td>{book.bookname}</td>
-                      </Link>
+                      <a href={`/library/${book.genre}/${book.bookid}`}>
+                        {book.bookname}
+                      </a>
                     </td>
                     <td>{book.genre}</td>
                     <td>{book.issuedate}</td>

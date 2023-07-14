@@ -7,8 +7,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Delete from "../../Images/delete.svg";
 
-function User({ updateUser }) {
+function User({ updateUser,updateAdmin }) {
   const [data, setData] = useState({});
+  const [order,setOrder]=useState([]);
   const [picture, setPicture] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
@@ -27,6 +28,16 @@ function User({ updateUser }) {
         }, 1250);
       });
   }, []);
+
+  useEffect(() => {
+
+    fetch(`/api/order?email=${email}`).then(res=>res.json()).then(data=>{
+      console.log(data);
+      setOrder(data);
+    })
+
+  },[])
+
   const refresher = () => {
     sessionStorage.setItem("reloading", true);
     // document.location.reload();
@@ -163,7 +174,7 @@ function User({ updateUser }) {
         ) : (
           <>
             <div className="user">
-              <Navbar updateUser={updateUser} />
+              <Navbar updateUser={updateUser} updateAdmin={updateAdmin}  />
               {/* {console.log(data.userData.picture)}` */}
               <div className="user-profile">
                 <div className="box">
@@ -433,7 +444,7 @@ function User({ updateUser }) {
                     You haven't issued any book yet
                   </h1>
                 )}
-                {data.book && data.book.length ? (
+                {order && order.length  ? (
                   <div className="user-books">
                     <h1 className="Issued-books">Added Books</h1>
                     <div className="zinda-hoon-2" >
@@ -442,53 +453,44 @@ function User({ updateUser }) {
                         <tr>
                           <th>Book Name</th>
                           <th>Book Genre</th>
+                          <th>Author</th>
                           <th>Requested Date</th>
                           <th>Status</th>
+                        
                         </tr>
                       </thead>
                       <tbody>
-                        {data.book.map((book) => {
-                          const issue_date = book.issuedate;
-
-                          let year1 = issue_date.slice(5, 9);
-                          let month1 = issue_date.slice(3, 4);
-                          let newmonth = Number(month1) + 1;
-                          if (newmonth == 13) {
-                            year1 = Number(year1) + 1;
-                            newmonth = 1;
-                          }
-                          const days1 = issue_date.slice(0, 2);
-                          if (book.returned) {
+                        {order.length&&order.map((book) => {
+                         
                             return (
                               <tr>
                                 <td>{book.name}</td>
                                 <td>{book.genre}</td>
-                                <td>{book.issuedate}</td>
-                                <td
+                                <td>{book.author}</td>
+                                <td>{book.date}</td>
+
+                             {book.approved?<td
                                   style={{
-                                    color: "blueviolet",
+                                    color: "green",
                                     fontWeight: "600",
                                   }}
                                 >
-                                  Returned
-                                </td>
+                                  Approved
+                                </td>:<td style={{
+                                    color: "blue",
+                                    fontWeight: "600",
+                                  }}>Pending</td>}   
                               </tr>
                             );
                           }
-                        })}
+                        )}
                       </tbody>
                     </table>
                     </div>
                   </div>
                 ) : (
                   <h1
-                    style={{
-                      textAlign: "center",
-                      fontFamily: "Poppins",
-                      fontWeight: "500",
-                      padding: "1%",
-                      color: "orange",
-                    }}
+                    className="Issued-books"
                   >
                     You haven't Added any book yet
                   </h1>

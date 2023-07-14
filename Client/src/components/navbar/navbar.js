@@ -16,14 +16,16 @@ function Navbar(props) {
     const user = JSON.parse(localStorage.getItem("user"));
     const admin = JSON.parse(localStorage.getItem("admin"));
     props.updateUser(user);
-    props.updateAdmin(admin);
+    // props.updateAdmin(admin);
   };
   const user = JSON.parse(localStorage.getItem("user"));
+  const admin = JSON.parse(localStorage.getItem("admin"));
   return (
     <nav className="navbar">
       <div className="leftbar">
-        <div className="dropdown">
-          <Link to={"/library"}>
+      
+      {admin&&admin.email?<><h1 className="dropbtn">LIBRARY</h1></>:<div className="dropdown">
+      <Link to={"/library"}>
             <button className="dropbtn">LIBRARY</button>
           </Link>
           <div className="dropdown-content">
@@ -32,7 +34,8 @@ function Navbar(props) {
             <a href="/library/Autobiography">Autobiography</a>
             <a href="/library/Others">Others</a>
           </div>
-        </div>
+        </div>}
+        
       </div>
       <div className="middlebar">
         <Link to={"/"}>
@@ -44,7 +47,10 @@ function Navbar(props) {
         <Scroll to="5" smooth={true} offset={-30} duration={500}>
               <button className="head-btn">Contact</button>
         </Scroll>
-        <Link to={"/order"}><button className="head-btn">Order</button></Link>
+        {
+          admin && admin.email?<></>:<Link to={"/order"}><button className="head-btn">Order</button></Link>
+        }
+        
         {/* <button className="nav-btn">Services</button>
             <button className="nav-btn">Recommended</button> */}
       </div>

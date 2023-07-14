@@ -243,7 +243,9 @@ router.get("/api/profile", async (req, res) => {
   // console.log(userData);
   const resnew = await Book.findOne({ email: email });
   // console.log(resnew);
-
+  const order = await Order.find({ email: email });
+  console.log(order);
+ 
   if (resnew) {
     const { book } = resnew;
     // console.log("sent data");
@@ -447,6 +449,7 @@ router.post("/api/order", async (req, res) => {
   const {email} = req.query;
 
   const Formdata = req.body;
+  const date= new Date().toLocaleDateString();
   // console.log(Formdata);
   if (Formdata) {
     const newOrder = new Order({
@@ -455,6 +458,7 @@ router.post("/api/order", async (req, res) => {
       name: Formdata.bookName,
       genre: Formdata.genre,
       author: Formdata.author,
+      date:date,
     });
     await newOrder.save();
     res.json("New Order");
@@ -465,7 +469,7 @@ router.post("/api/order", async (req, res) => {
 router.get("/api/order", async (req, res) => {
   const {email} = req.query;
   const order = await Order.find({ email: email });
-  console.log(order);
+  // console.log(order);
   if (order) {
     res.status(200).json(order);
   } else {
@@ -475,13 +479,22 @@ router.get("/api/order", async (req, res) => {
 
 router.get("/api/admin_order", async (req, res) => {
 
-  const order = await Order.findOne({ });
-  console.log(order);
+  const order = await Order.find({ });
+  // console.log(order);
   if (order) {
     res.status(200).json(order);
   } else {
     res.status(404).json("error occured");
   }
+});
+router.put("/api/admin_order", async (req, res) => {
+const {id}=req.query;
+
+const order=await Order.findOne({_id:id});
+// console.log(order);
+order.approved=true;
+await order.save();
+return res.status(200).json("Order Approved");
 });
 
 module.exports = router;
