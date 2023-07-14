@@ -118,6 +118,7 @@ export default function Members({ updateUser }) {
                 </h2>
                 <h5 style={{ fontSize: "1.6rem" }}>Project and Backend Lead</h5>
                 <p style={{ color: "white", fontSize: "1.4rem" }}>
+              Project Ideation &
                   Made the Overall Backend of Website and made Library Page UI
                   and Login Signup UI as well, suggested and made some changes
                   in Frontend and fixed bugs

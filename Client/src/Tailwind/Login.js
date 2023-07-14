@@ -7,7 +7,7 @@ import "../Styles/Login.css";
 import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
-function SignIn({ updateUser }) {
+function SignIn({ updateUser,updateAdmin }) {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ email: "", password: "" });
   let name, value;
@@ -29,6 +29,18 @@ function SignIn({ updateUser }) {
         body: JSON.stringify(userData),
       });
       const data = await res.json();
+      if(data=="admin success")
+      {
+        updateAdmin(userData);
+        toast.success(" Admin Maarlo Meri!")
+        
+        navigate("/admin");
+      }
+    if(data=="admin wrong password")
+    {
+      toast.error("Admin hai tu password yaad rakh");
+      navigate("/login")
+    }
       if (data == "user not found") {
         toast.error("Please SignUp first");
         navigate("/signup");

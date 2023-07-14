@@ -20,18 +20,21 @@ import AdminUser from "../components/admincomp/adminuser";
 
 function Routes_new() {
   const [user, setLoginUser] = useState({});
+  const[admin,setAdmin]=useState({});
   const [available, setAvailable] = useState(true);
 
   useEffect(() => {
     // const user_after_every_load=
     setLoginUser(JSON.parse(localStorage.getItem("user")));
+    setAdmin(JSON.parse(localStorage.getItem("admin")))
   }, []);
   const updateUser = (user) => {
     localStorage.setItem("user", JSON.stringify(user));
     setLoginUser(user);
   };
-  const updateAvailable = (data) => {
-    setAvailable(data);
+  const updateAdmin = (admin) => {
+    localStorage.setItem("admin", JSON.stringify(admin));
+    setAdmin(admin);
   };
   console.log(available);
   return (
@@ -45,30 +48,30 @@ function Routes_new() {
             user && user.email ? (
               <User updateUser={updateUser} />
             ) : (
-              <Login updateUser={updateUser} />
+              <Login updateUser={updateUser} updateAdmin={updateAdmin} />
             )
           }
         />
         <Route path="/signup" element={<Signup />} />
         <Route path="/adminuser/:email" element={<AdminUser />} />
-        <Route path="/login" element={<Login updateUser={updateUser} />} />
+        <Route path="/login" element={<Login updateUser={updateUser} updateAdmin={updateAdmin} />} />
         <Route
           path="/library"
           element={
             user && user.email ? (
               <Library updateUser={updateUser} />
             ) : (
-              <Login updateUser={updateUser} />
+              <Login updateUser={updateUser} updateAdmin={updateAdmin} />
             )
           }
         />
         <Route
           path="/admin"
           element={
-            user && user.email ? (
-              <Admin updateUser={updateUser} />
+            admin && admin.email ? (
+              <Admin updateUser={updateUser} updateAdmin={updateAdmin} />
             ) : (
-              <Login updateUser={updateUser} />
+              <Login updateUser={updateUser} updateAdmin={updateAdmin} />
             )
           }
         />
@@ -78,7 +81,7 @@ function Routes_new() {
             user && user.email ? (
               <FormElement updateUser={updateUser} />
             ) : (
-              <Login updateUser={updateUser} />
+              <Login updateUser={updateUser} updateAdmin={updateAdmin} />
             )
           }
         />
@@ -88,7 +91,7 @@ function Routes_new() {
             user && user.email ? (
               <Booklist updateUser={updateUser} />
             ) : (
-              <Login updateUser={updateUser} />
+              <Login updateUser={updateUser} updateAdmin={updateAdmin} />
             )
           }
         />
@@ -98,7 +101,7 @@ function Routes_new() {
             user && user.email ? (
               <Bookinfo updateUser={updateUser} />
             ) : (
-              <Login updateUser={updateUser} />
+              <Login updateUser={updateUser} updateAdmin={updateAdmin} />
             )
           }
         />
