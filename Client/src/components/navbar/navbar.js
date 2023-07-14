@@ -11,10 +11,14 @@ function Navbar(props) {
   const Logout = () => {
     toast.success("Logged Out Successfully");
     localStorage.removeItem("user");
+    localStorage.removeItem("admin");
     navigate("/");
     const user = JSON.parse(localStorage.getItem("user"));
+    const admin = JSON.parse(localStorage.getItem("admin"));
     props.updateUser(user);
+    props.updateAdmin(admin);
   };
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <nav className="navbar">
       <div className="leftbar">
@@ -40,15 +44,17 @@ function Navbar(props) {
         <Scroll to="5" smooth={true} offset={-30} duration={500}>
               <button className="head-btn">Contact</button>
         </Scroll>
+        <Link to={"/order"}><button className="nav-btn">Order</button></Link>
         {/* <button className="nav-btn">Services</button>
             <button className="nav-btn">Recommended</button> */}
       </div>
       <div className="rightbar">
+      {user&&user.email&&
         <Link to={"/user"}>
           <button className="nav-btn user-btn">
             <BiUserCircle className="user-icon" />
           </button>
-        </Link>
+        </Link>}
         <button className="logout-btn" onClick={Logout}>
           Logout
         </button>

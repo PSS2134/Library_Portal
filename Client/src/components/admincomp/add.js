@@ -1,7 +1,18 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import './admincomp.css'
 
 function Add() {
+
+    const [order,setOrder]=useState([]);
+
+    useEffect(()=>{
+    fetch("/api/order").then(res=>res.json()).then(data=>{
+        console.log(data);
+        setOrder(data);
+    })
+    },[])
+    
+
   return (
     <div>
         <div className="zinda-hoon" >

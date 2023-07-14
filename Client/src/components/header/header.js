@@ -18,6 +18,7 @@ function Header(props) {
     const user = JSON.parse(localStorage.getItem("user"));
     props.updateUser(user);
   };
+  const admin = JSON.parse(localStorage.getItem("admin"));
 
     return (
       <nav className="header">
@@ -57,6 +58,12 @@ function Header(props) {
             <Scroll to="5" smooth={true} offset={-30} duration={500}>
               <button className="head-btn">Contact</button>
             </Scroll>
+            {
+                admin &&
+                <Link className="head-btn" to={"/admin"}>
+                  Admin
+                </Link>
+              }
         </div>  
         <div className="rightbarr">
             {user&&
@@ -66,11 +73,14 @@ function Header(props) {
                 <BiUserCircle className="user-icon" />
               </button>
               </Link>
-              <button className="logout-btn" onClick={Logout}>
+              </> }
+              
+              {(user||admin) &&<button className="logout-btn" style={{"paddingBottom":"15%","textAlign":"center"}} onClick={Logout}>
                 Logout
-              </button>
-            </>  
-            }
+              </button>}
+              
+           
+            
             
         </div> 
       </nav>

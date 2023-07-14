@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Welcome() {
 
     const user = JSON.parse(localStorage.getItem("user"));
-  
+    const admin = JSON.parse(localStorage.getItem("admin"));
     return (
         <div className="landing" id='1'>
           <section className="land-wrapper">
@@ -20,7 +20,7 @@ function Welcome() {
                             <Link to={'/signup'}><button className='wel-btn'>Register</button></Link>
                         </div> */}
 
-                        {!user &&
+                        {!user&&!admin &&
                           <div className='flex-btn'>
                               <Link to={'/signup'}><button className='wel-btn'>Register</button></Link>
                               <Link to={'/login'}><button className='wel-btn'>Login</button></Link>

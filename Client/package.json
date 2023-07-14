@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.14"
+    "autoprefixer": "^10.4.14",
+    "react-error-overlay": "^6.0.9"
   }
 }

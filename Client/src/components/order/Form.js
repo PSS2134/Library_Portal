@@ -19,10 +19,12 @@ const FormElement = ({ updateUser }) => {
   const email = JSON.parse(localStorage.getItem("user")).email;
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData);
     try {
       await fetch(`/api/order?email=${email}`, {
         method: "POST",
-        body: formData,
+        headers:{"Content-Type": "application/json"},
+        body: JSON.stringify(formData),
       });
       input1.current.value = "";
       input2.current.value = "";

@@ -3,8 +3,12 @@ const User = require("./models/userModel");
 const Book = require("./models/bookModel");
 const Admin = require("./models/adminbookModel");
 const Databook= require("./models/databooksModel")
+const Order = require("./models/orderModel");
+const dotenv= require("dotenv");
 const router = express.Router();
-
+dotenv.config({ path: "./config.env" });
+const adminuser=process.env.ADMIN_USER
+const adminpassword=process.env.ADMIN_PASSWORD
 router.post("/api/signup", async (req, res) => {
   const { name, contact, email, password, course, year, room } = req.body;
   const user_exist = await User.findOne({ email: email });
@@ -28,7 +32,24 @@ router.post("/api/signup", async (req, res) => {
 router.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
   //  console.log(req.body);
+if(email==adminuser )
+{
+  if(password==adminpassword)
+  {
+    return res.json("admin success");
+  }
+  else{
+    return res.json("admin wrong password")
+  }
+  
+}
+else{
+
   const email_exist = await User.findOne({ email: email });
+ 
+
+
+
   console.log(email_exist);
   if (email_exist) {
     const password_correct = await User.findOne({
@@ -45,6 +66,7 @@ router.post("/api/login", async (req, res) => {
   } else {
     return res.json("user not found");
   }
+}
 });
 
 router.get("/api/login", async (req, res) => {
@@ -421,5 +443,45 @@ router.get("/api/databooks", async (req, res) => {
 router.get("/api/return", async(req, res) => {
 
 })
+router.post("/api/order", async (req, res) => {
+  const {email} = req.query;
+
+  const Formdata = req.body;
+  // console.log(Formdata);
+  if (Formdata) {
+    const newOrder = new Order({
+      email:email,
+      username: Formdata.yourName,
+      name: Formdata.bookName,
+      genre: Formdata.genre,
+      author: Formdata.author,
+    });
+    await newOrder.save();
+    res.json("New Order");
+  } else {
+    res.status(400).json("Error Occured");
+  }
+});
+router.get("/api/order", async (req, res) => {
+  const {email} = req.query;
+  const order = await Order.find({ email: email });
+  console.log(order);
+  if (order) {
+    res.status(200).json(order);
+  } else {
+    res.status(404).json("error occured");
+  }
+});
+
+router.get("/api/admin_order", async (req, res) => {
+
+  const order = await Order.findOne({ });
+  console.log(order);
+  if (order) {
+    res.status(200).json(order);
+  } else {
+    res.status(404).json("error occured");
+  }
+});
 
 module.exports = router;

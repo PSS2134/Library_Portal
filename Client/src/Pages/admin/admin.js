@@ -7,7 +7,7 @@ import Requested from "../../components/admincomp/Requested";
 import HashLoader from "react-spinners/HashLoader";
 import Footer from "../../components/footer/footer";
 
-function Admin({ updateUser }) {
+function Admin({ updateUser,updateAdmin }) {
   const [loading, setLoading] = useState(true);
   const [allBooksData, setAllBooksData] = useState([]);
   useEffect(() => {
@@ -36,7 +36,7 @@ function Admin({ updateUser }) {
         </div>
       ) : (
         <div className="admin">
-          <Navbar updateUser={updateUser} />
+          <Navbar updateUser={updateUser} updateAdmin={updateAdmin} />
           <div className="issued">
             <h1 className="left-head">Issued Books</h1>
             <Issued allBooks={allBooksData} />
