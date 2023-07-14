@@ -61,7 +61,7 @@ function Booklist({ updateUser }) {
       {loading ? (
         <div className="loading">
           <HashLoader
-            color={"#F37A24"}
+            color={"green"}
             loading={loading}
             size={100}
             aria-label="Loading Spinner"

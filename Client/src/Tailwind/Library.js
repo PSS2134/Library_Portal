@@ -44,7 +44,7 @@ const libArray = [
      entertaining. So browse our selection and find something that interests you.
      So explore our "Others" category and find something new to read. You might just be 
      surprised at what you find.`,
-    url: "https://th.bing.com/th/id/OIP.THlupAhQ4N3oo--fzXFQ7QHaEo?pid=ImgDet&rs=1",
+    url: "https://i.pinimg.com/originals/34/ba/f3/34baf3aa9a80bf82a2f53e1602df97cc.png",
   },
 ];
 
@@ -69,7 +69,7 @@ function Library({ updateUser }) {
       {loading ? (
         <div className="loading">
           <HashLoader
-            color={"#F37A24"}
+            color={"green"}
             loading={loading}
             size={100}
             aria-label="Loading Spinner"
@@ -133,7 +133,7 @@ function Library({ updateUser }) {
                     </div>
                     <div>
                       <Link to={`/library/${data.title}`}>
-                        <button
+                        <button 
                           className="block m-[2px] mt-7 auto bg-cyan-500 p-2 w-[8vw] rounded-2xl text-white 
          font-semibold text-lg shadow-lg shadow-slate-700 hover:bg-cyan-600 cursor-pointer
          active:shadow-none library-btn"

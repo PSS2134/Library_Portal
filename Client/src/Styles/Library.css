@@ -39,7 +39,6 @@ justify-content: center;
     height: 50vh;
     border-radius: 10px;
     box-shadow: 6px 6px 6px  rgb(51 65 85);
-    cursor:pointer;
 }
 .library-btn{
  margin: 9px;
@@ -55,6 +54,7 @@ justify-content: center;
  font-family: "Poppins";
  font-size: 15px;
  box-shadow: 4px 4px 4px rgb(51 65 85);
+ cursor: pointer;
 
 
 }
