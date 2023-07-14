@@ -1,8 +1,13 @@
 import React, { useState, useRef } from "react";
 import "./Form.css";
 import Navbar from "../navbar/navbar";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const FormElement = ({ updateUser }) => {
+
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     yourName: "",
     bookName: "",
@@ -19,17 +24,26 @@ const FormElement = ({ updateUser }) => {
   const email = JSON.parse(localStorage.getItem("user")).email;
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+
     try {
-      await fetch(`/api/order?email=${email}`, {
+     const res= await fetch(`/api/order?email=${email}`, {
         method: "POST",
         headers:{"Content-Type": "application/json"},
         body: JSON.stringify(formData),
       });
+      const data = await res.json();
+      if(data)
+      {
+        // console.log("New Order");
+        toast.success("Order Sent!");
+        navigate("/user");
+      }
+      console.log(data);
       input1.current.value = "";
       input2.current.value = "";
       input3.current.value = "";
       input4.current.value = "";
+     
     } catch (error) {
       console.error("Order failed", error);
     }

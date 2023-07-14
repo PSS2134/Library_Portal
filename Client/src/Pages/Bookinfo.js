@@ -8,7 +8,7 @@ import Footer from "../components/footer/footer";
 import HashLoader from "react-spinners/HashLoader";
 
 
-function Bookinfo({ updateUser }) {
+function Bookinfo({ updateUser ,updateAdmin}) {
   const { id } = useParams();
   const [booksData, setBooksData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -94,7 +94,7 @@ function Bookinfo({ updateUser }) {
     <>
       {book && (
         <>
-          <Navbar updateUser={updateUser} />
+          <Navbar updateUser={updateUser} updateAdmin={updateAdmin} />
           <div className="bookinfo">
             <div className="left">
               <img className="bookimage" src={book.url} alt="book" />

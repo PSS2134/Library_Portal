@@ -31,14 +31,18 @@ function SignIn({ updateUser,updateAdmin }) {
       const data = await res.json();
       if(data=="admin success")
       {
+        
+        localStorage.removeItem("user");
+        const user= JSON.parse(localStorage.getItem("user"));
+        updateUser(user);
         updateAdmin(userData);
-        toast.success(" Admin Maarlo Meri!")
+        toast.success(" Welcome Admin!")
         
         navigate("/admin");
       }
     if(data=="admin wrong password")
     {
-      toast.error("Admin hai tu password yaad rakh");
+      toast.error("Admin wrong password");
       navigate("/login")
     }
       if (data == "user not found") {

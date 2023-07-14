@@ -24,6 +24,11 @@ const orderSchema = new mongoose.Schema({
   date:{
     type: String,
     required: true,
+  },
+  approved:{
+    type:Boolean,
+    default:false,
+    required: true,
   }
 });
 

@@ -52,7 +52,7 @@ import "./Team.css";
 import HashLoader from "react-spinners/HashLoader";
 import Teambar from "../../components/teambar/teambar";
 
-export default function Members({ updateUser }) {
+export default function Members({ updateUser,updateAdmin }) {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -75,7 +75,7 @@ export default function Members({ updateUser }) {
         </div>
       ) : (
         <div className="meet">
-          <Teambar updateUser={updateUser} />
+          <Teambar updateUser={updateUser} updateAdmin={updateAdmin} />
           <h1 className="team-heading">TEAM</h1>
           <div className="detailsz">
             <div className="ashu">

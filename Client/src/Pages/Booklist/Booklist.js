@@ -7,7 +7,7 @@ import Footer from "../../components/footer/footer";
 import HashLoader from "react-spinners/HashLoader";
 import NotAvailable from "../../components/bookcard/Notavailable";
 
-function Booklist({ updateUser }) {
+function Booklist({ updateUser,updateAdmin }) {
   const { genre } = useParams();
   const [booksData, setBooksData] = useState([]);
   const [query, setQuery] = useState("");
@@ -70,7 +70,7 @@ function Booklist({ updateUser }) {
         </div>
       ) : (
         <div className="booklist">
-          <Navbar updateUser={updateUser} />
+          <Navbar updateUser={updateUser} updateAdmin={updateAdmin} />
           <div className="head">
             <h1>Welcome to {genre} genre</h1>
             <p className="head-oneliner">{oneliner}</p>
@@ -98,7 +98,7 @@ function Booklist({ updateUser }) {
               }}
             />
           </div>
-          {makegroup(filteredItems, 3).map((row, rowno) => (
+          {filteredItems.length?makegroup(filteredItems, 3).map((row, rowno) => (
             <div className="grid" key={rowno}>
               {row.map((book) => (
                 
@@ -118,7 +118,7 @@ function Booklist({ updateUser }) {
                   url={book.url}/>
               ))}
             </div>
-          ))}
+          )):<h1 style={{"textAlign":"center","margin":"11.24vh","color":"red","fontSize":"2.5rem"}}>NO BOOK FOUND!</h1>}
       
           <Footer />
         </div>

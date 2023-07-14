@@ -57,22 +57,22 @@ function Issued({ allBooks }) {
                   <>
                     <tr>
                       <td>
-                        <td>
+                        
                           <Link style={{"textDecoration":"none"}} to={`/adminuser/${book.email}`}>
-                            <td>{book.username}</td>
+                            {book.username}
                           </Link>
-                        </td>
+                        
                       </td>
                       <td>{book.bookid}</td>
                       <td>
                         <Link style={{"textDecoration":"none"}} to={`/library/${book.genre}/${book.bookid}`}>
-                          <td>{book.bookname}</td>
+                          {book.bookname}
                         </Link>
                       </td>
                       <td>{book.genre}</td>
                       <td>{book.issuedate}</td>
                       <td>
-                        '{days1}/{newmonth}/{year1}'
+                        {days1}/{newmonth}/{year1}
                       </td>
                       <td>{book.returndate}</td>
                       <td>
@@ -93,13 +93,13 @@ function Issued({ allBooks }) {
                     <tr>
                       <td>
                         <Link to={`/adminuser/${book.email}`}>
-                          <td>{book.username}</td>
+                          {book.username}
                         </Link>
                       </td>
                       <td>{book.bookid}</td>
                       <td>
                         <Link to={`/library/${book.genre}/${book.bookid}`}>
-                          <td>{book.bookname}</td>
+                          {book.bookname}
                         </Link>
                       </td>
                       <td>{book.genre}</td>
@@ -129,13 +129,12 @@ function Issued({ allBooks }) {
                     <tr>
                       <td>
                         <Link to={`/adminuser/${book.email}`}>
-                          <td>{book.username}</td>
-                        </Link>
+                          {book.username}                        </Link>
                       </td>
                       <td>{book.bookid}</td>
                       <td>
                         <Link to={`/library/${book.genre}/${book.bookid}`}>
-                          <td>{book.bookname}</td>
+                          {book.bookname}
                         </Link>
                       </td>
                       <td>{book.genre}</td>

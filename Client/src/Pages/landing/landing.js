@@ -7,10 +7,10 @@ import Recommended from '../../components/recommended/recommended';
 import Welcome from '../../components/welcome/welcome';
 import Header from '../../components/header/header';
 
-function Landing({ updateUser }) {
+function Landing({ updateUser, updateAdmin}) {
   return (
     <div className="landing">
-        <Header updateUser={updateUser}/>
+        <Header updateUser={updateUser} updateAdmin={updateAdmin} />
         <Welcome />
         <About />
         <Services />
