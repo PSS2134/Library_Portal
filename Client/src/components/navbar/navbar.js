@@ -36,15 +36,15 @@ function Navbar(props) {
       </div>
       <div className="middlebar">
         <Link to={"/"}>
-          <button className="nav-btn">Home</button>
+          <button className="head-btn">Home</button>
         </Link>
         <Link to={"/team"}>
-        <button className="nav-btn">Team</button>
+        <button className="head-btn">Team</button>
         </Link>
         <Scroll to="5" smooth={true} offset={-30} duration={500}>
               <button className="head-btn">Contact</button>
         </Scroll>
-        <Link to={"/order"}><button className="nav-btn">Order</button></Link>
+        <Link to={"/order"}><button className="head-btn">Order</button></Link>
         {/* <button className="nav-btn">Services</button>
             <button className="nav-btn">Recommended</button> */}
       </div>
