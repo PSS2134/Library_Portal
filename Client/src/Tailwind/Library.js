@@ -50,19 +50,26 @@ const libArray = [
 
 function Library({ updateUser, updateAdmin}) {
   const [loading, setLoading] = useState(true);
-  const [name, setName] = useState("");
-  const email = JSON.parse(localStorage.getItem("user")).email;
-  useEffect(() => {
-    fetch(`/api/login?email=${email}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setName(data.name);
-        setTimeout(() => {
-          setLoading(false);
-        }, 1250);
-      });
-  }, []);
+  const [name, setName] = useState("Admin");
+  const user = JSON.parse(localStorage.getItem("user"));
+  let email;
+    // console.log(user);
+    useEffect(() => {
+      if(user){
+        email=user.email;
+        fetch(`/api/login?email=${email}`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setName(data.name);
+        });
+      }
+      setTimeout(() => {
+        setLoading(false);
+      }, 1250);
+      
+    }, []);
+  
 
   return (
     <>

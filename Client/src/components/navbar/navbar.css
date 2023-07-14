@@ -29,7 +29,9 @@
   } */
 
   .middlebar{
-    margin-left: 5%;
+    /* margin-left: 5%; */
+    display: flex;
+    justify-content: space-evenly;
     margin-top: 1.3%;
     width: 45%;
   }
@@ -60,10 +62,11 @@
     border: 2px solid white;
     border-radius: 10%;
     font-size: 22px;
-    height: 60%;
-    width: 100%;
+    height: 70%;
+    width: 110%;
     margin-top: 3%;
     padding: 0 3%;
+    /* text-align: center; */
     cursor: pointer;
   }
 

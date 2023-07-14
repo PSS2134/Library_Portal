@@ -41,7 +41,7 @@ function Routes_new() {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route exact path="/" element={<Landing updateUser={updateUser} />} />
+        <Route exact path="/" element={<Landing updateUser={updateUser} updateAdmin={updateAdmin} />} />
         <Route
           path="/user"
           element={
@@ -58,8 +58,8 @@ function Routes_new() {
         <Route
           path="/library"
           element={
-            user && user.email ? (
-              <Library updateUser={updateUser} />
+            (admin&&admin.email)||(user && user.email) ? (
+              <Library updateUser={updateUser} updateAdmin={updateAdmin}/>
             ) : (
               <Login updateUser={updateUser} updateAdmin={updateAdmin} />
             )
@@ -88,7 +88,7 @@ function Routes_new() {
         <Route
           path="/library/:genre"
           element={
-            user && user.email ? (
+            (admin&&admin.email)||(user && user.email) ? (
               <Booklist updateUser={updateUser} />
             ) : (
               <Login updateUser={updateUser} updateAdmin={updateAdmin} />
@@ -98,7 +98,7 @@ function Routes_new() {
         <Route
           path="/library/:genre/:id"
           element={
-            user && user.email ? (
+            (admin&&admin.email)||(user && user.email) ? (
               <Bookinfo updateUser={updateUser} />
             ) : (
               <Login updateUser={updateUser} updateAdmin={updateAdmin} />

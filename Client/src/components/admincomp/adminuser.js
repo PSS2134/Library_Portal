@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "../../components/navbar/navbar";
-import Footer from "../../components/footer/footer";
+// import Navbar from "../../components/navbar/navbar";
+// import Footer from "../../components/footer/footer";
 import "../../Pages/user/user.css";
 import HashLoader from "react-spinners/HashLoader";
 import { ToastContainer, toast } from "react-toastify";
@@ -61,11 +61,12 @@ function User() {
             />
           </div>
         ) : (
-          <>
-            <div className="user" style={{"marginTop":"5%"}}>
+          <div style={{padding:"11vh",backgroundColor:"lightcyan",height:"78vh"}}>
+            <h1 style={{textAlign:"center"}}>USER-PROFILE</h1>
+            <div className="user" >
               {/* <Navbar updateUser={updateUser} /> */}
               {/* {console.log(data.userData.picture)}` */}
-              <div className="user-profile">
+              <div className="user-profile" style={{"marginTop":"3%"}}> 
                 <div className="box">
                   <div className="profile-box">
                     <div className="signup-profile-pic__container">
@@ -103,11 +104,11 @@ function User() {
                
               </div>
               <div style={{"position":"fixed","bottom":"0","width":"100%"}}>
-              <Footer />
+              
               </div>
              
             </div>
-          </>
+          </div>
         )}
       </>
     </div>

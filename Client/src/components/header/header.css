@@ -25,7 +25,8 @@
   } */
 
   .middlebarr{
-    margin-left: 9%;
+    display: flex;
+    justify-content: space-evenly;
     margin-top: 1.3%;
     width:70%;
   }

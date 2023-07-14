@@ -317,6 +317,7 @@ function User({ updateUser,updateAdmin }) {
                                       <>
                                         <td>
                                           <img
+                                            className="delete-image-btn"
                                             style={{ cursor: "pointer" }}
                                             onClick={handleRemove}
                                             name={book.id}
@@ -490,7 +491,13 @@ function User({ updateUser,updateAdmin }) {
                   </div>
                 ) : (
                   <h1
-                    className="Issued-books"
+                    style={{
+                      textAlign: "center",
+                      fontFamily: "Poppins",
+                      fontWeight: "500",
+                      padding: "1%",
+                      color: "orange",
+                    }}
                   >
                     You haven't Added any book yet
                   </h1>

@@ -46,7 +46,7 @@ function Teambar({updateUser,updateAdmin }) {
             </div>
             
         </div>
-        <div className="middlebarr team-middlebarr">
+        <div className="middlebarr team-middlebarr" style={{"marginLeft":"-4%"}}>
             <Link to={'/'}><button className="head-btn">Home</button></Link>
             <Link to={"/team"}><button className="nav-btn">Team</button></Link>
         </div>  

@@ -24,7 +24,7 @@ function Navbar(props) {
     <nav className="navbar">
       <div className="leftbar">
       
-      {admin&&admin.email?<><h1 className="dropbtn">LIBRARY</h1></>:<div className="dropdown">
+      {0?<><h1 className="dropbtn">LIBRARY</h1></>:<div className="dropdown">
       <Link to={"/library"}>
             <button className="dropbtn">LIBRARY</button>
           </Link>
