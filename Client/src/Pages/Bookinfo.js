@@ -40,7 +40,12 @@ function Bookinfo({ updateUser ,updateAdmin}) {
   console.log(filteredArray);
   book && console.log(book.Available);
   // const { name, genre, summary, author, url } = book;
-  const email = JSON.parse(localStorage.getItem("user")).email;
+  const user = JSON.parse(localStorage.getItem("user"));
+  let email;
+  if(user){
+    email=user.email;
+  }
+  const admin = JSON.parse(localStorage.getItem("admin"));
 
   const postData = async () => {
     
@@ -61,23 +66,8 @@ function Bookinfo({ updateUser ,updateAdmin}) {
       toast.success(`${data.title} added successfully`);
       window.location.reload()
     }
-  // const bookres=await fetch(`https://mocki.io/v1/5fe99cc7-0e42-46f3-a511-5a18c0abd765/${book.id}`,{
-  //   method:"PUT",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify({
-  //     ...book,Available:false,
-
-  //   }),
-
-  // })
-  // const bookresnew=await bookres.json();
-  // console.log("update");
-
   };
  
-  // console.log(book.url);
     return (
     <>
     {loading?
@@ -109,15 +99,17 @@ function Bookinfo({ updateUser ,updateAdmin}) {
                   <h2>Author : {book.author}</h2>
                   <h2>Genre : {book.genre}</h2>
                   <h4>Summary: {book.summary}</h4>
-                  <div className="button">
-                   {book.Available? <button onClick={postData} className="cart">
-                      Issue Book
-                    </button>:<button  className="cart1" onClick={()=>{
-                  toast.error("Not Available Currently")
-                }}>
-                      Not Available
-                    </button>}
-                  </div>
+                  {admin?<></>:
+                    <div className="button">
+                    {book.Available? <button onClick={postData} className="cart">
+                        Issue Book
+                      </button>:<button  className="cart1" onClick={()=>{
+                      toast.error("Not Available Currently")
+                      }}>
+                        Not Available
+                      </button>}
+                    </div>
+                  }
                 </div>
               </div>
             </div>

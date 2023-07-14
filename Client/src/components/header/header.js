@@ -63,8 +63,8 @@ function Header(props) {
             </Scroll>
             {
                 admin &&
-                <Link style={{"color":"white"}} className="head-btn" to={"/admin"}>
-                  Admin
+                <Link style={{"color":"white","textAlign":"left"}}  to={"/admin"}>
+                  <button className="head-btn">Admin</button>
                 </Link>
               }
         </div>  

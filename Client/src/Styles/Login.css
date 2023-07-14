@@ -34,7 +34,7 @@
     /* font-family: "Montserrat"; */
     
 }
-input[type="text"]:focus{
+input:focus{
     outline:none;/*Important*/
     font-family: "Montserrat";
 }

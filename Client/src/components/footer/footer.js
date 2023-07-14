@@ -15,13 +15,13 @@ const Footer = () => {
                 <div className="sb_footer-links">
                     <div className="sb_footer-links_div">
                         <h2>Admin</h2>
-                        <a style={{"color":"white"}} href="/linkedin">
+                        <a style={{"color":"white"}} href="https://www.linkedin.com/in/priyansh-shrivastav-b5868b229/">
                             <BsLinkedin /> LinkedIn
                         </a>
-                        <a style={{"color":"white"}} href="/github">
+                        <a style={{"color":"white"}} href="https://github.com/PSS2134">
                             <BsGithub /> GitHub
                         </a>
-                        <a style={{"color":"white"}}  href="/instagram">
+                        <a style={{"color":"white"}}  href="https://www.instagram.com/priyansh_s_s/">
                             <BsInstagram /> Instagram
                         </a>
                     </div>
@@ -37,10 +37,10 @@ const Footer = () => {
                     <div className="sb_footer-links_div linkedin_div">
                         <h2>Hostel</h2>
                         <p><BsFillTelephoneFill /> +91-1234567890</p>
-                        <a style={{"color":"white"}} href="/gmail">
+                        <a style={{"color":"white"}} href="mailto:priyanshs18171819@gmail.com">
                             <BiLogoGmail /> Mail Id
                         </a>
-                        <a style={{"color":"white"}} href="/instagram">
+                        <a style={{"color":"white"}} href="https://www.instagram.com/lohit_hostel_iitg/">
                             <BsInstagram /> Instagram
                         </a>
                     </div>

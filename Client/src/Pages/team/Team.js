@@ -103,10 +103,7 @@ export default function Members({ updateUser,updateAdmin }) {
                   Ashutosh Mishra
                 </h2>
                 <h5 style={{ fontSize: "1.6rem" }}>Frontend Lead</h5>
-                <p style={{ color: "white", fontSize: "1.4rem" }}>
-                  Made the UI of user page, admin page, landing page and team
-                  page. Made so many components and Maintained overall css of
-                  the website
+                <p style={{ color: "white", fontSize: "1.4rem" }}>I was responsible for designing the UI of User, Admin, Landing, and Team page. I created numerous components, maintained the overall CSS of the website, and successfully resolved any encountered bugs.
                 </p>
               </div>
             </div>
@@ -117,11 +114,7 @@ export default function Members({ updateUser,updateAdmin }) {
                   Priyansh Shrivastav
                 </h2>
                 <h5 style={{ fontSize: "1.6rem" }}>Project and Backend Lead</h5>
-                <p style={{ color: "white", fontSize: "1.4rem" }}>
-              Project Ideation &
-                  Made the Overall Backend of Website and made Library Page UI
-                  and Login Signup UI as well, suggested and made some changes
-                  in Frontend and fixed bugs
+                <p style={{ color: "white", fontSize: "1.4rem" }}>I played a key role in project ideation, developing the Overall backend of the website, designing the Library Page and Login/Signup UI, suggesting frontend improvements, and fixing bugs.
                 </p>
               </div>
               <div className="book-cardz">

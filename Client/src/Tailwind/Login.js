@@ -66,6 +66,7 @@ function SignIn({ updateUser,updateAdmin }) {
           <form>
             <p className="formlabel">Email</p>
             <input
+              placeholder="user@gmail.com"
               type="text"
               className="forminput"
               name="email"
@@ -73,7 +74,8 @@ function SignIn({ updateUser,updateAdmin }) {
             />
             <p className="formlabel">Password</p>
             <input
-              type="text"
+              placeholder="********"
+              type="password"
               className="forminput"
               name="password"
               onChange={loginData}
