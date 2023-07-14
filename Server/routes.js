@@ -447,6 +447,7 @@ router.post("/api/order", async (req, res) => {
   const {email} = req.query;
 
   const Formdata = req.body;
+  const date= new Date().toLocaleDateString();
   // console.log(Formdata);
   if (Formdata) {
     const newOrder = new Order({
@@ -455,6 +456,7 @@ router.post("/api/order", async (req, res) => {
       name: Formdata.bookName,
       genre: Formdata.genre,
       author: Formdata.author,
+      date:date,
     });
     await newOrder.save();
     res.json("New Order");
