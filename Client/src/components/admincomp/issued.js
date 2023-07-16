@@ -7,7 +7,7 @@ function Issued({ allBooks }) {
     const unique_id = e.target.name;
     console.log(unique_id);
 
-    const res = await fetch(`/api/admin/${unique_id}/?action="returned"`, {
+    const res = await fetch(`https://backendlibrary.onrender.com/api/admin/${unique_id}/?action="returned"`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
     });

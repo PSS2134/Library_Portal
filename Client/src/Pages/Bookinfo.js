@@ -16,7 +16,7 @@ function Bookinfo({ updateUser ,updateAdmin}) {
   // this will fetch books acording to particular genre
 
   useEffect(() => {
-    fetch("/api/databooks")
+    fetch("https://backendlibrary.onrender.com/api/databooks")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -49,7 +49,7 @@ function Bookinfo({ updateUser ,updateAdmin}) {
 
   const postData = async () => {
     
-    const res = await fetch(`/api/add?email=${email}`, {
+    const res = await fetch(`https://backendlibrary.onrender.com/api/add?email=${email}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

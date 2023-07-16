@@ -57,7 +57,7 @@ function Library({ updateUser, updateAdmin}) {
     useEffect(() => {
       if(user){
         email=user.email;
-        fetch(`/api/login?email=${email}`)
+        fetch(`https://backendlibrary.onrender.com/api/login?email=${email}`)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
