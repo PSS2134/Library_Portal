@@ -58,13 +58,15 @@ function Teambar({updateUser,updateAdmin }) {
               </button>
               </Link>
         }
-            {user||admin&&
+            {(admin&&admin.email)||(user && user.email) ?
             <>
               
               <button className="logout-btn" onClick={Logout}>
                 Logout
               </button>
             </>  
+            :
+            <></>
             }
             
         </div> 

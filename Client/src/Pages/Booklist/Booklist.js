@@ -23,7 +23,7 @@ function Booklist({ updateUser,updateAdmin }) {
     return Object.values(book)[1].toLowerCase().includes(query.toLowerCase());
   });
   useEffect(() => {
-    fetch("/api/databooks")
+    fetch("https://backendlibrary.onrender.com/api/databooks")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

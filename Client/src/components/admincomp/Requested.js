@@ -8,7 +8,7 @@ function Requested({ allBooks }) {
   const handleApprove = async (e) => {
     const unique_id = e.target.name;
 
-    const res = await fetch(`/api/admin/${unique_id}?action=issued`, {
+    const res = await fetch(`https://backendlibrary.onrender.com/api/admin/${unique_id}?action=issued`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
     });

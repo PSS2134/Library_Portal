@@ -8,7 +8,7 @@ function Add() {
     const [order,setOrder]=useState([]);
 
     useEffect(()=>{
-    fetch("/api/admin_order").then(res=>res.json()).then(data=>{
+    fetch("https://backendlibrary.onrender.com/api/admin_order").then(res=>res.json()).then(data=>{
         console.log(data);
         setOrder(data);
     })
@@ -16,7 +16,7 @@ function Add() {
     const handleApprove=async(e)=>{
    const id=e.target.name;
    console.log(id);
-   const res= await fetch(`/api/admin_order?id=${id}`,{
+   const res= await fetch(`https://backendlibrary.onrender.com/api/admin_order?id=${id}`,{
     method:"PUT",
     headers:{
         "Content-Type": "application/json"

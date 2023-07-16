@@ -18,7 +18,7 @@ function User({ updateUser,updateAdmin }) {
   const email = JSON.parse(localStorage.getItem("user")).email;
 
   useEffect(() => {
-    fetch(`/api/profile?email=${email}`)
+    fetch(`https://backendlibrary.onrender.com/api/profile?email=${email}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -31,7 +31,7 @@ function User({ updateUser,updateAdmin }) {
 
   useEffect(() => {
 
-    fetch(`/api/order?email=${email}`).then(res=>res.json()).then(data=>{
+    fetch(`https://backendlibrary.onrender.com/api/order?email=${email}`).then(res=>res.json()).then(data=>{
       console.log(data);
       setOrder(data);
     })
@@ -103,7 +103,7 @@ function User({ updateUser,updateAdmin }) {
   };
   //   console.log(imagePreview);
   const handleImage = async (e) => {
-    const res = await fetch("/api/image", {
+    const res = await fetch("https://backendlibrary.onrender.com/api/image", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, picture }),
@@ -121,7 +121,7 @@ function User({ updateUser,updateAdmin }) {
   const handleRemove = async (e) => {
     console.log(e.target);
     const id = e.target.name;
-    const res = await fetch(`/api/remove?email=${email}&id=${id}`, {
+    const res = await fetch(`https://backendlibrary.onrender.com/api/remove?email=${email}&id=${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });
@@ -137,7 +137,7 @@ function User({ updateUser,updateAdmin }) {
     const bookid = e.target.name;
     const returndate = new Date().toLocaleDateString();
     const res = await fetch(
-      `/api/return/?email=${email}&id=${bookid}&${returndate}`,
+      `https://backendlibrary.onrender.com/api/return/?email=${email}&id=${bookid}&${returndate}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

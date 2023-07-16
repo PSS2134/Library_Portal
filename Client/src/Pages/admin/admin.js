@@ -11,7 +11,7 @@ function Admin({ updateUser,updateAdmin }) {
   const [loading, setLoading] = useState(true);
   const [allBooksData, setAllBooksData] = useState([]);
   useEffect(() => {
-    fetch("/api/admin")
+    fetch("https://backendlibrary.onrender.com/api/admin")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

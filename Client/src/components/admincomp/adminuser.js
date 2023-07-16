@@ -18,7 +18,7 @@ function User() {
   //   let [approvecount, setApproveCount] = useState(0);
 
   useEffect(() => {
-    fetch(`/api/profile?email=${email}`)
+    fetch(`https://backendlibrary.onrender.com/api/profile?email=${email}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
