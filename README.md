@@ -28,10 +28,7 @@ PushtakAdda is a User-friendly platform designed to enhance the library experien
 
 # Login Page
   ![Screenshot 2023-09-10 035102](https://github.com/PSS2134/Library_Portal/assets/101321904/e702f208-8b5c-41eb-8635-b513a82d62b6)
-  
-# Library Page
-  ![Screenshot 2023-09-10 035207](https://github.com/PSS2134/Library_Portal/assets/101321904/ef28c0c9-fb7d-4135-9ee6-32fb419fe23b)
-  
+    
 # Books Page
  ![Screenshot 2023-09-10 035234](https://github.com/PSS2134/Library_Portal/assets/101321904/8aceccf4-1de9-4b20-b4bd-539968e1752e)
 
