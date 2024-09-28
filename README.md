@@ -1,6 +1,6 @@
-# PushtakAdda - A Library Portal App
+# PustakAdda - A Library Portal App
 
-PushtakAdda is a User-friendly platform designed to enhance the library experience. Whether you're a User looking to Issue or Return books, or an Admin responsible for overseeing these actions, our app simplifies the process for you. Explore, Issue, and Enjoy your reading journey with our intuitive Library Portal App.
+PustakAdda is a User-friendly platform designed to enhance the library experience. Whether you're a User looking to Issue or Return books, or an Admin responsible for overseeing these actions, our app simplifies the process for you. Explore, Issue, and Enjoy your reading journey with our intuitive Library Portal App.
 
 # [Website](https://pushtakadda.netlify.app/)
 
@@ -35,7 +35,7 @@ PushtakAdda is a User-friendly platform designed to enhance the library experien
   
 # Installation
 
-To get started with PushtakAdda, follow these steps:
+To get started with PustakAdda, follow these steps:
 1. Clone the repository
 2. To run frontend:
    + run cd Client
